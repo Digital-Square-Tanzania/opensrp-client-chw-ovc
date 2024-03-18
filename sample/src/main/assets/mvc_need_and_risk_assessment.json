@@ -1,0 +1,180 @@
+{
+  "count": "1",
+  "encounter_type": "Need & Risk Assessment",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Need & Risk Assessment",
+    "fields": [
+      {
+        "key": "select_clients_need",
+        "type": "check_box",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "select_clients_need",
+        "label": "Select the clients Need",
+        "options": [
+          {
+            "key": "health_and_nutrition",
+            "text": "Health and Nutrition"
+          },
+          {
+            "key": "housing_and_care",
+            "text": "Housing and Care"
+          },
+          {
+            "key": "security_and_safety",
+            "text": "Security and Safety"
+          },
+          {
+            "key": "psychological_and_social_support",
+            "text": "Psychological and Social Support"
+          },
+          {
+            "key": "education_and_life_skills",
+            "text": "Education and Life Skills"
+          },
+          {
+            "key": "household_economic_strengthening",
+            "text": "Household Economic Strengthening"
+          },
+          {
+            "key": "others_needs",
+            "text": "Others"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one client need"
+        }
+      },
+      {
+        "key": "has_child_experience_vac",
+        "type": "check_box",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "has_child_experience_vac",
+        "label": "Has the child experience VAC",
+        "options": [
+          {
+            "key": "physical",
+            "text": "Physical"
+          },
+          {
+            "key": "sexual",
+            "text": "Sexual"
+          },
+          {
+            "key": "neglect",
+            "text": "Neglect"
+          },
+          {
+            "key": "exploitation",
+            "text": "Exploitation"
+          },
+          {
+            "key": "emotional",
+            "text": "Emotional"
+          },
+          {
+            "key": "none_vac",
+            "text": "None"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one type of VAC experience"
+        }
+      },
+      {
+        "key": "refer_to_social_welfare_toaster",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Refer the client to Social welfare",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:has_child_experience_vac": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "physical",
+                  "sexual",
+                  "neglect",
+                  "exploitation",
+                  "emotional"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "is_child_in_conflict_with_law",
+        "type": "native_radio",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_child_in_conflict_with_law",
+        "label": "Is the child in conflict and contact with the law?",
+        "options": [
+          {
+            "key": "yes_conflict_with_law",
+            "text": "Yes"
+          },
+          {
+            "key": "no_conflict_with_law",
+            "text": "No"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please indicate if the child is in conflict with the law"
+        }
+      }
+    ]
+  }
+}
