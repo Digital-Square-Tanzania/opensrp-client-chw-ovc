@@ -144,7 +144,11 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "more_than_twelve_months_ago"
           }
-        ]
+        ],
+        "v_required": {
+          "value": true,
+          "err": "This field is required"
+        }
       }
     ]
   }
