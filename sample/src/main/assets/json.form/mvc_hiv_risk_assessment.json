@@ -65,11 +65,11 @@
             "openmrs_entity_id": "yes_tested"
           },
           {
-            "key": "no_tested",
+            "key": "not_tested",
             "text": "No",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "no_tested"
+            "openmrs_entity_id": "not_tested"
           },
           {
             "key": "unknown_tested",
@@ -120,7 +120,14 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "do_not_want_to_answer"
           }
-        ]
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "mvc_hiv_risk_assessment_relevance_rules.yml"
+            }
+          }
+        }
       },
       {
         "key": "when_was_the_last_test_result",
@@ -148,6 +155,48 @@
         "v_required": {
           "value": true,
           "err": "This field is required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "mvc_hiv_risk_assessment_relevance_rules.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "is_the_adolescent_sexually_active",
+        "type": "native_radio",
+        "label": "Is the adolescent sexually active??",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_the_adolescent_sexually_active",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "This field is required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "mvc_hiv_risk_assessment_relevance_rules.yml"
+            }
+          }
         }
       }
     ]
