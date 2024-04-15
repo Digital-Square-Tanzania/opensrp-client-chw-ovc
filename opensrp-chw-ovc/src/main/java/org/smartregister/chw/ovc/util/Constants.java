@@ -36,35 +36,7 @@ public interface Constants {
     interface FORMS {
         String GBV_VISIT_TYPE = "gbv_visit_type";
 
-        String GBV_CONSENT_FORM = "gbv_consent";
-
-        String GBV_CONSENT_FOLLOWUP_FORM = "gbv_consent_followup";
-
-        String GBV_HISTORY_COLLECTION_FORM = "gbv_history_collection";
-
-        String GBV_MEDICAL_EXAMINATION_FORM = "gbv_medical_examination";
-
-        String GBV_PHYSICAL_EXAMINATION_FORM = "gbv_physical_examination";
-
-        String GBV_FORENSIC_EXAMINATION_FORM = "gbv_forensic_examination";
-
-        String GBV_LAB_INVESTIGATION_FORM = "gbv_lab_investigation";
-
-        String GBV_PROVIDE_TREATMENT_FORM = "gbv_provide_treatment";
-
-        String GBV_EDUCATION_AND_COUNSELLING_FORM = "gbv_education_and_counselling";
-
-        String GBV_SAFETY_PLAN = "gbv_safety_plan";
-
-        String GBV_REFERRAL_AND_LINKAGE = "gbv_referral_and_linkage";
-
-        String GBV_NEXT_APPOINTMENT_DATE = "gbv_next_appointment_date";
-
-        String GBV_HOME_VISIT = "gbv_home_visit";
-
-        String GBV_ENROLLMENT = "gbv_enrollment";
-
-        String GBV_SCREENING = "gbv_screening";
+        String OVC_EDUCATION_AND_PSYCHOSOCICAL_SUPPORT_FORM = "mvc_education_and_psychosocial";
     }
 
     interface TABLES {
