@@ -8,39 +8,31 @@ import org.smartregister.chw.ovc.util.JsonFormUtils;
 
 import timber.log.Timber;
 
-public abstract class OvcHfVisitTypeActionHelper extends OvcVisitActionHelper {
-    String visitStatus;
-    String canManageCase;
+public  class OvcVisitTypeActionHelper extends OvcVisitActionHelper {
+    private String visitType;
 
     @Override
     public void onPayloadReceived(String jsonPayload) {
         JSONObject payload;
         try {
             payload = new JSONObject(jsonPayload);
-            visitStatus = JsonFormUtils.getValue(payload, "visit_status");
-            canManageCase = JsonFormUtils.getValue(payload, "can_manage_case");
+            visitType = JsonFormUtils.getValue(payload, "visit_type");
         } catch (JSONException e) {
-            Timber.d(e);
+            Timber.e(e);
         }
-        processCanManageCase(canManageCase);
     }
-
-    public abstract void processCanManageCase(String canManageCase);
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isNotBlank(visitStatus)) {
-            return "Visit Status: " + visitStatus + "\n" +
-                    "Can Manage Case: " + canManageCase;
-
+        if (StringUtils.isNotBlank(visitType)) {
+            return "Visit Type : " + visitType;
         }
-
         return null;
     }
 
     @Override
     public BaseOvcVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isNotBlank(visitStatus)) {
+        if (StringUtils.isNotBlank(visitType)) {
             return BaseOvcVisitAction.Status.COMPLETED;
         } else
             return BaseOvcVisitAction.Status.PENDING;

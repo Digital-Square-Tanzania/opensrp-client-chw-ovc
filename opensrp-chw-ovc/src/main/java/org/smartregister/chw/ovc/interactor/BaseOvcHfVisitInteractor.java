@@ -11,8 +11,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Nullable;
 import org.smartregister.chw.ovc.OvcLibrary;
 import org.smartregister.chw.ovc.R;
-import org.smartregister.chw.ovc.actionhelper.OvcHfVisitTypeActionHelper;
 import org.smartregister.chw.ovc.actionhelper.OvcVisitActionHelper;
+import org.smartregister.chw.ovc.actionhelper.OvcVisitTypeActionHelper;
 import org.smartregister.chw.ovc.contract.BaseOvcVisitContract;
 import org.smartregister.chw.ovc.dao.OvcDao;
 import org.smartregister.chw.ovc.domain.MemberObject;
@@ -129,13 +129,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected void createGbvHfVisitTypeAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper =
-                new OvcHfVisitTypeActionHelper() {
-                    @Override
-                    public void processCanManageCase(String canManageCase) {
-
-                    }
-                };
+        OvcVisitActionHelper actionHelper = new OvcVisitTypeActionHelper();
 
         String actionName =
                 mContext.getString(R.string.ovc_visit_type_action_title);
@@ -144,7 +138,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
                 .withOptional(false)
                 .withDetails(details)
                 .withHelper(actionHelper)
-                .withFormName(Constants.FORMS.GBV_VISIT_TYPE)
+                .withFormName(Constants.FORMS.OVC_VISIT_TYPE_FORM)
                 .build();
 
         actionList.put(actionName, action);
