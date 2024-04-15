@@ -119,7 +119,6 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
         final Runnable runnable = () -> {
             try {
                 createGbvHfVisitTypeAction(memberObject, details);
-                createEducationAndPsychosocialSupportAction(memberObject, details);
             } catch (BaseOvcVisitAction.ValidationException e) {
                 Timber.e(e);
             }
@@ -131,7 +130,22 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected void createGbvHfVisitTypeAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new OvcVisitTypeActionHelper();
+        OvcVisitActionHelper actionHelper = new OvcVisitTypeActionHelper() {
+            @Override
+            public void processVisitType(String visitType) {
+                // This is used to show other actions only when the visit type is new_client or active_continuing_with_services
+                if (visitType != null && (visitType.equals("new_client") || visitType.equals("active_continuing_with_services"))) {
+                    try {
+                        createEducationAndPsychosocialSupportAction(memberObject, details);
+                    } catch (BaseOvcVisitAction.ValidationException e) {
+                        Timber.e(e);
+                    }
+                } else {
+                    actionList.remove(mContext.getString(R.string.ovc_mvc_education_and_psychosocial_title));
+                }
+                appExecutors.mainThread().execute(() -> callBack.preloadActions(actionList));
+            }
+        };
 
         String actionName =
                 mContext.getString(R.string.ovc_visit_type_action_title);
