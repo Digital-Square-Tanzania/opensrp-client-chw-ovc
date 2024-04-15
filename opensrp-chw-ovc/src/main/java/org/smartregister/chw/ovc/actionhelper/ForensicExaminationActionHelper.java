@@ -17,7 +17,7 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public abstract class ForensicExaminationActionHelper extends GbvVisitActionHelper {
+public abstract class ForensicExaminationActionHelper extends OvcVisitActionHelper {
     private MemberObject memberObject;
 
     private String bloodSpecimen;

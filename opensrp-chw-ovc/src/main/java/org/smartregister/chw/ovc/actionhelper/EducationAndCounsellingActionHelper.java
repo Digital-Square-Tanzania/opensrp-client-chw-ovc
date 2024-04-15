@@ -17,7 +17,7 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public class EducationAndCounsellingActionHelper extends GbvVisitActionHelper {
+public class EducationAndCounsellingActionHelper extends OvcVisitActionHelper {
     private MemberObject memberObject;
 
     private String wasTheSurvivorEducatedOnTheViolenceThatOccurred;

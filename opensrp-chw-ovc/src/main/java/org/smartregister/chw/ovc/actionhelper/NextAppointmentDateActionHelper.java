@@ -17,7 +17,7 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public class NextAppointmentDateActionHelper extends GbvVisitActionHelper {
+public class NextAppointmentDateActionHelper extends OvcVisitActionHelper {
     private MemberObject memberObject;
 
     private String doesTheClientRequireAFollowupVisit;

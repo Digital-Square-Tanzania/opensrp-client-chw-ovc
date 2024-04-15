@@ -43,9 +43,9 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public class BaseGbvHfVisitActivity extends SecuredActivity implements BaseOvcVisitContract.View, View.OnClickListener {
+public class BaseOvcChildVisitActivity extends SecuredActivity implements BaseOvcVisitContract.View, View.OnClickListener {
 
-    private static final String TAG = BaseGbvHfVisitActivity.class.getCanonicalName();
+    private static final String TAG = BaseOvcChildVisitActivity.class.getCanonicalName();
     protected Map<String, BaseOvcVisitAction> actionList = new LinkedHashMap<>();
     protected BaseOvcVisitContract.Presenter presenter;
     protected MemberObject memberObject;
@@ -60,7 +60,7 @@ public class BaseGbvHfVisitActivity extends SecuredActivity implements BaseOvcVi
     protected String confirmCloseMessage;
 
     public static void startMe(Activity activity, String baseEntityID, Boolean isEditMode) {
-        Intent intent = new Intent(activity, BaseGbvHfVisitActivity.class);
+        Intent intent = new Intent(activity, BaseOvcChildVisitActivity.class);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.EDIT_MODE, isEditMode);
         activity.startActivityForResult(intent, Constants.REQUEST_CODE_GET_JSON);
@@ -124,8 +124,8 @@ public class BaseGbvHfVisitActivity extends SecuredActivity implements BaseOvcVi
     public void initializeActions(LinkedHashMap<String, BaseOvcVisitAction> map) {
         actionList.clear();
         //Necessary evil to rearrange the actions according to a specific arrangement
-        if (map.containsKey(getString(R.string.gbv_visit_type_action_title))) {
-            actionList.put(getString(R.string.gbv_visit_type_action_title), map.get(getString(R.string.gbv_visit_type_action_title)));
+        if (map.containsKey(getString(R.string.ovc_visit_type_action_title))) {
+            actionList.put(getString(R.string.ovc_visit_type_action_title), map.get(getString(R.string.ovc_visit_type_action_title)));
         }
 
         if (map.containsKey(getString(R.string.gbv_consent_action_title))) {
@@ -296,7 +296,7 @@ public class BaseGbvHfVisitActivity extends SecuredActivity implements BaseOvcVi
 
     @Override
     public void redrawHeader(MemberObject memberObject) {
-        tvTitle.setText(MessageFormat.format("{0}, {1} \u00B7 {2}", memberObject.getFullName(), String.valueOf(memberObject.getAge()), getString(R.string.gbv_visit)));
+        tvTitle.setText(MessageFormat.format("{0}, {1} \u00B7 {2}", memberObject.getFullName(), String.valueOf(memberObject.getAge()), getString(R.string.ovc_visit)));
     }
 
     @Override
@@ -405,7 +405,7 @@ public class BaseGbvHfVisitActivity extends SecuredActivity implements BaseOvcVi
 
     @Override
     public void onBackPressed() {
-        displayExitDialog(BaseGbvHfVisitActivity.this::finish);
+        displayExitDialog(BaseOvcChildVisitActivity.this::finish);
     }
 
     protected void displayExitDialog(final Runnable onConfirm) {

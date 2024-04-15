@@ -14,7 +14,7 @@ import timber.log.Timber;
  * Designed to set default methods for the GBV Action Helper
  * This object must remain inert to the Home Visit action. Its designed primarily for extension by simple visit actions
  */
-public abstract class GbvVisitActionHelper implements BaseOvcVisitAction.GbvVisitActionHelper {
+public abstract class OvcVisitActionHelper implements BaseOvcVisitAction.GbvVisitActionHelper {
     protected Context context;
 
     @Override

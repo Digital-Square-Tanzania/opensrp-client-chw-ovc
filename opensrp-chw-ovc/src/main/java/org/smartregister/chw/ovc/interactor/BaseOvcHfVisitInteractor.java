@@ -16,10 +16,10 @@ import org.smartregister.chw.ovc.OvcLibrary;
 import org.smartregister.chw.ovc.R;
 import org.smartregister.chw.ovc.actionhelper.EducationAndCounsellingActionHelper;
 import org.smartregister.chw.ovc.actionhelper.ForensicExaminationActionHelper;
-import org.smartregister.chw.ovc.actionhelper.GbvHfConsentActionHelper;
-import org.smartregister.chw.ovc.actionhelper.GbvHfConsentFollowupActionHelper;
-import org.smartregister.chw.ovc.actionhelper.GbvHfVisitTypeActionHelper;
-import org.smartregister.chw.ovc.actionhelper.GbvVisitActionHelper;
+import org.smartregister.chw.ovc.actionhelper.OvcHfConsentActionHelper;
+import org.smartregister.chw.ovc.actionhelper.OvcHfConsentFollowupActionHelper;
+import org.smartregister.chw.ovc.actionhelper.OvcHfVisitTypeActionHelper;
+import org.smartregister.chw.ovc.actionhelper.OvcVisitActionHelper;
 import org.smartregister.chw.ovc.actionhelper.HistoryCollectionActionHelper;
 import org.smartregister.chw.ovc.actionhelper.LabInvestigationActionHelper;
 import org.smartregister.chw.ovc.actionhelper.LinkageActionHelper;
@@ -144,11 +144,11 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected void createGbvHfVisitTypeAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        GbvVisitActionHelper actionHelper =
-                new MyGbvHfVisitTypeActionHelper();
+        OvcVisitActionHelper actionHelper =
+                new MyOvcHfVisitTypeActionHelper();
 
         String actionName =
-                mContext.getString(R.string.gbv_visit_type_action_title);
+                mContext.getString(R.string.ovc_visit_type_action_title);
 
         BaseOvcVisitAction action = getBuilder(actionName)
                 .withOptional(false)
@@ -161,7 +161,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected void createGbvHfConsentAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        GbvVisitActionHelper actionHelper = new MyGbvHfConsentActionHelper(memberObject);
+        OvcVisitActionHelper actionHelper = new MyOvcHfConsentActionHelper(memberObject);
 
         String actionName = mContext.getString(R.string.gbv_consent_action_title);
 
@@ -171,7 +171,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected void createGbvHfConsentFollowupAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        GbvVisitActionHelper actionHelper = new MyGbvHfConsentFollowupActionHelper(memberObject);
+        OvcVisitActionHelper actionHelper = new MyOvcHfConsentFollowupActionHelper(memberObject);
 
         String actionName = mContext.getString(R.string.gbv_consent_followup_action_title);
 
@@ -181,7 +181,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected void createHistoryCollectionAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        GbvVisitActionHelper actionHelper = new MyHistoryCollectionActionHelper(memberObject);
+        OvcVisitActionHelper actionHelper = new MyHistoryCollectionActionHelper(memberObject);
 
         String actionName = mContext.getString(R.string.gbv_history_collection_title);
 
@@ -191,7 +191,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected void createMedicalExaminationAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        GbvVisitActionHelper actionHelper = new MedicalExaminationActionHelper(memberObject);
+        OvcVisitActionHelper actionHelper = new MedicalExaminationActionHelper(memberObject);
 
         String actionName = mContext.getString(R.string.gbv_medical_examination_title);
 
@@ -201,7 +201,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected void createPhysicalExaminationAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        GbvVisitActionHelper actionHelper = new PhysicalExaminationActionHelper(memberObject);
+        OvcVisitActionHelper actionHelper = new PhysicalExaminationActionHelper(memberObject);
 
         String actionName = mContext.getString(R.string.gbv_physical_examination_title);
 
@@ -211,7 +211,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected void createForensicExaminationAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        GbvVisitActionHelper actionHelper = new MyForensicExaminationActionHelper(memberObject);
+        OvcVisitActionHelper actionHelper = new MyForensicExaminationActionHelper(memberObject);
 
         String actionName = mContext.getString(R.string.gbv_forensic_examination_title);
 
@@ -221,7 +221,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected void createLabInvestigationAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        GbvVisitActionHelper actionHelper = new MyLabInvestigationActionHelper(memberObject, mCurrentPregnancyStatus, mTypeOfAssault, mHhivStatus);
+        OvcVisitActionHelper actionHelper = new MyLabInvestigationActionHelper(memberObject, mCurrentPregnancyStatus, mTypeOfAssault, mHhivStatus);
 
 
         String actionName = mContext.getString(R.string.gbv_lab_investigation_title);
@@ -232,7 +232,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected void createProvideTreatmentAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        GbvVisitActionHelper actionHelper = new ProvideTreatmentActionHelper(memberObject);
+        OvcVisitActionHelper actionHelper = new ProvideTreatmentActionHelper(memberObject);
 
         String actionName = mContext.getString(R.string.gbv_provide_treatment_title);
 
@@ -242,7 +242,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected void createEducationAndCounsellingAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        GbvVisitActionHelper actionHelper = new EducationAndCounsellingActionHelper(memberObject);
+        OvcVisitActionHelper actionHelper = new EducationAndCounsellingActionHelper(memberObject);
 
         String actionName = mContext.getString(R.string.gbv_education_and_counselling_title);
 
@@ -252,7 +252,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected void createSafetyPlanAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        GbvVisitActionHelper actionHelper = new SafetyPlanActionHelper(memberObject);
+        OvcVisitActionHelper actionHelper = new SafetyPlanActionHelper(memberObject);
 
         String actionName = mContext.getString(R.string.gbv_safety_plan_title);
 
@@ -264,7 +264,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected void createLinkageAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        GbvVisitActionHelper actionHelper = new LinkageActionHelper(memberObject);
+        OvcVisitActionHelper actionHelper = new LinkageActionHelper(memberObject);
 
         String actionName = mContext.getString(R.string.gbv_linkage_title);
 
@@ -274,7 +274,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected void createNextAppointmentDateAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        GbvVisitActionHelper actionHelper = new NextAppointmentDateActionHelper(memberObject);
+        OvcVisitActionHelper actionHelper = new NextAppointmentDateActionHelper(memberObject);
 
         String actionName = mContext.getString(R.string.gbv_next_appointment_date_title);
 
@@ -482,7 +482,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
         return Constants.TABLES.GBV_REGISTER;
     }
 
-    class MyGbvHfVisitTypeActionHelper extends GbvHfVisitTypeActionHelper {
+    class MyOvcHfVisitTypeActionHelper extends OvcHfVisitTypeActionHelper {
 
         @Override
         public void processCanManageCase(String canManageCase) {
@@ -510,9 +510,9 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
         }
     }
 
-    class MyGbvHfConsentActionHelper extends GbvHfConsentActionHelper {
+    class MyOvcHfConsentActionHelper extends OvcHfConsentActionHelper {
 
-        public MyGbvHfConsentActionHelper(MemberObject memberObject) {
+        public MyOvcHfConsentActionHelper(MemberObject memberObject) {
             super(memberObject);
         }
 
@@ -544,8 +544,8 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
         }
     }
 
-    class MyGbvHfConsentFollowupActionHelper extends GbvHfConsentFollowupActionHelper {
-        public MyGbvHfConsentFollowupActionHelper(MemberObject memberObject) {
+    class MyOvcHfConsentFollowupActionHelper extends OvcHfConsentFollowupActionHelper {
+        public MyOvcHfConsentFollowupActionHelper(MemberObject memberObject) {
             super(memberObject);
         }
 

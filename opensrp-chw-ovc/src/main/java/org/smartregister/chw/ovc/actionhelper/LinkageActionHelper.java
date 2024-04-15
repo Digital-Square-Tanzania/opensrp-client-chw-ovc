@@ -17,7 +17,7 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public class LinkageActionHelper extends GbvVisitActionHelper {
+public class LinkageActionHelper extends OvcVisitActionHelper {
     private MemberObject memberObject;
 
     private String wasTheClientLinkedToOtherServices;

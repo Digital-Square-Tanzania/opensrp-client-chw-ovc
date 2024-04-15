@@ -17,7 +17,7 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public class PhysicalExaminationActionHelper extends GbvVisitActionHelper {
+public class PhysicalExaminationActionHelper extends OvcVisitActionHelper {
     private MemberObject memberObject;
 
     private String systolic;

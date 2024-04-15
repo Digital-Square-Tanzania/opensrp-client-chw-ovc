@@ -20,7 +20,7 @@ import java.util.Calendar;
 import timber.log.Timber;
 
 public class GbvHfConsentActionHelperTest {
-    private GbvHfConsentActionHelper helper;
+    private OvcHfConsentActionHelper helper;
 
     private MemberObject memberObject = new MemberObject();
 
@@ -28,7 +28,7 @@ public class GbvHfConsentActionHelperTest {
 
     @Before
     public void setUp() {
-        helper = Mockito.mock(GbvHfConsentActionHelper.class, Mockito.CALLS_REAL_METHODS);
+        helper = Mockito.mock(OvcHfConsentActionHelper.class, Mockito.CALLS_REAL_METHODS);
         memberObject.setDob(Calendar.getInstance().getTime().toString());
         helper.setMemberObject(memberObject);
     }

@@ -65,7 +65,7 @@ public class BaseOvcRegisterFragment extends BaseRegisterFragment implements Ovc
         CustomFontTextView titleView = view.findViewById(R.id.txt_title_label);
         if (titleView != null) {
             titleView.setVisibility(android.view.View.VISIBLE);
-            titleView.setText(getString(R.string.gbv_register));
+            titleView.setText(getString(R.string.ovc_register));
             titleView.setFontVariant(FontVariant.REGULAR);
         }
     }

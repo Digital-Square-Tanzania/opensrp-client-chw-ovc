@@ -6,13 +6,13 @@ import android.content.Intent;
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 
 import org.json.JSONObject;
-import org.smartregister.chw.ovc.activity.BaseGbvHfVisitActivity;
+import org.smartregister.chw.ovc.activity.BaseOvcChildVisitActivity;
 import org.smartregister.chw.ovc.domain.MemberObject;
 import org.smartregister.chw.ovc.presenter.BaseOvcVisitPresenter;
 import org.smartregister.chw.ovc.util.Constants;
 import org.smartregister.chw.ovc_sample.interactor.OvcHfVisitInteractor;
 
-public class OvcHfVisitActivity extends BaseGbvHfVisitActivity {
+public class OvcHfVisitActivity extends BaseOvcChildVisitActivity {
     public static void startMe(Activity activity, String baseEntityID, Boolean isEditMode) {
         Intent intent = new Intent(activity, OvcHfVisitActivity.class);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);

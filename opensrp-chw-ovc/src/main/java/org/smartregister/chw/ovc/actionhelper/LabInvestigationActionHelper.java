@@ -17,7 +17,7 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public abstract class LabInvestigationActionHelper extends GbvVisitActionHelper {
+public abstract class LabInvestigationActionHelper extends OvcVisitActionHelper {
     private MemberObject memberObject;
 
     private JSONObject jsonForm;

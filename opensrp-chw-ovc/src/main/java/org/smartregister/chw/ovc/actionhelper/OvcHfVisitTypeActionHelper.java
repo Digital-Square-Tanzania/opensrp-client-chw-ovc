@@ -8,7 +8,7 @@ import org.smartregister.chw.ovc.util.JsonFormUtils;
 
 import timber.log.Timber;
 
-public abstract class GbvHfVisitTypeActionHelper extends GbvVisitActionHelper {
+public abstract class OvcHfVisitTypeActionHelper extends OvcVisitActionHelper {
     String visitStatus;
     String canManageCase;
 

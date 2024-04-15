@@ -17,7 +17,7 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public abstract class GbvHfConsentActionHelper extends GbvVisitActionHelper {
+public abstract class OvcHfConsentActionHelper extends OvcVisitActionHelper {
     private MemberObject memberObject;
 
     private String clientConsent;
@@ -25,7 +25,7 @@ public abstract class GbvHfConsentActionHelper extends GbvVisitActionHelper {
     private JSONObject jsonForm;
 
 
-    public GbvHfConsentActionHelper(MemberObject memberObject) {
+    public OvcHfConsentActionHelper(MemberObject memberObject) {
         this.memberObject = memberObject;
     }
 

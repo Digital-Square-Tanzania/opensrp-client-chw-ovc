@@ -17,7 +17,7 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public abstract class HistoryCollectionActionHelper extends GbvVisitActionHelper {
+public abstract class HistoryCollectionActionHelper extends OvcVisitActionHelper {
     private MemberObject memberObject;
 
     private String currentPregnancyStatus;

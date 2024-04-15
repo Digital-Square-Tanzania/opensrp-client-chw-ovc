@@ -17,7 +17,7 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public class SafetyPlanActionHelper extends GbvVisitActionHelper {
+public class SafetyPlanActionHelper extends OvcVisitActionHelper {
     private MemberObject memberObject;
 
     private String signsOfPartnerBehaviourThatAlertForPossibilityOfViolence;
