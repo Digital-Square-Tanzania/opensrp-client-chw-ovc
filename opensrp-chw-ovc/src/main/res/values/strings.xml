@@ -50,7 +50,7 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
 
-    <string name="ovc_visit">GBV Visit</string>
+    <string name="ovc_visit">OVC Visit</string>
     <string name="error_unable_save_home_visit">unable to save home visit</string>
     <string name="optional">optional</string>
     <string name="ovc_visit_type_action_title">Visit Type</string>

@@ -1,8 +1,6 @@
 package org.smartregister.chw.ovc.interactor;
 
 
-import static org.smartregister.client.utils.constants.JsonFormConstants.GLOBAL;
-
 import android.content.Context;
 
 import androidx.annotation.VisibleForTesting;
@@ -11,24 +9,11 @@ import com.google.gson.Gson;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Nullable;
-import org.json.JSONObject;
 import org.smartregister.chw.ovc.OvcLibrary;
 import org.smartregister.chw.ovc.R;
-import org.smartregister.chw.ovc.actionhelper.EducationAndCounsellingActionHelper;
-import org.smartregister.chw.ovc.actionhelper.ForensicExaminationActionHelper;
-import org.smartregister.chw.ovc.actionhelper.OvcHfConsentActionHelper;
-import org.smartregister.chw.ovc.actionhelper.OvcHfConsentFollowupActionHelper;
 import org.smartregister.chw.ovc.actionhelper.OvcHfVisitTypeActionHelper;
 import org.smartregister.chw.ovc.actionhelper.OvcVisitActionHelper;
-import org.smartregister.chw.ovc.actionhelper.HistoryCollectionActionHelper;
-import org.smartregister.chw.ovc.actionhelper.LabInvestigationActionHelper;
-import org.smartregister.chw.ovc.actionhelper.LinkageActionHelper;
-import org.smartregister.chw.ovc.actionhelper.MedicalExaminationActionHelper;
-import org.smartregister.chw.ovc.actionhelper.NextAppointmentDateActionHelper;
-import org.smartregister.chw.ovc.actionhelper.PhysicalExaminationActionHelper;
-import org.smartregister.chw.ovc.actionhelper.ProvideTreatmentActionHelper;
-import org.smartregister.chw.ovc.actionhelper.SafetyPlanActionHelper;
-import org.smartregister.chw.ovc.contract.BaseOvcVisitContract;
+import org.smartregister.chw.ovc.contract.BaseOvcVisitContract; -
 import org.smartregister.chw.ovc.dao.OvcDao;
 import org.smartregister.chw.ovc.domain.MemberObject;
 import org.smartregister.chw.ovc.domain.Visit;
@@ -145,7 +130,12 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
 
     protected void createGbvHfVisitTypeAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
         OvcVisitActionHelper actionHelper =
-                new MyOvcHfVisitTypeActionHelper();
+                new OvcHfVisitTypeActionHelper() {
+                    @Override
+                    public void processCanManageCase(String canManageCase) {
+
+                    }
+                };
 
         String actionName =
                 mContext.getString(R.string.ovc_visit_type_action_title);
@@ -156,129 +146,6 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
                 .withHelper(actionHelper)
                 .withFormName(Constants.FORMS.GBV_VISIT_TYPE)
                 .build();
-
-        actionList.put(actionName, action);
-    }
-
-    protected void createGbvHfConsentAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new MyOvcHfConsentActionHelper(memberObject);
-
-        String actionName = mContext.getString(R.string.gbv_consent_action_title);
-
-        BaseOvcVisitAction action = getBuilder(actionName).withOptional(true).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.GBV_CONSENT_FORM).build();
-
-        actionList.put(actionName, action);
-    }
-
-    protected void createGbvHfConsentFollowupAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new MyOvcHfConsentFollowupActionHelper(memberObject);
-
-        String actionName = mContext.getString(R.string.gbv_consent_followup_action_title);
-
-        BaseOvcVisitAction action = getBuilder(actionName).withOptional(true).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.GBV_CONSENT_FOLLOWUP_FORM).build();
-
-        actionList.put(actionName, action);
-    }
-
-    protected void createHistoryCollectionAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new MyHistoryCollectionActionHelper(memberObject);
-
-        String actionName = mContext.getString(R.string.gbv_history_collection_title);
-
-        BaseOvcVisitAction action = getBuilder(actionName).withOptional(true).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.GBV_HISTORY_COLLECTION_FORM).build();
-
-        actionList.put(actionName, action);
-    }
-
-    protected void createMedicalExaminationAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new MedicalExaminationActionHelper(memberObject);
-
-        String actionName = mContext.getString(R.string.gbv_medical_examination_title);
-
-        BaseOvcVisitAction action = getBuilder(actionName).withOptional(true).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.GBV_MEDICAL_EXAMINATION_FORM).build();
-
-        actionList.put(actionName, action);
-    }
-
-    protected void createPhysicalExaminationAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new PhysicalExaminationActionHelper(memberObject);
-
-        String actionName = mContext.getString(R.string.gbv_physical_examination_title);
-
-        BaseOvcVisitAction action = getBuilder(actionName).withOptional(true).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.GBV_PHYSICAL_EXAMINATION_FORM).build();
-
-        actionList.put(actionName, action);
-    }
-
-    protected void createForensicExaminationAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new MyForensicExaminationActionHelper(memberObject);
-
-        String actionName = mContext.getString(R.string.gbv_forensic_examination_title);
-
-        BaseOvcVisitAction action = getBuilder(actionName).withOptional(true).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.GBV_FORENSIC_EXAMINATION_FORM).build();
-
-        actionList.put(actionName, action);
-    }
-
-    protected void createLabInvestigationAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new MyLabInvestigationActionHelper(memberObject, mCurrentPregnancyStatus, mTypeOfAssault, mHhivStatus);
-
-
-        String actionName = mContext.getString(R.string.gbv_lab_investigation_title);
-
-        BaseOvcVisitAction action = getBuilder(actionName).withOptional(true).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.GBV_LAB_INVESTIGATION_FORM).build();
-
-        actionList.put(actionName, action);
-    }
-
-    protected void createProvideTreatmentAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new ProvideTreatmentActionHelper(memberObject);
-
-        String actionName = mContext.getString(R.string.gbv_provide_treatment_title);
-
-        BaseOvcVisitAction action = getBuilder(actionName).withOptional(true).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.GBV_PROVIDE_TREATMENT_FORM).build();
-
-        actionList.put(actionName, action);
-    }
-
-    protected void createEducationAndCounsellingAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new EducationAndCounsellingActionHelper(memberObject);
-
-        String actionName = mContext.getString(R.string.gbv_education_and_counselling_title);
-
-        BaseOvcVisitAction action = getBuilder(actionName).withOptional(true).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.GBV_EDUCATION_AND_COUNSELLING_FORM).build();
-
-        actionList.put(actionName, action);
-    }
-
-    protected void createSafetyPlanAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new SafetyPlanActionHelper(memberObject);
-
-        String actionName = mContext.getString(R.string.gbv_safety_plan_title);
-
-        BaseOvcVisitAction action = getBuilder(actionName).withOptional(true).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.GBV_SAFETY_PLAN).build();
-
-        if (memberObject.getAge() > 7) {
-            actionList.put(actionName, action);
-        }
-    }
-
-    protected void createLinkageAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new LinkageActionHelper(memberObject);
-
-        String actionName = mContext.getString(R.string.gbv_linkage_title);
-
-        BaseOvcVisitAction action = getBuilder(actionName).withOptional(true).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.GBV_REFERRAL_AND_LINKAGE).build();
-
-        actionList.put(actionName, action);
-    }
-
-    protected void createNextAppointmentDateAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new NextAppointmentDateActionHelper(memberObject);
-
-        String actionName = mContext.getString(R.string.gbv_next_appointment_date_title);
-
-        BaseOvcVisitAction action = getBuilder(actionName).withOptional(true).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.GBV_NEXT_APPOINTMENT_DATE).build();
 
         actionList.put(actionName, action);
     }
@@ -482,206 +349,4 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
         return Constants.TABLES.GBV_REGISTER;
     }
 
-    class MyOvcHfVisitTypeActionHelper extends OvcHfVisitTypeActionHelper {
-
-        @Override
-        public void processCanManageCase(String canManageCase) {
-            if (canManageCase.equalsIgnoreCase("yes")) {
-                try {
-                    createGbvHfConsentAction(memberObject, details);
-                } catch (BaseOvcVisitAction.ValidationException e) {
-                    Timber.e(e);
-                }
-            } else {
-                actionList.remove(mContext.getString(R.string.gbv_consent_action_title));
-                actionList.remove(mContext.getString(R.string.gbv_consent_followup_action_title));
-                actionList.remove(mContext.getString(R.string.gbv_history_collection_title));
-                actionList.remove(mContext.getString(R.string.gbv_medical_examination_title));
-                actionList.remove(mContext.getString(R.string.gbv_physical_examination_title));
-                actionList.remove(mContext.getString(R.string.gbv_forensic_examination_title));
-                actionList.remove(mContext.getString(R.string.gbv_lab_investigation_title));
-                actionList.remove(mContext.getString(R.string.gbv_provide_treatment_title));
-                actionList.remove(mContext.getString(R.string.gbv_education_and_counselling_title));
-                actionList.remove(mContext.getString(R.string.gbv_safety_plan_title));
-                actionList.remove(mContext.getString(R.string.gbv_linkage_title));
-                actionList.remove(mContext.getString(R.string.gbv_next_appointment_date_title));
-            }
-            appExecutors.mainThread().execute(() -> callBack.preloadActions(actionList));
-        }
-    }
-
-    class MyOvcHfConsentActionHelper extends OvcHfConsentActionHelper {
-
-        public MyOvcHfConsentActionHelper(MemberObject memberObject) {
-            super(memberObject);
-        }
-
-        @Override
-        public void processClientConsent(String clientConsent) {
-            if (clientConsent.equalsIgnoreCase("no")) {
-                try {
-                    createGbvHfConsentFollowupAction(memberObject, details);
-                } catch (BaseOvcVisitAction.ValidationException e) {
-                    Timber.e(e);
-                }
-            } else if (clientConsent.equalsIgnoreCase("yes")) {
-                actionList.remove(mContext.getString(R.string.gbv_consent_followup_action_title));
-                try {
-                    createHistoryCollectionAction(memberObject, details);
-                    createMedicalExaminationAction(memberObject, details);
-                    createPhysicalExaminationAction(memberObject, details);
-                    createForensicExaminationAction(memberObject, details);
-                    createProvideTreatmentAction(memberObject, details);
-                    createEducationAndCounsellingAction(memberObject, details);
-                    createSafetyPlanAction(memberObject, details);
-                    createLinkageAction(memberObject, details);
-                    createNextAppointmentDateAction(memberObject, details);
-                } catch (BaseOvcVisitAction.ValidationException e) {
-                    Timber.e(e);
-                }
-            }
-            appExecutors.mainThread().execute(() -> callBack.preloadActions(actionList));
-        }
-    }
-
-    class MyOvcHfConsentFollowupActionHelper extends OvcHfConsentFollowupActionHelper {
-        public MyOvcHfConsentFollowupActionHelper(MemberObject memberObject) {
-            super(memberObject);
-        }
-
-        @Override
-        public void processConsentFollowup(String clientConsentAfterCounseling, String wasSocialWelfareOfficerInvolved) {
-            if (clientConsentAfterCounseling.equalsIgnoreCase("yes") || wasSocialWelfareOfficerInvolved.equalsIgnoreCase("yes")) {
-                try {
-                    createHistoryCollectionAction(memberObject, details);
-                    createMedicalExaminationAction(memberObject, details);
-                    createPhysicalExaminationAction(memberObject, details);
-                    createForensicExaminationAction(memberObject, details);
-                    createProvideTreatmentAction(memberObject, details);
-                    createEducationAndCounsellingAction(memberObject, details);
-                    createSafetyPlanAction(memberObject, details);
-                    createLinkageAction(memberObject, details);
-                    createNextAppointmentDateAction(memberObject, details);
-                } catch (BaseOvcVisitAction.ValidationException e) {
-                    Timber.e(e);
-                }
-            } else {
-                actionList.remove(mContext.getString(R.string.gbv_history_collection_title));
-                actionList.remove(mContext.getString(R.string.gbv_medical_examination_title));
-                actionList.remove(mContext.getString(R.string.gbv_physical_examination_title));
-                actionList.remove(mContext.getString(R.string.gbv_forensic_examination_title));
-                actionList.remove(mContext.getString(R.string.gbv_lab_investigation_title));
-                actionList.remove(mContext.getString(R.string.gbv_provide_treatment_title));
-                actionList.remove(mContext.getString(R.string.gbv_education_and_counselling_title));
-                actionList.remove(mContext.getString(R.string.gbv_safety_plan_title));
-                actionList.remove(mContext.getString(R.string.gbv_linkage_title));
-                actionList.remove(mContext.getString(R.string.gbv_next_appointment_date_title));
-            }
-            appExecutors.mainThread().execute(() -> callBack.preloadActions(actionList));
-        }
-    }
-
-    class MyForensicExaminationActionHelper extends ForensicExaminationActionHelper {
-
-        public MyForensicExaminationActionHelper(MemberObject memberObject) {
-            super(memberObject);
-        }
-
-        @Override
-        public void processForensicExamination(String doesTheClientNeedLabInvestigation) {
-            if (doesTheClientNeedLabInvestigation != null && doesTheClientNeedLabInvestigation.equalsIgnoreCase("yes")) {
-                try {
-                    createLabInvestigationAction(memberObject, details);
-                } catch (BaseOvcVisitAction.ValidationException e) {
-                    Timber.e(e);
-                }
-            } else {
-                actionList.remove(mContext.getString(R.string.gbv_lab_investigation_title));
-            }
-            appExecutors.mainThread().execute(() -> callBack.preloadActions(actionList));
-        }
-    }
-
-    class MyHistoryCollectionActionHelper extends HistoryCollectionActionHelper {
-
-        public MyHistoryCollectionActionHelper(MemberObject memberObject) {
-            super(memberObject);
-        }
-
-        @Override
-        public void processHistoryCollection(String currentPregnancyStatus, String typeOfAssault, String hivStatus) {
-            mCurrentPregnancyStatus = currentPregnancyStatus;
-            mTypeOfAssault = typeOfAssault;
-            mHhivStatus = hivStatus;
-
-            if (actionList.get(mContext.getString(R.string.gbv_lab_investigation_title)) != null) {
-                BaseOvcVisitAction labInvestigationAction = actionList.get(mContext.getString(R.string.gbv_lab_investigation_title));
-                String jsonPayloadString = labInvestigationAction.getJsonPayload();
-
-                try {
-                    JSONObject jsonPayload = new JSONObject(jsonPayloadString);
-                    JSONObject global = jsonPayload.getJSONObject(GLOBAL);
-                    global.put("currentPregnancyStatus", currentPregnancyStatus);
-                    global.put("typeOfAssault", typeOfAssault);
-                    global.put("hivStatus", hivStatus);
-                    labInvestigationAction.setJsonPayload(jsonPayload.toString());
-                } catch (Exception e) {
-                    Timber.e(e);
-                }
-
-            }
-
-
-            if (actionList.get(mContext.getString(R.string.gbv_provide_treatment_title)) != null) {
-                BaseOvcVisitAction provideTreatmentAction = actionList.get(mContext.getString(R.string.gbv_provide_treatment_title));
-                String jsonPayloadString = provideTreatmentAction.getJsonPayload();
-
-                try {
-                    JSONObject jsonPayload = new JSONObject(jsonPayloadString);
-                    JSONObject global = jsonPayload.getJSONObject(GLOBAL);
-                    global.put("typeOfAssault", typeOfAssault);
-                    provideTreatmentAction.setJsonPayload(jsonPayload.toString());
-                } catch (Exception e) {
-                    Timber.e(e);
-                }
-
-            }
-
-        }
-    }
-
-    class MyLabInvestigationActionHelper extends LabInvestigationActionHelper {
-        public MyLabInvestigationActionHelper(MemberObject memberObject, String currentPregnancyStatus, String typeOfAssault, String hivStatus) {
-            super(memberObject, currentPregnancyStatus, typeOfAssault, hivStatus);
-        }
-
-        @Override
-        public void processTestResults(String hepbTestResults, String hivTestResults) {
-            if (actionList.get(mContext.getString(R.string.gbv_provide_treatment_title)) != null) {
-                BaseOvcVisitAction provideTreatmentAction = actionList.get(mContext.getString(R.string.gbv_provide_treatment_title));
-                String jsonPayloadString = provideTreatmentAction.getJsonPayload();
-                try {
-                    JSONObject jsonPayload = new JSONObject(jsonPayloadString);
-                    JSONObject global = jsonPayload.getJSONObject(GLOBAL);
-                    global.put("hepbTestResults", hepbTestResults);
-                    provideTreatmentAction.setJsonPayload(jsonPayload.toString());
-                } catch (Exception e) {
-                    Timber.e(e);
-                }
-            }
-
-            if (actionList.get(mContext.getString(R.string.gbv_education_and_counselling_title)) != null) {
-                BaseOvcVisitAction provideEducationAndCounsellingAction = actionList.get(mContext.getString(R.string.gbv_education_and_counselling_title));
-                String jsonPayloadString = provideEducationAndCounsellingAction.getJsonPayload();
-                try {
-                    JSONObject jsonPayload = new JSONObject(jsonPayloadString);
-                    JSONObject global = jsonPayload.getJSONObject(GLOBAL);
-                    global.put("hivTestResults", hivTestResults);
-                    provideEducationAndCounsellingAction.setJsonPayload(jsonPayload.toString());
-                } catch (Exception e) {
-                    Timber.e(e);
-                }
-            }
-        }
-    }
 }
