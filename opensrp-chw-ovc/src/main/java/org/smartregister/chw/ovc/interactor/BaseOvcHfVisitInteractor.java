@@ -13,7 +13,7 @@ import org.smartregister.chw.ovc.OvcLibrary;
 import org.smartregister.chw.ovc.R;
 import org.smartregister.chw.ovc.actionhelper.OvcHfVisitTypeActionHelper;
 import org.smartregister.chw.ovc.actionhelper.OvcVisitActionHelper;
-import org.smartregister.chw.ovc.contract.BaseOvcVisitContract; -
+import org.smartregister.chw.ovc.contract.BaseOvcVisitContract;
 import org.smartregister.chw.ovc.dao.OvcDao;
 import org.smartregister.chw.ovc.domain.MemberObject;
 import org.smartregister.chw.ovc.domain.Visit;
