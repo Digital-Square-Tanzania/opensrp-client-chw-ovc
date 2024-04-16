@@ -39,6 +39,7 @@ public interface Constants {
         String MVC_EDUCATION_AND_PSYCHOSOCICAL_SUPPORT_FORM = "mvc_education_and_psychosocial";
 
         String MVC_CHILD_PROTECTION_FORM = "mvc_child_protection";
+        String MVC_REFERRALS_FORM = "mvc_referrals";
 
         String MVC_HEALTHCARE_AND_NUTRITION_STATUS_FORM = "mvc_healthcare_and_nutrition";
 

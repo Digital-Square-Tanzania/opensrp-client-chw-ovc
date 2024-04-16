@@ -8,14 +8,14 @@ import org.smartregister.chw.ovc.util.JsonFormUtils;
 import timber.log.Timber;
 
 public class OvcReferralsActionHelper extends OvcVisitActionHelper {
-    private String selectChildProtectionService;
+    private String selectReferralsProvided;
 
     @Override
     public void onPayloadReceived(String jsonPayload) {
         JSONObject payload;
         try {
             payload = new JSONObject(jsonPayload);
-            selectChildProtectionService = JsonFormUtils.getCheckBoxValue(payload,"select_child_protection_service");
+            selectReferralsProvided = JsonFormUtils.getCheckBoxValue(payload,"select_referrals_provided");
         } catch (JSONException e) {
             Timber.d(e);
         }
@@ -23,16 +23,12 @@ public class OvcReferralsActionHelper extends OvcVisitActionHelper {
 
     @Override
     public String evaluateSubTitle() {
-        if(selectChildProtectionService != null){
-            return "Child protection service:"+selectChildProtectionService;
-        } else {
-            return null;
-        }
+        return null;
     }
 
     @Override
     public BaseOvcVisitAction.Status evaluateStatusOnPayload() {
-        if(selectChildProtectionService != null){
+        if(selectReferralsProvided != null){
             return BaseOvcVisitAction.Status.COMPLETED;
         } else {
             return BaseOvcVisitAction.Status.PENDING;
