@@ -8,7 +8,7 @@ import org.smartregister.chw.ovc.util.JsonFormUtils;
 
 import timber.log.Timber;
 
-public  class OvcVisitTypeActionHelper extends OvcVisitActionHelper {
+public  abstract class OvcVisitTypeActionHelper extends OvcVisitActionHelper {
     private String visitType;
 
     @Override
@@ -17,10 +17,13 @@ public  class OvcVisitTypeActionHelper extends OvcVisitActionHelper {
         try {
             payload = new JSONObject(jsonPayload);
             visitType = JsonFormUtils.getValue(payload, "visit_type");
+            processVisitType(visitType);
         } catch (JSONException e) {
             Timber.e(e);
         }
     }
+
+    public abstract void processVisitType(String visitType);
 
     @Override
     public String evaluateSubTitle() {
