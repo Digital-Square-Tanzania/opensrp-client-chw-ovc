@@ -1,6 +1,5 @@
 package org.smartregister.chw.ovc.actionhelper;
 
-import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.ovc.model.BaseOvcVisitAction;
@@ -8,36 +7,35 @@ import org.smartregister.chw.ovc.util.JsonFormUtils;
 
 import timber.log.Timber;
 
-public  abstract class MvcVisitTypeActionHelper extends OvcVisitActionHelper {
-    private String visitType;
+public class OvcReferralsActionHelper extends OvcVisitActionHelper {
+    private String selectChildProtectionService;
 
     @Override
     public void onPayloadReceived(String jsonPayload) {
         JSONObject payload;
         try {
             payload = new JSONObject(jsonPayload);
-            visitType = JsonFormUtils.getValue(payload, "visit_type");
-            processVisitType(visitType);
+            selectChildProtectionService = JsonFormUtils.getCheckBoxValue(payload,"select_child_protection_service");
         } catch (JSONException e) {
-            Timber.e(e);
+            Timber.d(e);
         }
     }
 
-    public abstract void processVisitType(String visitType);
-
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isNotBlank(visitType)) {
+        if(selectChildProtectionService != null){
+            return "Child protection service:"+selectChildProtectionService;
+        } else {
             return null;
         }
-        return null;
     }
 
     @Override
     public BaseOvcVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isNotBlank(visitType)) {
+        if(selectChildProtectionService != null){
             return BaseOvcVisitAction.Status.COMPLETED;
-        } else
+        } else {
             return BaseOvcVisitAction.Status.PENDING;
+        }
     }
 }
