@@ -144,7 +144,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
                         Timber.e(e);
                     }
                 } else {
-                    actionList.remove(mContext.getString(R.string.ovc_mvc_education_and_psychosocial_title));
+                    actionList.remove(mContext.getString(R.string.mvc_education_and_psychosocial_title));
                 }
                 appExecutors.mainThread().execute(() -> callBack.preloadActions(actionList));
             }
