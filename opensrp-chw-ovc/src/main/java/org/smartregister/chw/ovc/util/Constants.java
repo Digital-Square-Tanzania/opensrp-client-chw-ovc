@@ -36,7 +36,9 @@ public interface Constants {
     interface FORMS {
         String MVC_VISIT_TYPE_FORM = "mvc_visit_type";
 
-        String OVC_EDUCATION_AND_PSYCHOSOCICAL_SUPPORT_FORM = "mvc_education_and_psychosocial";
+        String MVC_EDUCATION_AND_PSYCHOSOCICAL_SUPPORT_FORM = "mvc_education_and_psychosocial";
+
+        String MVC_CHILD_PROTECTION_FORM = "mvc_child_protection";
 
         String MVC_HEALTHCARE_AND_NUTRITION_STATUS_FORM = "mvc_healthcare_and_nutrition";
 

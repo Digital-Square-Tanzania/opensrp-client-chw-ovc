@@ -12,6 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import org.smartregister.chw.ovc.OvcLibrary;
 import org.smartregister.chw.ovc.R;
 import org.smartregister.chw.ovc.actionhelper.MvcEducationAndPsychosocialSupportActionHelper;
+import org.smartregister.chw.ovc.actionhelper.OvcChildProtectionActionHelper;
 import org.smartregister.chw.ovc.actionhelper.OvcVisitActionHelper;
 import org.smartregister.chw.ovc.actionhelper.MvcVisitTypeActionHelper;
 import org.smartregister.chw.ovc.contract.BaseOvcVisitContract;
@@ -139,6 +140,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
                         createEducationAndPsychosocialSupportAction(memberObject, details);
                         createHealthCareAndNutritionalStatusAction(memberObject, details);
                         createHivRiskAssessmentsAction(memberObject, details);
+                        createChildProtectionAction(memberObject, details);
                     } catch (BaseOvcVisitAction.ValidationException e) {
                         Timber.e(e);
                     }
@@ -172,7 +174,23 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
                 .withOptional(false)
                 .withDetails(details)
                 .withHelper(actionHelper)
-                .withFormName(Constants.FORMS.OVC_EDUCATION_AND_PSYCHOSOCICAL_SUPPORT_FORM)
+                .withFormName(Constants.FORMS.MVC_EDUCATION_AND_PSYCHOSOCICAL_SUPPORT_FORM)
+                .build();
+
+        actionList.put(actionName, action);
+    }
+
+    protected void createChildProtectionAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
+        OvcVisitActionHelper actionHelper = new OvcChildProtectionActionHelper();
+
+        String actionName =
+                mContext.getString(R.string.mvc_child_protection_title);
+
+        BaseOvcVisitAction action = getBuilder(actionName)
+                .withOptional(false)
+                .withDetails(details)
+                .withHelper(actionHelper)
+                .withFormName(Constants.FORMS.MVC_CHILD_PROTECTION_FORM)
                 .build();
 
         actionList.put(actionName, action);
