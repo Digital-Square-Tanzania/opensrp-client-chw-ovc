@@ -36,7 +36,7 @@ public class OvcCommunityMemberProfileActivity extends BaseOvcProfileActivity {
     public void recordGbv(MemberObject memberObject) {
         JSONObject jsonObject;
         try {
-            jsonObject = OvcJsonFormUtils.getFormAsJson(Constants.FORMS.OVC_VISIT_TYPE_FORM);
+            jsonObject = OvcJsonFormUtils.getFormAsJson(Constants.FORMS.MVC_VISIT_TYPE_FORM);
             startFormActivity(jsonObject);
         } catch (Exception e) {
             Timber.e(e);

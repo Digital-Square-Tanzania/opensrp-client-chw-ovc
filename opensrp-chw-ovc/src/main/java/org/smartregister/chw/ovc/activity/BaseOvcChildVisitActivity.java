@@ -124,56 +124,20 @@ public class BaseOvcChildVisitActivity extends SecuredActivity implements BaseOv
     public void initializeActions(LinkedHashMap<String, BaseOvcVisitAction> map) {
         actionList.clear();
         //Necessary evil to rearrange the actions according to a specific arrangement
-        if (map.containsKey(getString(R.string.ovc_visit_type_action_title))) {
-            actionList.put(getString(R.string.ovc_visit_type_action_title), map.get(getString(R.string.ovc_visit_type_action_title)));
+        if (map.containsKey(getString(R.string.mvc_visit_type_action_title))) {
+            actionList.put(getString(R.string.mvc_visit_type_action_title), map.get(getString(R.string.mvc_visit_type_action_title)));
         }
 
-        if (map.containsKey(getString(R.string.gbv_consent_action_title))) {
-            actionList.put(getString(R.string.gbv_consent_action_title), map.get(getString(R.string.gbv_consent_action_title)));
+        if (map.containsKey(getString(R.string.mvc_education_and_psychosocial_title))) {
+            actionList.put(getString(R.string.mvc_education_and_psychosocial_title), map.get(getString(R.string.mvc_education_and_psychosocial_title)));
         }
 
-        if (map.containsKey(getString(R.string.gbv_consent_followup_action_title))) {
-            actionList.put(getString(R.string.gbv_consent_followup_action_title), map.get(getString(R.string.gbv_consent_followup_action_title)));
+        if (map.containsKey(getString(R.string.mvc_health_care_and_nutritional_status_title))) {
+            actionList.put(getString(R.string.mvc_health_care_and_nutritional_status_title), map.get(getString(R.string.mvc_health_care_and_nutritional_status_title)));
         }
 
-        if (map.containsKey(getString(R.string.gbv_history_collection_title))) {
-            actionList.put(getString(R.string.gbv_history_collection_title), map.get(getString(R.string.gbv_history_collection_title)));
-        }
-
-        if (map.containsKey(getString(R.string.gbv_medical_examination_title))) {
-            actionList.put(getString(R.string.gbv_medical_examination_title), map.get(getString(R.string.gbv_medical_examination_title)));
-        }
-
-        if (map.containsKey(getString(R.string.gbv_physical_examination_title))) {
-            actionList.put(getString(R.string.gbv_physical_examination_title), map.get(getString(R.string.gbv_physical_examination_title)));
-        }
-
-        if (map.containsKey(getString(R.string.gbv_forensic_examination_title))) {
-            actionList.put(getString(R.string.gbv_forensic_examination_title), map.get(getString(R.string.gbv_forensic_examination_title)));
-        }
-
-        if (map.containsKey(getString(R.string.gbv_lab_investigation_title))) {
-            actionList.put(getString(R.string.gbv_lab_investigation_title), map.get(getString(R.string.gbv_lab_investigation_title)));
-        }
-
-        if (map.containsKey(getString(R.string.gbv_provide_treatment_title))) {
-            actionList.put(getString(R.string.gbv_provide_treatment_title), map.get(getString(R.string.gbv_provide_treatment_title)));
-        }
-
-        if (map.containsKey(getString(R.string.gbv_education_and_counselling_title))) {
-            actionList.put(getString(R.string.gbv_education_and_counselling_title), map.get(getString(R.string.gbv_education_and_counselling_title)));
-        }
-
-        if (map.containsKey(getString(R.string.gbv_safety_plan_title))) {
-            actionList.put(getString(R.string.gbv_safety_plan_title), map.get(getString(R.string.gbv_safety_plan_title)));
-        }
-
-        if (map.containsKey(getString(R.string.gbv_linkage_title))) {
-            actionList.put(getString(R.string.gbv_linkage_title), map.get(getString(R.string.gbv_linkage_title)));
-        }
-
-        if (map.containsKey(getString(R.string.gbv_next_appointment_date_title))) {
-            actionList.put(getString(R.string.gbv_next_appointment_date_title), map.get(getString(R.string.gbv_next_appointment_date_title)));
+        if (map.containsKey(getString(R.string.mvc_hiv_risk_assessment_title))) {
+            actionList.put(getString(R.string.mvc_hiv_risk_assessment_title), map.get(getString(R.string.mvc_hiv_risk_assessment_title)));
         }
         //====================End of Necessary evil ====================================
 

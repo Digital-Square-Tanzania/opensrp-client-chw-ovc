@@ -34,9 +34,13 @@ public interface Constants {
     }
 
     interface FORMS {
-        String OVC_VISIT_TYPE_FORM = "mvc_visit_type";
+        String MVC_VISIT_TYPE_FORM = "mvc_visit_type";
 
         String OVC_EDUCATION_AND_PSYCHOSOCICAL_SUPPORT_FORM = "mvc_education_and_psychosocial";
+
+        String MVC_HEALTHCARE_AND_NUTRITION_STATUS_FORM = "mvc_healthcare_and_nutrition";
+
+        String OVC_HIV_RISK_ASSESSMENT_FORM = "mvc_hiv_risk_assessment";
     }
 
     interface TABLES {

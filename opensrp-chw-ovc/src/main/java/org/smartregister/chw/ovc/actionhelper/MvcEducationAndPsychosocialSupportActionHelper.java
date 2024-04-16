@@ -7,7 +7,7 @@ import org.smartregister.chw.ovc.util.JsonFormUtils;
 
 import timber.log.Timber;
 
-public class OvcEducationAndPsychosocialSupportActionHelper extends OvcVisitActionHelper {
+public class MvcEducationAndPsychosocialSupportActionHelper extends OvcVisitActionHelper {
     private String selectEducationVocationalTraining;
     private String selectEcdPsychosocialSupport;
 
