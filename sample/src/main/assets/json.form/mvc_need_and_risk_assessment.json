@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Need and Risk Assessment",
+  "encounter_type": "Need & Risk Assessment",
   "entity_id": "",
   "metadata": {
     "start": {
@@ -46,7 +46,7 @@
     }
   },
   "step1": {
-    "title": "Need and Risk Assessment",
+    "title": "Need & Risk Assessment",
     "fields": [
       {
         "key": "select_the_client_need",
@@ -122,6 +122,30 @@
           {
             "key": "none",
             "text": "None"
+          }
+        ]
+      },
+      {
+        "key": "is_the_child_in_conflict_and_contact_with_the_law",
+        "type": "native_radio",
+        "label": "Is the child in conflict and contact with the law?",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_the_child_in_conflict_and_contact_with_the_law",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
           }
         ]
       }

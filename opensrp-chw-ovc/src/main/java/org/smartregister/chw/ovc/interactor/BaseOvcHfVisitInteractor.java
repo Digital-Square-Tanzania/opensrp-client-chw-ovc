@@ -12,6 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import org.smartregister.chw.ovc.OvcLibrary;
 import org.smartregister.chw.ovc.R;
 import org.smartregister.chw.ovc.actionhelper.MvcEducationAndPsychosocialSupportActionHelper;
+import org.smartregister.chw.ovc.actionhelper.MvcNeedAndRiskAssessmentActionHelper;
 import org.smartregister.chw.ovc.actionhelper.OvcChildProtectionActionHelper;
 import org.smartregister.chw.ovc.actionhelper.OvcVisitActionHelper;
 import org.smartregister.chw.ovc.actionhelper.MvcVisitTypeActionHelper;
@@ -137,6 +138,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
                 // This is used to show other actions only when the visit type is new_client or active_continuing_with_services
                 if (visitType != null && (visitType.equals("new_client") || visitType.equals("active_continuing_with_services"))) {
                     try {
+                        createNeedAndRiskAssessmentAction(memberObject, details);
                         createEducationAndPsychosocialSupportAction(memberObject, details);
                         createHealthCareAndNutritionalStatusAction(memberObject, details);
                         createHivRiskAssessmentsAction(memberObject, details);
@@ -176,6 +178,22 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
                 .withDetails(details)
                 .withHelper(actionHelper)
                 .withFormName(Constants.FORMS.MVC_EDUCATION_AND_PSYCHOSOCICAL_SUPPORT_FORM)
+                .build();
+
+        actionList.put(actionName, action);
+    }
+
+    protected void createNeedAndRiskAssessmentAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
+        OvcVisitActionHelper actionHelper = new MvcNeedAndRiskAssessmentActionHelper();
+
+        String actionName =
+                mContext.getString(R.string.mvc_need_and_risk_assessment_title);
+
+        BaseOvcVisitAction action = getBuilder(actionName)
+                .withOptional(false)
+                .withDetails(details)
+                .withHelper(actionHelper)
+                .withFormName(Constants.FORMS.MVC_NEED_AND_RISK_ASSESSMENT_FORM)
                 .build();
 
         actionList.put(actionName, action);

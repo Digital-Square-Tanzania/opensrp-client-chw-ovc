@@ -128,6 +128,10 @@ public class BaseOvcChildVisitActivity extends SecuredActivity implements BaseOv
             actionList.put(getString(R.string.mvc_visit_type_action_title), map.get(getString(R.string.mvc_visit_type_action_title)));
         }
 
+        if (map.containsKey(getString(R.string.mvc_need_and_risk_assessment_title))) {
+            actionList.put(getString(R.string.mvc_need_and_risk_assessment_title), map.get(getString(R.string.mvc_need_and_risk_assessment_title)));
+        }
+
         if (map.containsKey(getString(R.string.mvc_education_and_psychosocial_title))) {
             actionList.put(getString(R.string.mvc_education_and_psychosocial_title), map.get(getString(R.string.mvc_education_and_psychosocial_title)));
         }
