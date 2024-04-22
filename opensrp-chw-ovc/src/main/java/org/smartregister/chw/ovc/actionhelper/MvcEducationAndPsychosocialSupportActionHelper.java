@@ -26,7 +26,7 @@ public class MvcEducationAndPsychosocialSupportActionHelper extends OvcVisitActi
     @Override
     public String evaluateSubTitle() {
         if(selectEcdPsychosocialSupport != null){
-            return "Education Vocational Training:"+selectEducationVocationalTraining+"\nEcd Psychosocial Support:"+selectEcdPsychosocialSupport;
+            return null;
         } else {
             return null;
         }
