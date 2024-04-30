@@ -32,7 +32,7 @@ public interface BaseOvcVisitContract {
 
         void displayProgressBar(boolean state);
 
-        Map<String, BaseOvcVisitAction> getBaseGbvVisitActions();
+        Map<String, BaseOvcVisitAction> getBaseOvcVisitActions();
 
         void close();
 

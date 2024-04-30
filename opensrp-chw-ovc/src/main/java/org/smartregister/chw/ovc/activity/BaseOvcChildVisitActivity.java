@@ -31,7 +31,7 @@ import org.smartregister.chw.ovc.adapter.BaseOvcVisitAdapter;
 import org.smartregister.chw.ovc.contract.BaseOvcVisitContract;
 import org.smartregister.chw.ovc.dao.OvcDao;
 import org.smartregister.chw.ovc.domain.MemberObject;
-import org.smartregister.chw.ovc.interactor.BaseOvcHfVisitInteractor;
+import org.smartregister.chw.ovc.interactor.BaseOvcVisitInteractor;
 import org.smartregister.chw.ovc.model.BaseOvcVisitAction;
 import org.smartregister.chw.ovc.presenter.BaseOvcVisitPresenter;
 import org.smartregister.chw.ovc.util.Constants;
@@ -69,7 +69,7 @@ public class BaseOvcChildVisitActivity extends SecuredActivity implements BaseOv
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base_gbv_visit);
+        setContentView(R.layout.activity_base_ovc_visit);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             isEditMode = getIntent().getBooleanExtra(Constants.ACTIVITY_PAYLOAD.EDIT_MODE, false);
@@ -117,7 +117,7 @@ public class BaseOvcChildVisitActivity extends SecuredActivity implements BaseOv
     }
 
     protected void registerPresenter() {
-        presenter = new BaseOvcVisitPresenter(memberObject, this, new BaseOvcHfVisitInteractor());
+        presenter = new BaseOvcVisitPresenter(memberObject, this, new BaseOvcVisitInteractor());
     }
 
     @Override
@@ -291,7 +291,7 @@ public class BaseOvcChildVisitActivity extends SecuredActivity implements BaseOv
 
 
     @Override
-    public Map<String, BaseOvcVisitAction> getBaseGbvVisitActions() {
+    public Map<String, BaseOvcVisitAction> getBaseOvcVisitActions() {
         return actionList;
     }
 

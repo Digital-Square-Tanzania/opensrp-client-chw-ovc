@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">opensrp-chw-testing</string>
     <string name="action_settings">Settings</string>
-    <string name="gbv_client_profile">GBV Facility Visit</string>
-    <string name="gbv_follow_up_visit">GBV Community Visit</string>
+    <string name="ovc_client_profile">OVC Visit</string>
+    <string name="ovc_follow_up_visit">OVC Followup Visit</string>
 </resources>

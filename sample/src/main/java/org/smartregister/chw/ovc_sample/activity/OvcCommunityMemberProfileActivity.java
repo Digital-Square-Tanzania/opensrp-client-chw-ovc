@@ -29,11 +29,11 @@ public class OvcCommunityMemberProfileActivity extends BaseOvcProfileActivity {
     @Override
     protected void onCreation() {
         super.onCreation();
-        textViewRecordGbv.setText(R.string.record_gbv_home_visit);
+        textViewRecordOvc.setText(R.string.record_ovc_home_visit);
     }
 
     @Override
-    public void recordGbv(MemberObject memberObject) {
+    public void recordOvc(MemberObject memberObject) {
         JSONObject jsonObject;
         try {
             jsonObject = OvcJsonFormUtils.getFormAsJson(Constants.FORMS.MVC_VISIT_TYPE_FORM);

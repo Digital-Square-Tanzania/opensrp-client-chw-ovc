@@ -10,7 +10,7 @@ import org.smartregister.chw.ovc.activity.BaseOvcChildVisitActivity;
 import org.smartregister.chw.ovc.domain.MemberObject;
 import org.smartregister.chw.ovc.presenter.BaseOvcVisitPresenter;
 import org.smartregister.chw.ovc.util.Constants;
-import org.smartregister.chw.ovc_sample.interactor.OvcHfVisitInteractor;
+import org.smartregister.chw.ovc_sample.interactor.OvcVisitInteractor;
 
 public class OvcHfVisitActivity extends BaseOvcChildVisitActivity {
     public static void startMe(Activity activity, String baseEntityID, Boolean isEditMode) {
@@ -26,7 +26,7 @@ public class OvcHfVisitActivity extends BaseOvcChildVisitActivity {
     }
 
     protected void registerPresenter() {
-        presenter = new BaseOvcVisitPresenter(memberObject, this, new OvcHfVisitInteractor());
+        presenter = new BaseOvcVisitPresenter(memberObject, this, new OvcVisitInteractor());
     }
 
     @Override

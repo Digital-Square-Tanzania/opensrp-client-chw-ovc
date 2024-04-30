@@ -97,7 +97,7 @@ public class BaseOvcRegisterFragmentPresenter implements OvcRegisterFragmentCont
 
     @Override
     public String getMainTable() {
-        return Constants.TABLES.GBV_REGISTER;
+        return Constants.TABLES.OVC_REGISTER;
     }
 
     @Override

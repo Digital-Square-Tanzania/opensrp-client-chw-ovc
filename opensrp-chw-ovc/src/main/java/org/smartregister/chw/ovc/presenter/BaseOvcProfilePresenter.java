@@ -32,7 +32,7 @@ public class BaseOvcProfilePresenter implements OvcProfileContract.Presenter {
     }
 
     @Override
-    public void recordGbvButton(@Nullable String visitState) {
+    public void recordOvcButton(@Nullable String visitState) {
         if (getView() == null) {
             return;
         }

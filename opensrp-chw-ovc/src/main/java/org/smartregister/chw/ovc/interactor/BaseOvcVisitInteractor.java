@@ -42,7 +42,7 @@ import java.util.Map;
 import timber.log.Timber;
 
 
-public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor {
+public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
 
     private final OvcLibrary ovcLibrary;
 
@@ -68,14 +68,14 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
 
 
     @VisibleForTesting
-    public BaseOvcHfVisitInteractor(AppExecutors appExecutors, OvcLibrary OvcLibrary, ECSyncHelper syncHelper) {
+    public BaseOvcVisitInteractor(AppExecutors appExecutors, OvcLibrary OvcLibrary, ECSyncHelper syncHelper) {
         this.appExecutors = appExecutors;
         this.ovcLibrary = OvcLibrary;
         this.syncHelper = syncHelper;
         this.actionList = new LinkedHashMap<>();
     }
 
-    public BaseOvcHfVisitInteractor() {
+    public BaseOvcVisitInteractor() {
         this(new AppExecutors(), OvcLibrary.getInstance(), OvcLibrary.getInstance().getEcSyncHelper());
     }
 
@@ -111,7 +111,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
         mContext = view.getContext();
         this.callBack = callBack;
         if (view.getEditMode()) {
-            Visit lastVisit = ovcLibrary.visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.EVENT_TYPE.GBV_FOLLOW_UP_VISIT);
+            Visit lastVisit = ovcLibrary.visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.EVENT_TYPE.OVC_FOLLOW_UP_VISIT);
             if (lastVisit != null) {
                 details = VisitUtils.getVisitGroups(ovcLibrary.visitDetailsRepository().getVisits(lastVisit.getVisitId()));
             }
@@ -119,7 +119,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
 
         final Runnable runnable = () -> {
             try {
-                createGbvHfVisitTypeAction(memberObject, details);
+                createOvcVisitTypeAction(memberObject, details);
             } catch (BaseOvcVisitAction.ValidationException e) {
                 Timber.e(e);
             }
@@ -130,7 +130,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
         appExecutors.diskIO().execute(runnable);
     }
 
-    protected void createGbvHfVisitTypeAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
+    protected void createOvcVisitTypeAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
         OvcVisitActionHelper actionHelper = new MvcVisitTypeActionHelper() {
             @Override
             public void processVisitType(String visitType) {
@@ -403,7 +403,7 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
      */
     protected void prepareEvent(Event baseEvent) {
         if (baseEvent != null) {
-            // add gbv date obs and last
+            // add ovc date obs and last
             List<Object> list = new ArrayList<>();
             list.add(new Date());
             baseEvent.addObs(new Obs("concept", "text", "vmmc_visit_date", "", list, new ArrayList<>(), null, "vmmc_visit_date"));
@@ -420,11 +420,11 @@ public class BaseOvcHfVisitInteractor implements BaseOvcVisitContract.Interactor
     }
 
     protected String getEncounterType() {
-        return Constants.EVENT_TYPE.GBV_FOLLOW_UP_VISIT;
+        return Constants.EVENT_TYPE.OVC_FOLLOW_UP_VISIT;
     }
 
     protected String getTableName() {
-        return Constants.TABLES.GBV_REGISTER;
+        return Constants.TABLES.OVC_REGISTER;
     }
 
 }

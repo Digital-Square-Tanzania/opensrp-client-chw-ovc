@@ -22,13 +22,9 @@ public interface Constants {
     }
 
     interface EVENT_TYPE {
-        String GBV_REGISTRATION = "GBV Registration";
+        String OVC_REGISTRATION = "OVC Registration";
 
-        String GBV_FOLLOW_UP_VISIT = "GBV Follow-up Visit";
-
-        String GBV_HOME_VISIT = "GBV Home Visit";
-
-        String VOID_EVENT = "Void Event";
+        String OVC_FOLLOW_UP_VISIT = "OVC Follow-up Visit";
 
         String DELETE_EVENT = "Delete Event";
     }
@@ -46,9 +42,9 @@ public interface Constants {
     }
 
     interface TABLES {
-        String GBV_REGISTER = "ec_gbv_register";
+        String OVC_REGISTER = "ec_ovc_register";
 
-        String GBV_FOLLOW_UP = "ec_gbv_follow_up_visit";
+        String OVC_FOLLOW_UP = "ec_ovc_follow_up_visit";
 
     }
 
@@ -59,7 +55,7 @@ public interface Constants {
 
         String ACTION = "ACTION";
 
-        String GBV_FORM_NAME = "GBV_FORM_NAME";
+        String OVC_FORM_NAME = "OVC_FORM_NAME";
 
         String EDIT_MODE = "editMode";
 
@@ -73,7 +69,7 @@ public interface Constants {
     }
 
     interface CONFIGURATION {
-        String GBV_REGISTRATION_CONFIGURATION = "gbv_registration";
+        String OVC_REGISTRATION_CONFIGURATION = "ovc_registration";
     }
 
 }

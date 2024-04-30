@@ -11,10 +11,10 @@ import java.util.Map;
 import timber.log.Timber;
 
 /**
- * Designed to set default methods for the GBV Action Helper
+ * Designed to set default methods for the OVC Action Helper
  * This object must remain inert to the Home Visit action. Its designed primarily for extension by simple visit actions
  */
-public abstract class OvcVisitActionHelper implements BaseOvcVisitAction.GbvVisitActionHelper {
+public abstract class OvcVisitActionHelper implements BaseOvcVisitAction.OvcVisitActionHelper {
     protected Context context;
 
     @Override

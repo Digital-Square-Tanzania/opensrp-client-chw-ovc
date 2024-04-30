@@ -12,12 +12,12 @@
     <string name="saving_dialog_title">Saving</string>
     <string name="interpunct" translatable="false">\u00b7</string>
     <string name="malaria_followup_visit">FOLLOWUP\nVISIT</string>
-    <string name="record_gbv">Record OVC Visit</string>
-    <string name="record_gbv_home_visit">Record OVC Community Visit</string>
-    <string name="return_to_previous_gbv_clients_page">Return all OVC Clients</string>
+    <string name="record_ovc">Record OVC Visit</string>
+    <string name="record_ovc_home_visit">Record OVC Community Visit</string>
+    <string name="return_to_previous_ovc_clients_page">Return all OVC Clients</string>
     <string name="last_visit_40_days_ago">Last visit %1$s ago</string>
-    <string name="view_gbv_followup_history">View followup history</string>
-    <string name="gbv_followup_history">Followup History</string>
+    <string name="view_ovc_followup_history">View followup history</string>
+    <string name="ovc_followup_history">Followup History</string>
     <string name="call_no_number_provided">(no number provided)</string>
     <string name="family_has_nothing_due">Family has nothing due</string>
     <string name="go_to_family_s_profile">Go to family\'s profile</string>
@@ -28,9 +28,9 @@
     <string name="vaccine_service_upcoming"><![CDATA[%1$s <font color=#7f7f7f>upcoming (%2$s)</font></b>]]></string>
     <string name="vaccine_service_overdue"><![CDATA[%1$s <font color=#f04646>overdue (%2$s)</font></b>]]></string>
     <string name="vaccine_service_due"><![CDATA[%1$s <font color=#000000>due (%2$s)</font></b>]]></string>
-    <string name="call_gbv_client">GBV Survivor</string>
+    <string name="call_ovc_client">OVC Client</string>
     <string name="head_of_family">Head of family</string>
-    <string name="gbv_client">GBV Survivor</string>
+    <string name="ovc_client">OVC Client</string>
     <string name="copy_to_clipboard">Copy to clipboard</string>
     <string name="copied_phone_number">PhoneNumber copied to clipboard</string>
     <string name="call">Call</string>

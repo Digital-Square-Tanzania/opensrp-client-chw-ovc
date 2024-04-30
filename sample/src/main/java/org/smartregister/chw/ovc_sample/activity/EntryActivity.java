@@ -24,9 +24,9 @@ public class EntryActivity extends SecuredActivity implements View.OnClickListen
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        findViewById(R.id.gbv_activity).setOnClickListener(this);
-        findViewById(R.id.gbv_community_visit).setOnClickListener(this);
-        findViewById(R.id.gbv_hf_profile).setOnClickListener(this);
+        findViewById(R.id.ovc_activity).setOnClickListener(this);
+        findViewById(R.id.ovc_community_visit).setOnClickListener(this);
+        findViewById(R.id.ovc_profile).setOnClickListener(this);
     }
 
     @Override
@@ -42,13 +42,13 @@ public class EntryActivity extends SecuredActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.gbv_activity:
+            case R.id.ovc_activity:
                 startActivity(new Intent(this, OvcRegisterActivity.class));
                 break;
-            case R.id.gbv_community_visit:
+            case R.id.ovc_community_visit:
                 OvcCommunityMemberProfileActivity.startMe(this, "12345");
                 break;
-            case R.id.gbv_hf_profile:
+            case R.id.ovc_profile:
                 OvcMemberProfileActivity.startMe(this, "12345");
                 break;
             default:

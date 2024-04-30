@@ -53,7 +53,7 @@ public class BaseOvcRegisterActivity extends BaseRegisterActivity implements Ovc
         BASE_ENTITY_ID = getIntent().getStringExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID);
         FAMILY_BASE_ENTITY_ID = getIntent().getStringExtra(Constants.ACTIVITY_PAYLOAD.FAMILY_BASE_ENTITY_ID);
         ACTION = getIntent().getStringExtra(Constants.ACTIVITY_PAYLOAD.ACTION);
-        FORM_NAME = getIntent().getStringExtra(Constants.ACTIVITY_PAYLOAD.GBV_FORM_NAME);
+        FORM_NAME = getIntent().getStringExtra(Constants.ACTIVITY_PAYLOAD.OVC_FORM_NAME);
         onStartActivityWithAction();
     }
 
@@ -110,7 +110,7 @@ public class BaseOvcRegisterActivity extends BaseRegisterActivity implements Ovc
 
     @Override
     public List<String> getViewIdentifiers() {
-        return Arrays.asList(Constants.CONFIGURATION.GBV_REGISTRATION_CONFIGURATION);
+        return Arrays.asList(Constants.CONFIGURATION.OVC_REGISTRATION_CONFIGURATION);
     }
 
     /**
@@ -136,7 +136,7 @@ public class BaseOvcRegisterActivity extends BaseRegisterActivity implements Ovc
 
     @MenuRes
     public int getMenuResource() {
-        return R.menu.bottom_nav_gbv_menu;
+        return R.menu.bottom_nav_ovc_menu;
     }
 
     @Override

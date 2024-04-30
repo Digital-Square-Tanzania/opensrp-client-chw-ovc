@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getContext();
 
-        assertEquals("org.smartregister.chw.gbv_sample.test", appContext.getPackageName());
+        assertEquals("org.smartregister.chw.ovc_sample.test", appContext.getPackageName());
     }
 }
