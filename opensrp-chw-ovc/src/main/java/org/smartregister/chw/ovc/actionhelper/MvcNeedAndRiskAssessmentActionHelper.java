@@ -7,17 +7,14 @@ import org.smartregister.chw.ovc.util.JsonFormUtils;
 
 import timber.log.Timber;
 
-public class MvcEducationAndPsychosocialSupportActionHelper extends OvcVisitActionHelper {
-    private String selectEducationVocationalTraining;
-    private String selectEcdPsychosocialSupport;
-
+public class MvcNeedAndRiskAssessmentActionHelper extends OvcVisitActionHelper {
+    private String selectTheClientNeed;
     @Override
     public void onPayloadReceived(String jsonPayload) {
         JSONObject payload;
         try {
             payload = new JSONObject(jsonPayload);
-            selectEducationVocationalTraining = JsonFormUtils.getValue(payload,"select_education_vocational_training");
-            selectEcdPsychosocialSupport = JsonFormUtils.getCheckBoxValue(payload,"select_ecd_psychosocial_support");
+            selectTheClientNeed = JsonFormUtils.getCheckBoxValue(payload,"select_the_client_need");
         } catch (JSONException e) {
             Timber.d(e);
         }
@@ -25,7 +22,7 @@ public class MvcEducationAndPsychosocialSupportActionHelper extends OvcVisitActi
 
     @Override
     public String evaluateSubTitle() {
-        if(selectEcdPsychosocialSupport != null){
+        if(selectTheClientNeed != null){
             return null;
         } else {
             return null;
@@ -34,7 +31,7 @@ public class MvcEducationAndPsychosocialSupportActionHelper extends OvcVisitActi
 
     @Override
     public BaseOvcVisitAction.Status evaluateStatusOnPayload() {
-        if(selectEcdPsychosocialSupport != null){
+        if(selectTheClientNeed != null){
             return BaseOvcVisitAction.Status.COMPLETED;
         } else {
             return BaseOvcVisitAction.Status.PENDING;

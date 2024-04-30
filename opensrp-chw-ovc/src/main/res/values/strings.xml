@@ -55,11 +55,13 @@
     <string name="optional">optional</string>
     <string name="mvc_visit_type_action_title">Visit Type</string>
     <string name="mvc_education_and_psychosocial_title">Education and Psychosocial Support</string>
+    <string name="mvc_need_and_risk_assessment_title">Need and Risk Assessment</string>
     <string name="refer_to_facility">Refer to Health Facility</string>
     <string name="manual_process_visit">Process Visit</string>
 
     <string name="mvc_health_care_and_nutritional_status_title">Health care &amp; Nutritional Status</string>
     <string name="mvc_hiv_risk_assessment_title">HIV Risk Assessment</string>
     <string name="mvc_child_protection_title">Child Protection</string>
+    <string name="mvc_referrals_title">Referrals</string>
 
 </resources>
