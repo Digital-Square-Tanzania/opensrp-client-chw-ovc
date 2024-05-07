@@ -46,7 +46,7 @@ public interface Constants {
 
         String MVC_CHILD_ENROLLMENT = "mvc_child_enrollment";
 
-        String MVC_HOUSEHOLD_SERVICES = "ovc_head_of_household_registration";
+        String MVC_HOUSEHOLD_SERVICES = "mvc_household_services";
     }
 
     interface TABLES {
