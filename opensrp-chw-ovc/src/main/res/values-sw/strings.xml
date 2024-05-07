@@ -48,6 +48,6 @@
     <string name="male">Me</string>
     <string name="female">Ke</string>
     <string name="ovc_visit">Tembeleo la manusura wa Ukatili wa kijinsia na Ukatili dhidi ya watoto</string>
-    <string name="ovc_registration">Usajili wa manusura wa Ukatili wa kijinsia na ukatili dhidi ya watoto</string>
+    <string name="ovc_enrollment">OVC Enrollment</string>
     <string name="refer_to_facility">Rufaa kwenda kituo cha Afya kutolea huduma</string>
 </resources>

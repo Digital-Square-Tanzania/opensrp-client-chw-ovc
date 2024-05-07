@@ -41,6 +41,12 @@ public interface Constants {
         String MVC_HEALTHCARE_AND_NUTRITION_STATUS_FORM = "mvc_healthcare_and_nutrition";
 
         String OVC_HIV_RISK_ASSESSMENT_FORM = "mvc_hiv_risk_assessment";
+
+        String MVC_HEAD_OF_HOUSEHOLD_ENROLLMENT = "mvc_head_of_household_enrollment";
+
+        String MVC_CHILD_ENROLLMENT = "mvc_child_enrollment";
+
+        String MVC_HOUSEHOLD_SERVICES = "ovc_head_of_household_registration";
     }
 
     interface TABLES {

@@ -12,7 +12,7 @@
     <string name="saving_dialog_title">Saving</string>
     <string name="interpunct" translatable="false">\u00b7</string>
     <string name="malaria_followup_visit">FOLLOWUP\nVISIT</string>
-    <string name="record_ovc">Record OVC Visit</string>
+    <string name="record_ovc">Record MVC Service</string>
     <string name="record_ovc_home_visit">Record OVC Community Visit</string>
     <string name="return_to_previous_ovc_clients_page">Return all OVC Clients</string>
     <string name="last_visit_40_days_ago">Last visit %1$s ago</string>
@@ -49,6 +49,9 @@
     <string name="edit">EDIT</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
+    <string name="ovc_enrollment">OVC Enrollment</string>
+
+    <string name="record_mvc_household_services">Record MVC Household Services</string>
 
     <string name="ovc_visit">OVC Visit</string>
     <string name="error_unable_save_home_visit">unable to save home visit</string>
