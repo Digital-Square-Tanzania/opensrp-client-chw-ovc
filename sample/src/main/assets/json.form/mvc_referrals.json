@@ -52,6 +52,7 @@
       {
         "key": "select_referrals_provided",
         "type": "check_box",
+        "combine_checkbox_option_values": true,
         "label": "Select the referrals provided to the client",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -130,6 +131,7 @@
       {
         "key": "support_provided_on_referrals",
         "type": "check_box",
+        "combine_checkbox_option_values": true,
         "label": "Support provided to Child on Referrals?",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -163,11 +165,19 @@
         "v_required": {
           "value": "true",
           "err": "Please indicate if support was provided on referrals"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "referral_rules.yml"
+            }
+          }
         }
       },
       {
         "key": "referrals_completed_by_client",
         "type": "check_box",
+        "combine_checkbox_option_values": true,
         "label": "Select the referrals Completed by client",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
