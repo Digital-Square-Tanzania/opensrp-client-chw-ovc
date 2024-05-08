@@ -25,7 +25,8 @@ public class BaseOvcProfileInteractor implements OvcProfileContract.Interactor {
     @Override
     public void refreshProfileInfo(MemberObject memberObject, OvcProfileContract.InteractorCallBack callback) {
         Runnable runnable = () -> appExecutors.mainThread().execute(() -> {
-            callback.refreshMedicalHistory(getVisit(Constants.EVENT_TYPE.OVC_FOLLOW_UP_VISIT, memberObject) != null);
+            callback.refreshMedicalHistory(getVisit(Constants.EVENT_TYPE.MVC_HOUSEHOLD_SERVICES_VISIT, memberObject) != null ||
+                    getVisit(Constants.EVENT_TYPE.MVC_SERVICES_VISIT, memberObject) != null);
         });
         appExecutors.diskIO().execute(runnable);
     }

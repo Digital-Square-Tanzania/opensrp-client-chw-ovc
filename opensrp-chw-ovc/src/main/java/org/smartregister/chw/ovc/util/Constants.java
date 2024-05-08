@@ -24,7 +24,9 @@ public interface Constants {
     interface EVENT_TYPE {
         String OVC_REGISTRATION = "OVC Registration";
 
-        String OVC_FOLLOW_UP_VISIT = "OVC Follow-up Visit";
+        String MVC_HOUSEHOLD_SERVICES_VISIT = "MVC Household Services";
+
+        String MVC_SERVICES_VISIT = "MVC Services";
 
         String DELETE_EVENT = "Delete Event";
     }
