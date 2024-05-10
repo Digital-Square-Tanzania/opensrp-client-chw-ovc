@@ -9,6 +9,7 @@ import static org.smartregister.AllConstants.OPTIONS;
 import static org.smartregister.chw.ovc.util.Constants.MVC_CHILD_REGISTRATION;
 import static org.smartregister.chw.ovc.util.Constants.MVC_HEAD_OF_HOUSEHOLD_ENROLLMENT;
 import static org.smartregister.chw.ovc.util.Constants.REASONS_OF_VULNERABILITY;
+import static org.smartregister.chw.ovc.util.Constants.STEP_ONE;
 import static org.smartregister.chw.ovc.util.Constants.TYPE_OF_VULNERABILITY;
 import static org.smartregister.chw.ovc.util.Constants.YES;
 
@@ -36,7 +37,7 @@ public class BaseOvcRegisterModel implements OvcRegisterContract.Model {
         }
 
         if (jsonObject.getString(ENCOUNTER_TYPE).equalsIgnoreCase(MVC_HEAD_OF_HOUSEHOLD_ENROLLMENT) || jsonObject.getString(ENCOUNTER_TYPE).equalsIgnoreCase(MVC_CHILD_REGISTRATION)) {
-            JSONArray fields = jsonObject.getJSONArray(FIELDS);
+            JSONArray fields = jsonObject.getJSONObject(STEP_ONE).getJSONArray(FIELDS);
 
             for (int i = 0; i < fields.length(); i++) {
                 if (fields.getJSONObject(i).getString(KEY).equalsIgnoreCase(TYPE_OF_VULNERABILITY) || fields.getJSONObject(i).getString(KEY).equalsIgnoreCase(REASONS_OF_VULNERABILITY)) {
