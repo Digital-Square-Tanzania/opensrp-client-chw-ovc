@@ -1,5 +1,8 @@
 {
   "count": "1",
+  "global": {
+    "age": 2
+  },
   "encounter_type": "Health Care & Nutrition",
   "entity_id": "",
   "relational_id": "",
@@ -79,6 +82,13 @@
             "openmrs_entity_id": "unknown_vaccinated"
           }
         ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "mvc_healthcare_and_nutrition.yml"
+            }
+          }
+        },
         "v_required": {
           "value": "true",
           "err": "Please indicate if the child has received all the required vaccinations"
