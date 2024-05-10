@@ -8,8 +8,9 @@ import org.smartregister.chw.ovc.util.JsonFormUtils;
 
 import timber.log.Timber;
 
-public  class OvcHealthCareAndNutritionalStatusActionHelper extends OvcVisitActionHelper {
+public abstract class OvcHealthCareAndNutritionalStatusActionHelper extends OvcVisitActionHelper {
     private String childReceivedVaccinations;
+    private String healthCareServiceProvided;
 
     @Override
     public void onPayloadReceived(String jsonPayload) {
@@ -17,10 +18,14 @@ public  class OvcHealthCareAndNutritionalStatusActionHelper extends OvcVisitActi
         try {
             payload = new JSONObject(jsonPayload);
             childReceivedVaccinations = JsonFormUtils.getValue(payload, "child_received_vaccinations");
+            healthCareServiceProvided = JsonFormUtils.getValue(payload, "health_care_service_provided");
+            processNutritionAction(healthCareServiceProvided);
         } catch (JSONException e) {
             Timber.e(e);
         }
     }
+
+    public abstract void processNutritionAction(String healthCareServiceProvided);
 
     @Override
     public String evaluateSubTitle() {

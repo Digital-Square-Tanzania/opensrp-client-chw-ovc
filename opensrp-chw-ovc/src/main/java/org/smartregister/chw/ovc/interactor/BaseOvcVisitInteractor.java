@@ -16,6 +16,7 @@ import org.smartregister.chw.ovc.actionhelper.MvcHivRiskAssessmentActionHelper;
 import org.smartregister.chw.ovc.actionhelper.MvcNeedAndRiskAssessmentActionHelper;
 import org.smartregister.chw.ovc.actionhelper.MvcVisitTypeActionHelper;
 import org.smartregister.chw.ovc.actionhelper.OvcChildProtectionActionHelper;
+import org.smartregister.chw.ovc.actionhelper.OvcHealthCareAndNutritionalStatusActionHelper;
 import org.smartregister.chw.ovc.actionhelper.OvcVisitActionHelper;
 import org.smartregister.chw.ovc.contract.BaseOvcVisitContract;
 import org.smartregister.chw.ovc.dao.OvcDao;
@@ -142,7 +143,6 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
                         createNeedAndRiskAssessmentAction(memberObject, details);
                         createEducationAndPsychosocialSupportAction(memberObject, details);
                         createHealthCareAndNutritionalStatusAction(memberObject, details);
-                        createHivRiskAssessmentsAction(memberObject, details);
                         createChildProtectionAction(memberObject, details);
                         createReferralsAction(memberObject, details);
                     } catch (BaseOvcVisitAction.ValidationException e) {
@@ -155,15 +155,9 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
             }
         };
 
-        String actionName =
-                mContext.getString(R.string.mvc_visit_type_action_title);
+        String actionName = mContext.getString(R.string.mvc_visit_type_action_title);
 
-        BaseOvcVisitAction action = getBuilder(actionName)
-                .withOptional(false)
-                .withDetails(details)
-                .withHelper(actionHelper)
-                .withFormName(Constants.FORMS.MVC_VISIT_TYPE_FORM)
-                .build();
+        BaseOvcVisitAction action = getBuilder(actionName).withOptional(false).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.MVC_VISIT_TYPE_FORM).build();
 
         actionList.put(actionName, action);
     }
@@ -171,15 +165,9 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
     protected void createEducationAndPsychosocialSupportAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
         OvcVisitActionHelper actionHelper = new MvcEducationAndPsychosocialSupportActionHelper();
 
-        String actionName =
-                mContext.getString(R.string.mvc_education_and_psychosocial_title);
+        String actionName = mContext.getString(R.string.mvc_education_and_psychosocial_title);
 
-        BaseOvcVisitAction action = getBuilder(actionName)
-                .withOptional(false)
-                .withDetails(details)
-                .withHelper(actionHelper)
-                .withFormName(Constants.FORMS.MVC_EDUCATION_AND_PSYCHOSOCICAL_SUPPORT_FORM)
-                .build();
+        BaseOvcVisitAction action = getBuilder(actionName).withOptional(false).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.MVC_EDUCATION_AND_PSYCHOSOCICAL_SUPPORT_FORM).build();
 
         actionList.put(actionName, action);
     }
@@ -187,15 +175,9 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
     protected void createNeedAndRiskAssessmentAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
         OvcVisitActionHelper actionHelper = new MvcNeedAndRiskAssessmentActionHelper();
 
-        String actionName =
-                mContext.getString(R.string.mvc_need_and_risk_assessment_title);
+        String actionName = mContext.getString(R.string.mvc_need_and_risk_assessment_title);
 
-        BaseOvcVisitAction action = getBuilder(actionName)
-                .withOptional(false)
-                .withDetails(details)
-                .withHelper(actionHelper)
-                .withFormName(Constants.FORMS.MVC_NEED_AND_RISK_ASSESSMENT_FORM)
-                .build();
+        BaseOvcVisitAction action = getBuilder(actionName).withOptional(false).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.MVC_NEED_AND_RISK_ASSESSMENT_FORM).build();
 
         actionList.put(actionName, action);
     }
@@ -203,15 +185,9 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
     protected void createChildProtectionAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
         OvcVisitActionHelper actionHelper = new OvcChildProtectionActionHelper();
 
-        String actionName =
-                mContext.getString(R.string.mvc_child_protection_title);
+        String actionName = mContext.getString(R.string.mvc_child_protection_title);
 
-        BaseOvcVisitAction action = getBuilder(actionName)
-                .withOptional(false)
-                .withDetails(details)
-                .withHelper(actionHelper)
-                .withFormName(Constants.FORMS.MVC_CHILD_PROTECTION_FORM)
-                .build();
+        BaseOvcVisitAction action = getBuilder(actionName).withOptional(false).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.MVC_CHILD_PROTECTION_FORM).build();
 
         actionList.put(actionName, action);
     }
@@ -219,31 +195,34 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
     protected void createReferralsAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
         OvcVisitActionHelper actionHelper = new OvcChildProtectionActionHelper();
 
-        String actionName =
-                mContext.getString(R.string.mvc_referrals_title);
+        String actionName = mContext.getString(R.string.mvc_referrals_title);
 
-        BaseOvcVisitAction action = getBuilder(actionName)
-                .withOptional(false)
-                .withDetails(details)
-                .withHelper(actionHelper)
-                .withFormName(Constants.FORMS.MVC_REFERRALS_FORM)
-                .build();
+        BaseOvcVisitAction action = getBuilder(actionName).withOptional(false).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.MVC_REFERRALS_FORM).build();
 
         actionList.put(actionName, action);
     }
 
     protected void createHealthCareAndNutritionalStatusAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new MvcEducationAndPsychosocialSupportActionHelper();
+        OvcVisitActionHelper actionHelper = new OvcHealthCareAndNutritionalStatusActionHelper() {
+            @Override
+            public void processNutritionAction(String healthCareServiceProvided) {
+                if (healthCareServiceProvided.contains("hiv_risk_assessment")) {
+                    try {
+                        createHivRiskAssessmentsAction(memberObject, details);
+                    } catch (Exception e) {
+                        Timber.e(e);
+                    }
+                } else {
+                    String actionName = mContext.getString(R.string.mvc_hiv_risk_assessment_title);
+                    actionList.remove(actionName);
+                }
+                appExecutors.mainThread().execute(() -> callBack.onMemberDetailsReloaded(memberObject));
+            }
+        };
 
-        String actionName =
-                mContext.getString(R.string.mvc_health_care_and_nutritional_status_title);
+        String actionName = mContext.getString(R.string.mvc_health_care_and_nutritional_status_title);
 
-        BaseOvcVisitAction action = getBuilder(actionName)
-                .withOptional(false)
-                .withDetails(details)
-                .withHelper(actionHelper)
-                .withFormName(Constants.FORMS.MVC_HEALTHCARE_AND_NUTRITION_STATUS_FORM)
-                .build();
+        BaseOvcVisitAction action = getBuilder(actionName).withOptional(false).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.MVC_HEALTHCARE_AND_NUTRITION_STATUS_FORM).build();
 
         actionList.put(actionName, action);
     }
@@ -251,15 +230,9 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
     protected void createHivRiskAssessmentsAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
         OvcVisitActionHelper actionHelper = new MvcHivRiskAssessmentActionHelper(memberObject);
 
-        String actionName =
-                mContext.getString(R.string.mvc_hiv_risk_assessment_title);
+        String actionName = mContext.getString(R.string.mvc_hiv_risk_assessment_title);
 
-        BaseOvcVisitAction action = getBuilder(actionName)
-                .withOptional(false)
-                .withDetails(details)
-                .withHelper(actionHelper)
-                .withFormName(Constants.FORMS.OVC_HIV_RISK_ASSESSMENT_FORM)
-                .build();
+        BaseOvcVisitAction action = getBuilder(actionName).withOptional(false).withDetails(details).withHelper(actionHelper).withFormName(Constants.FORMS.OVC_HIV_RISK_ASSESSMENT_FORM).build();
 
         actionList.put(actionName, action);
     }
