@@ -131,7 +131,7 @@
       {
         "key": "health_care_service_provided",
         "type": "check_box",
-        "label": "Select the child nutritional status",
+        "label": "Select the health services provided",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "health_care_service_provided",
@@ -184,13 +184,6 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hiv_prevention_education"
-          },
-          {
-            "key": "assessment_for_the_risk_of_hiv_infection",
-            "text": "Assessment for the risk of HIV infection",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "assessment_for_the_risk_of_hiv_infection"
           }
         ],
         "v_required": {
