@@ -12,6 +12,16 @@ public interface Constants {
 
     String STEP_TWO = "step2";
 
+    public static final String MVC_HEAD_OF_HOUSEHOLD_ENROLLMENT = "MVC Head of Household Enrollment";
+
+    public static final String MVC_CHILD_REGISTRATION = "MVC Child Registration";
+
+    public static final String TYPE_OF_VULNERABILITY = "type_of_vulnerability";
+
+    public static final String REASONS_OF_VULNERABILITY = "reasons_of_vulnerability";
+
+    public static final String YES = "yes";
+
     interface JSON_FORM_EXTRA {
         String JSON = "json";
         String ENCOUNTER_TYPE = "encounter_type";
