@@ -163,7 +163,7 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
     }
 
     protected void createEducationAndPsychosocialSupportAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new MvcEducationAndPsychosocialSupportActionHelper();
+        OvcVisitActionHelper actionHelper = new MvcEducationAndPsychosocialSupportActionHelper(memberObject);
 
         String actionName = mContext.getString(R.string.mvc_education_and_psychosocial_title);
 
