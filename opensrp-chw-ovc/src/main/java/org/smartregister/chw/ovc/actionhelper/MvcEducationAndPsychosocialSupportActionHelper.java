@@ -1,6 +1,6 @@
 package org.smartregister.chw.ovc.actionhelper;
 
-import static org.smartregister.client.utils.constants.JsonFormConstants.GLOBAL;
+import static org.smartregister.client.utils.constants.JsonFormConstants.JSON_FORM_KEY.GLOBAL;
 
 import android.content.Context;
 
