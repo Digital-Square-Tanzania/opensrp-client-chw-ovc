@@ -38,7 +38,7 @@ public abstract class OvcHealthCareAndNutritionalStatusActionHelper extends OvcV
     public String getPreProcessed() {
         try {
             JSONObject form = new JSONObject(jsonString);
-            form.getJSONObject(GLOBAL).pugt("age", memberObject.getAge());
+            form.getJSONObject(GLOBAL).put("age", memberObject.getAge());
             return form.toString();
         } catch (Exception e) {
             Timber.e(e);
