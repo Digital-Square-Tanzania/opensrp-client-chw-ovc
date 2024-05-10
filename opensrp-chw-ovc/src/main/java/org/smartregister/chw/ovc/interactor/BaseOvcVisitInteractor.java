@@ -202,7 +202,7 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
     }
 
     protected void createHealthCareAndNutritionalStatusAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new OvcHealthCareAndNutritionalStatusActionHelper() {
+        OvcVisitActionHelper actionHelper = new OvcHealthCareAndNutritionalStatusActionHelper(memberObject) {
             @Override
             public void processNutritionAction(String healthCareServiceProvided) {
                 if (healthCareServiceProvided.contains("hiv_risk_assessment")) {
