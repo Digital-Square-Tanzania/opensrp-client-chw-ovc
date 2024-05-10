@@ -12,11 +12,12 @@ import org.jetbrains.annotations.Nullable;
 import org.smartregister.chw.ovc.OvcLibrary;
 import org.smartregister.chw.ovc.R;
 import org.smartregister.chw.ovc.actionhelper.MvcEducationAndPsychosocialSupportActionHelper;
+import org.smartregister.chw.ovc.actionhelper.MvcHivRiskAssessmentActionHelper;
 import org.smartregister.chw.ovc.actionhelper.MvcNeedAndRiskAssessmentActionHelper;
+import org.smartregister.chw.ovc.actionhelper.MvcVisitTypeActionHelper;
 import org.smartregister.chw.ovc.actionhelper.OvcChildProtectionActionHelper;
 import org.smartregister.chw.ovc.actionhelper.OvcHealthCareAndNutritionalStatusActionHelper;
 import org.smartregister.chw.ovc.actionhelper.OvcVisitActionHelper;
-import org.smartregister.chw.ovc.actionhelper.MvcVisitTypeActionHelper;
 import org.smartregister.chw.ovc.contract.BaseOvcVisitContract;
 import org.smartregister.chw.ovc.dao.OvcDao;
 import org.smartregister.chw.ovc.domain.MemberObject;
@@ -227,7 +228,7 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
     }
 
     protected void createHivRiskAssessmentsAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new MvcEducationAndPsychosocialSupportActionHelper();
+        OvcVisitActionHelper actionHelper = new MvcHivRiskAssessmentActionHelper(memberObject);
 
         String actionName = mContext.getString(R.string.mvc_hiv_risk_assessment_title);
 
