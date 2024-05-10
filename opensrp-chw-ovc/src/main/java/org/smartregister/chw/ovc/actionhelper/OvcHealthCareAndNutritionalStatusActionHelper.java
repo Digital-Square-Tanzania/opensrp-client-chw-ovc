@@ -19,7 +19,6 @@ import timber.log.Timber;
 
 public abstract class OvcHealthCareAndNutritionalStatusActionHelper extends OvcVisitActionHelper {
     private String childReceivedVaccinations;
-    private String healthCareServiceProvided;
 
     private MemberObject memberObject;
     private String jsonString;
@@ -52,7 +51,7 @@ public abstract class OvcHealthCareAndNutritionalStatusActionHelper extends OvcV
         try {
             payload = new JSONObject(jsonPayload);
             childReceivedVaccinations = JsonFormUtils.getValue(payload, "child_received_vaccinations");
-            healthCareServiceProvided = JsonFormUtils.getValue(payload, "health_care_service_provided");
+            String healthCareServiceProvided = JsonFormUtils.getValue(payload, "health_care_service_provided");
             processNutritionAction(healthCareServiceProvided);
         } catch (JSONException e) {
             Timber.e(e);

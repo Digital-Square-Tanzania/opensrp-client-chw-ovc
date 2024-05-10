@@ -1,10 +1,9 @@
 {
   "count": "1",
-  "global": {
-  },
   "encounter_type": "Education & Psychosocial",
   "entity_id": "",
   "relational_id": "",
+  "global": {},
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
@@ -111,7 +110,14 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Selecting an option for education and vocational training is required"
+          "err": "Selecting the clients Education and Vocational Training"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "mvc_education_and_psychosocial_rules.yml"
+            }
+          }
         }
       },
       {
@@ -197,12 +203,12 @@
         }
       },
       {
-        "key": "select_ecd_psychosocial_support",
+        "key": "ecd_psychosocial_support",
         "type": "hidden",
         "editable": false,
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "select_ecd_psychosocial_support",
+        "openmrs_entity_id": "ecd_psychosocial_support",
         "calculation": {
           "rules-engine": {
             "ex-rules": {
