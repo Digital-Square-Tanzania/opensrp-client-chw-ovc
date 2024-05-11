@@ -20,6 +20,10 @@ public interface Constants {
 
     public static final String REASONS_OF_VULNERABILITY = "reasons_of_vulnerability";
 
+    public static final String MVC_HAS_BIRTH_CERTIFICATE = "mvc_has_birth_certificate";
+
+    public static final String MVC_BIRTH_CERTIFICATE_NUMBER = "birth_certificate_number";
+
     public static final String YES = "yes";
 
     interface JSON_FORM_EXTRA {
