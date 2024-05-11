@@ -56,36 +56,43 @@
         "type": "check_box",
         "combine_checkbox_option_values": true,
         "label": "Parenting (for Caregivers with Children of less than 5 years Old)",
+        "exclusive": ["not_applicable"],
         "options": [
           {
-            "key": "ccd_education",
-            "text": "Caregivers received care for child development (CCD) education during a CHW home visit",
-            "value": "false"
+            "key": "ecd_education_during_chw_home_visit",
+            "text": "Caregivers received care for child development (ECD) education during a CHW home visit",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ecd_education_during_chw_home_visit"
           },
           {
-            "key": "ecd_education",
+            "key": "ecd_education_at_children_conner",
             "text": "Caregivers received ECD education at children's corners in Health Facility",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ecd_education_at_children_conner"
           },
           {
             "key": "community_parenting_groups",
             "text": "Caregivers linked to community parenting groups",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "community_parenting_groups"
           },
           {
             "key": "parenting_messages",
             "text": "Caregivers received parenting messages",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "parenting_messages"
           },
           {
             "key": "infant_feeding_counseling",
             "text": "Caregivers received infant and young child feeding counseling",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "infant_feeding_counseling"
           },
           {
-            "key": "not_applicable_parenting",
+            "key": "not_applicable",
             "text": "Not applicable",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_applicable"
           }
         ]
       },
@@ -99,15 +106,21 @@
         "options": [
           {
             "key": "severe_malnutrition",
-            "text": "Severe malnutrition"
+            "text": "Severe malnutrition",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_malnutrition"
           },
           {
             "key": "moderate_malnutrition",
-            "text": "Moderate malnutrition"
+            "text": "Moderate malnutrition",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "moderate_malnutrition"
           },
           {
             "key": "not_malnourished",
-            "text": "Not malnourished"
+            "text": "Not malnourished",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_malnourished"
           }
         ]
       },
@@ -123,17 +136,20 @@
           {
             "key": "nutrition_counseling",
             "text": "Caregiver received nutrition counseling",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "nutrition_counseling"
           },
           {
             "key": "food_support",
             "text": "Households linked to external food support & nutritional supplements",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "food_support"
           },
           {
             "key": "services_linkage",
             "text": "Caregivers linked to other services",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "services_linkage"
           }
         ]
       },
@@ -149,207 +165,44 @@
           {
             "key": "hiv_risk_assessment",
             "text": "Received HIV risk assessment",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hiv_risk_assessment"
           },
           {
             "key": "hiv_prevention_counseling",
             "text": "Received HIV prevention counseling service",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hiv_prevention_counseling"
           },
           {
             "key": "disclosure_support",
             "text": "Received disclosure support",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "disclosure_support"
           },
           {
-            "key": "economic_strengthening",
-            "type": "check_box",
-            "combine_checkbox_option_values": true,
-            "label": "Economic Strengthening",
-            "options": [
-              {
-                "key": "active_slg_member",
-                "text": "Primary caregivers who are active SLG member",
-                "value": "false"
-              },
-              {
-                "key": "linked_temporary_support",
-                "text": "Households linked to temporary consumption support (e.g., SLG & OVC funds)",
-                "value": "false"
-              },
-              {
-                "key": "linked_cash_transfer",
-                "text": "Household linked to cash transfer e.g. TASAF",
-                "value": "false"
-              },
-              {
-                "key": "linked_entrepreneurship_trainings",
-                "text": "Caregivers linked to entrepreneurship trainings",
-                "value": "false"
-              },
-              {
-                "key": "supported_iga",
-                "text": "Caregivers supported to establish income generating activity (IGA)",
-                "value": "false"
-              },
-              {
-                "key": "linked_to_market",
-                "text": "Households linked to market",
-                "value": "false"
-              },
-              {
-                "key": "supported_succession_plan",
-                "text": "Households supported to prepare succession plan",
-                "value": "false"
-              },
-              {
-                "key": "linked_agricultural_extension",
-                "text": "Primary caregivers linked to agricultural extension support",
-                "value": "false"
-              }
-            ]
+            "key": "linked_to_an_hiv_support_group",
+            "text": "Linked to an HIV support group",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "linked_to_an_hiv_support_group"
           },
           {
-            "key": "referrals",
-            "type": "check_box",
-            "combine_checkbox_option_values": true,
-            "label": "Referrals",
-            "options": [
-              {
-                "key": "health_related_services",
-                "text": "Health Related Services",
-                "value": "false"
-              },
-              {
-                "key": "nutrition_services",
-                "text": "Nutrition",
-                "value": "false"
-              },
-              {
-                "key": "education_services",
-                "text": "Education",
-                "value": "false"
-              },
-              {
-                "key": "child_protection_services",
-                "text": "Child Protection",
-                "value": "false"
-              },
-              {
-                "key": "psychosocial_support_services",
-                "text": "Psychosocial Support",
-                "value": "false"
-              },
-              {
-                "key": "economic_strengthening_services",
-                "text": "Economic Strengthening",
-                "value": "false"
-              },
-              {
-                "key": "other_services",
-                "text": "Others",
-                "value": "false"
-              },
-              {
-                "key": "no_referrals_sent",
-                "text": "No referrals sent",
-                "value": "false"
-              }
-            ]
+            "key": "received_art_adherence_counseling",
+            "text": "Received ART adherence counseling",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "received_art_adherence_counseling"
           },
           {
-            "key": "support_provided_to_caregiver_on_referrals",
-            "type": "check_box",
-            "combine_checkbox_option_values": true,
-            "label": "Support Provided to Caregiver on Referrals",
-            "options": [
-              {
-                "key": "accompanied_to_service",
-                "text": "Accompanied to Service",
-                "value": "false"
-              },
-              {
-                "key": "assisted_with_transport",
-                "text": "Assisted with Transport",
-                "value": "false"
-              },
-              {
-                "key": "no_support_provided",
-                "text": "No support provided",
-                "value": "false"
-              }
-            ]
+            "key": "supported_to_join_CHF_or_TIKA",
+            "text": "Supported to join CHF/TIKA",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "supported_to_join_CHF_or_TIKA"
           },
           {
-            "key": "caregivers_referrals_completed",
-            "type": "check_box",
-            "combine_checkbox_option_values": true,
-            "label": "Caregiver's Referrals Completed",
-            "options": [
-              {
-                "key": "health_services_completed",
-                "text": "Health Related Services",
-                "value": "false"
-              },
-              {
-                "key": "nutrition_completed",
-                "text": "Nutrition",
-                "value": "false"
-              },
-              {
-                "key": "education_completed",
-                "text": "Education",
-                "value": "false"
-              },
-              {
-                "key": "child_protection_completed",
-                "text": "Child Protection",
-                "value": "false"
-              },
-              {
-                "key": "psychosocial_support_completed",
-                "text": "Psychosocial Support",
-                "value": "false"
-              },
-              {
-                "key": "economic_strengthening_completed",
-                "text": "Economic Strengthening",
-                "value": "false"
-              },
-              {
-                "key": "other_services_completed",
-                "text": "Others",
-                "value": "false"
-              }
-            ]
-          },
-          {
-            "key": "shelter_and_hygiene",
-            "type": "check_box",
-            "combine_checkbox_option_values": true,
-            "label": "Shelter & Hygiene",
-            "options": [
-              {
-                "key": "house_renovation_support",
-                "text": "Households linked to house renovation support",
-                "value": "false"
-              },
-              {
-                "key": "house_construction_support",
-                "text": "Households linked to house construction support",
-                "value": "false"
-              },
-              {
-                "key": "wash_education",
-                "text": "Households received water, sanitation and hygiene (WASH) education",
-                "value": "false"
-              },
-              {
-                "key": "clothing_support",
-                "text": "Households received clothing support",
-                "value": "false"
-              }
-            ]
+            "key": "received_support_for_gbv",
+            "text": "Received support for GBV",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "received_support_for_gbv"
           }
         ]
       },
@@ -365,42 +218,50 @@
           {
             "key": "primary_caregivers_who_are_active_slg_members",
             "text": "Primary caregivers who are active SLG members HIV risk assessment",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "primary_caregivers_who_are_active_slg_members"
           },
           {
-            "key": "households_linked_to_temporary_consumption_support_",
+            "key": "households_linked_to_temporary_consumption_support",
             "text": "Households linked to temporary consumption support (e.g. SLG & OVC funds)",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "households_linked_to_temporary_consumption_support"
           },
           {
             "key": "households_linked_to_cash_transfer",
             "text": "Households linked to temporary consumption linked to cash transfer e.g. TASAF",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "households_linked_to_cash_transfer"
           },
           {
             "key": "caregivers_linked_to_entrepreneurship_trainings",
             "text": "Caregivers supported to entrepreneurship trainings",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "caregivers_linked_to_entrepreneurship_trainings"
           },
           {
             "key": "caregivers_supported_to_establish_income_generating_activity_iga",
             "text": "Caregivers supported to establish income generating activity (IGA)",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "caregivers_supported_to_establish_income_generating_activity_iga"
           },
           {
             "key": "households_linked_to_market",
             "text": "Households linked to market",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "households_linked_to_market"
           },
           {
             "key": "households_supported_to_prepare_succession_plan",
             "text": "Households supported to prepare succession plan",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "households_supported_to_prepare_succession_plan"
           },
           {
             "key": "primary_caregivers_linked_to_agricultural_extension_support",
             "text": "Primary caregivers linked to agricultural extension support",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "primary_caregivers_linked_to_agricultural_extension_support"
           }
         ]
       },
@@ -412,44 +273,55 @@
         "type": "check_box",
         "combine_checkbox_option_values": true,
         "label": "Referrals",
+        "exclusive": ["no_referrals_sent"],
         "options": [
           {
             "key": "health_related_services",
             "text": "Health related services",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "health_related_services"
           },
           {
             "key": "nutrition",
             "text": "Nutrition",
-            "value": "false"
-          },{
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "nutrition"
+          },
+          {
             "key": "education",
             "text": "Education",
-            "value": "false"
-          },{
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "education"
+          },
+          {
             "key": "child_protection",
             "text": "Child Protection",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "child_protection"
           },
           {
             "key": "psychosocial_support",
             "text": "Psychosocial Support",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "psychosocial_support"
           },
           {
             "key": "economic_strengthening",
             "text": "Economic Strengthening",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "economic_strengthening"
           },
           {
-            "key": "others",
+            "key": "other",
             "text": "Others",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
           },
           {
             "key": "no_referrals_sent",
             "text": "No referrals sent",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no_referrals_sent"
           }
         ]
       },
@@ -460,22 +332,26 @@
         "openmrs_entity_id": "support_provided_to_caregiver_on_referrals",
         "type": "check_box",
         "combine_checkbox_option_values": true,
+        "exclusive": ["no_support_provided"],
         "label": "Support given to caregiver on referrals",
         "options": [
           {
             "key": "accompanied_to_service",
             "text": "Accompanied to service",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "accompanied_to_service"
           },
           {
             "key": "assisted_with_transport",
             "text": "Assisted with transport",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "assisted_with_transport"
           },
           {
             "key": "no_support_provided",
             "text": "No support provided",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no_support_provided"
           }
         ]
       },
@@ -486,42 +362,56 @@
         "openmrs_entity_id": "caregiver_referrals_completed",
         "type": "check_box",
         "combine_checkbox_option_values": true,
+        "exclusive": ["none"],
         "label": "Caregiver referrals completed",
         "options": [
           {
             "key": "health_related_services",
             "text": "Health related services",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "health_related_services"
           },
           {
             "key": "nutrition",
             "text": "Nutrition",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "nutrition"
           },
           {
             "key": "education",
             "text": "Education",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "education"
           },
           {
             "key": "child_protection",
             "text": "Child Protection",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "child_protection"
           },
           {
             "key": "psychosocial_support",
             "text": "Psychosocial Support",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "psychosocial_support"
           },
           {
             "key": "economic_strengthening",
             "text": "Economic Strengthening",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "economic_strengthening"
           },
           {
-            "key": "others",
+            "key": "other",
             "text": "Others",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
           }
         ]
       },
@@ -548,26 +438,37 @@
         "type": "check_box",
         "combine_checkbox_option_values": true,
         "label": "Shelter and hygiene",
+        "exclusive": ["none"],
         "options": [
           {
             "key": "households_linked_to_house_renovation_support",
             "text": "Households linked to house renovation support",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "households_linked_to_house_renovation_support"
           },
           {
             "key": "households_linked_to_house_construction_support",
             "text": "Households linked to house construction support",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "households_linked_to_house_construction_support"
           },
           {
             "key": "households_received_water_sanitation_and_hygiene_wash_support",
             "text": "Households received water sanitation and hygiene (WASH) support",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "households_received_water_sanitation_and_hygiene_wash_support"
           },
           {
             "key": "households_received_clothing_support",
             "text": "Households received clothing support",
-            "value": "false"
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "households_received_clothing_support"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
           }
         ]
       }
