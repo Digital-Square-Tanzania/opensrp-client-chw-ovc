@@ -1,0 +1,8 @@
+---
+name: step1_other_caregiver_referrals_completed
+description: Support provided to Child on Referrals should not be visible if No Referrals Were Sent is selected in Select Referrals provided to the client
+priority: 1
+condition: "!step1_other_caregiver_referrals_completed.contains('others')"
+actions:
+  - "isRelevant = true"
+
