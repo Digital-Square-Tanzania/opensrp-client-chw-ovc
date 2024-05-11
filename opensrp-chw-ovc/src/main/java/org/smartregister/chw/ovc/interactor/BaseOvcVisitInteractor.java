@@ -150,6 +150,11 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
                     }
                 } else {
                     actionList.remove(mContext.getString(R.string.mvc_education_and_psychosocial_title));
+                    actionList.remove(mContext.getString(R.string.mvc_need_and_risk_assessment_title));
+                    actionList.remove(mContext.getString(R.string.mvc_child_protection_title));
+                    actionList.remove(mContext.getString(R.string.mvc_referrals_title));
+                    actionList.remove(mContext.getString(R.string.mvc_health_care_and_nutritional_status_title));
+                    actionList.remove(mContext.getString(R.string.mvc_hiv_risk_assessment_title));
                 }
                 appExecutors.mainThread().execute(() -> callBack.preloadActions(actionList));
             }
