@@ -1,15 +1,15 @@
 ---
-name: step1_other_caregiver_referrals_completed
-description: Support provided to Child on Referrals should not be visible if No Referrals Were Sent is selected in Select Referrals provided to the client
+name: step1_other_referrals
+description: Only show specify other referrals if other is selected
 priority: 1
-condition: "!step1_other_caregiver_referrals_completed.contains('others')"
+condition: "step1_referrals.contains('other')"
 actions:
   - "isRelevant = true"
 ---
-name: step1_other_referrals
-description: Only show specify edit text other referrals has been checked
+name: step1_other_caregiver_referrals_completed
+description: Only show specify edit text other caregiver referrals has been checked
 priority: 1
-condition: "!step1_other_caregiver_referrals_completed.contains('others')"
+condition: "step1_caregiver_referrals_completed.contains('other')"
 actions:
   - "isRelevant = true"
 
