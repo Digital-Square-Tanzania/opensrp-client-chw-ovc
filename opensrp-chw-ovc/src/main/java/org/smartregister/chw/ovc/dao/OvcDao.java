@@ -62,6 +62,7 @@ public class OvcDao extends AbstractDao {
 
         return res.get(0);
     }
+
     public static String getClientDisabilities(String baseEntityID) {
         String sql = "SELECT  disabilities  FROM ec_family_member WHERE base_entity_id = '" + baseEntityID + "'";
 
@@ -82,6 +83,23 @@ public class OvcDao extends AbstractDao {
         if (res == null || res.size() != 1) return null;
 
         return res.get(0).toLowerCase();
+    }
+
+    public static boolean hasChildrenUnder5(String baseEntityID) {
+        String sql = "SELECT COUNT(*) as count FROM ec_family_member \n" +
+                "INNER JOIN (\n" +
+                "\t\tSELECT ec_family.base_entity_id  FROM ec_family_member \n" +
+                "\t\tINNER JOIN ec_family ON ec_family.family_head  = ec_family_member.base_entity_id\n" +
+                "\t\tWHERE ec_family_member.entity_type <> 'ec_independent_client'\n" +
+                "\t\tAND ec_family_member.base_entity_id = '" + baseEntityID + "'\n" +
+                ") as T1 on T1.base_entity_id = ec_family_member.relational_id\n" +
+                "WHERE \n" +
+                "\t(date('Now') - date(ec_family_member.dob)) < 5";
+
+        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "count");
+
+        List<Integer> res = readData(sql, dataMap);
+        return res.get(0) > 0;
     }
 
     public static MemberObject getMember(String baseEntityID) {
