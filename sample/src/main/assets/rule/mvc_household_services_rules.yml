@@ -12,4 +12,11 @@ priority: 1
 condition: "step1_caregiver_referrals_completed.contains('other')"
 actions:
   - "isRelevant = true"
+---
+name: step1_parenting_caregivers_with_children
+description: Parenting (for Caregivers with Children of <5 years Old) Question should only be visible if the household has any child with less than 5 years
+priority: 1
+condition: "global_hasChildrenLessThanFive"
+actions:
+  - "isRelevant = true"
 
