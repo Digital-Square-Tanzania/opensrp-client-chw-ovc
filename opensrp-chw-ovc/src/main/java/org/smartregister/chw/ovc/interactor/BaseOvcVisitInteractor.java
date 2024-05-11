@@ -134,7 +134,7 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
     }
 
     protected void createOvcVisitTypeAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new MvcVisitTypeActionHelper() {
+        OvcVisitActionHelper actionHelper = new MvcVisitTypeActionHelper(memberObject) {
             @Override
             public void processVisitType(String visitType) {
                 // This is used to show other actions only when the visit type is new_client or active_continuing_with_services
