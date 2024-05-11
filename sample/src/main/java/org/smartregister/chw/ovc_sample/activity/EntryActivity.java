@@ -25,8 +25,8 @@ public class EntryActivity extends SecuredActivity implements View.OnClickListen
         setSupportActionBar(toolbar);
 
         findViewById(R.id.ovc_activity).setOnClickListener(this);
-        findViewById(R.id.ovc_community_visit).setOnClickListener(this);
-        findViewById(R.id.ovc_profile).setOnClickListener(this);
+        findViewById(R.id.mvc_head_of_household_profile_activity).setOnClickListener(this);
+        findViewById(R.id.mvc_client_profile_activity).setOnClickListener(this);
     }
 
     @Override
@@ -45,10 +45,10 @@ public class EntryActivity extends SecuredActivity implements View.OnClickListen
             case R.id.ovc_activity:
                 startActivity(new Intent(this, OvcRegisterActivity.class));
                 break;
-            case R.id.ovc_community_visit:
-                OvcCommunityMemberProfileActivity.startMe(this, "12345");
+            case R.id.mvc_head_of_household_profile_activity:
+                OvcHeadOfHouseholdProfileActivity.startMe(this, "12345");
                 break;
-            case R.id.ovc_profile:
+            case R.id.mvc_client_profile_activity:
                 OvcMemberProfileActivity.startMe(this, "12345");
                 break;
             default:
@@ -63,6 +63,21 @@ public class EntryActivity extends SecuredActivity implements View.OnClickListen
         memberObject.setMiddleName("Ali");
         memberObject.setGender("Female");
         memberObject.setDob("2023-01-18T03:00:00.000+03:00");
+        memberObject.setUniqueId("3503504");
+        memberObject.setBaseEntityId("3503504");
+        memberObject.setFamilyBaseEntityId("3503504");
+        memberObject.setAddress("Njiro");
+
+        return memberObject;
+    }
+
+    public static MemberObject getSampleHeadOfHouseholdMember() {
+        MemberObject memberObject = new MemberObject();
+        memberObject.setFirstName("James");
+        memberObject.setLastName("Juma");
+        memberObject.setMiddleName("Kachinga");
+        memberObject.setGender("Male");
+        memberObject.setDob("1985-01-18T03:00:00.000+03:00");
         memberObject.setUniqueId("3503504");
         memberObject.setBaseEntityId("3503504");
         memberObject.setFamilyBaseEntityId("3503504");

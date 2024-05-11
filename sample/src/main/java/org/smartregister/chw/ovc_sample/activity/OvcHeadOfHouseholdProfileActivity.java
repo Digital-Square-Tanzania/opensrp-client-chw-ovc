@@ -18,10 +18,10 @@ import org.smartregister.chw.ovc_sample.R;
 import timber.log.Timber;
 
 
-public class OvcCommunityMemberProfileActivity extends BaseOvcProfileActivity {
+public class OvcHeadOfHouseholdProfileActivity extends BaseOvcProfileActivity {
 
     public static void startMe(Activity activity, String baseEntityID) {
-        Intent intent = new Intent(activity, OvcCommunityMemberProfileActivity.class);
+        Intent intent = new Intent(activity, OvcHeadOfHouseholdProfileActivity.class);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
         activity.startActivityForResult(intent, Constants.REQUEST_CODE_GET_JSON);
     }
@@ -29,14 +29,14 @@ public class OvcCommunityMemberProfileActivity extends BaseOvcProfileActivity {
     @Override
     protected void onCreation() {
         super.onCreation();
-        textViewRecordOvc.setText(R.string.record_ovc_home_visit);
+        textViewRecordOvc.setText(R.string.record_mvc_household_services);
     }
 
     @Override
     public void recordOvc(MemberObject memberObject) {
         JSONObject jsonObject;
         try {
-            jsonObject = OvcJsonFormUtils.getFormAsJson(Constants.FORMS.MVC_VISIT_TYPE_FORM);
+            jsonObject = OvcJsonFormUtils.getFormAsJson(Constants.FORMS.MVC_HOUSEHOLD_SERVICES);
             startFormActivity(jsonObject);
         } catch (Exception e) {
             Timber.e(e);
@@ -45,7 +45,7 @@ public class OvcCommunityMemberProfileActivity extends BaseOvcProfileActivity {
 
     @Override
     protected MemberObject getMemberObject(String baseEntityId) {
-        return EntryActivity.getSampleMember();
+        return EntryActivity.getSampleHeadOfHouseholdMember();
     }
 
 

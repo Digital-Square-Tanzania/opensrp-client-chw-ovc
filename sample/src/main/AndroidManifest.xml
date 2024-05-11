@@ -32,7 +32,7 @@
             android:name="org.smartregister.chw.ovc_sample.activity.OvcHfVisitActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="org.smartregister.chw.ovc_sample.activity.OvcCommunityMemberProfileActivity"
+            android:name="org.smartregister.chw.ovc_sample.activity.OvcHeadOfHouseholdProfileActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
