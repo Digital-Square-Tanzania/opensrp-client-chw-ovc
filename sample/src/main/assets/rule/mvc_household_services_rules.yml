@@ -5,4 +5,11 @@ priority: 1
 condition: "!step1_other_caregiver_referrals_completed.contains('others')"
 actions:
   - "isRelevant = true"
+---
+name: step1_other_referrals
+description: Only show specify edit text other referrals has been checked
+priority: 1
+condition: "!step1_other_caregiver_referrals_completed.contains('others')"
+actions:
+  - "isRelevant = true"
 
