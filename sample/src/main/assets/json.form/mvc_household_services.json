@@ -1,5 +1,7 @@
 {
   "count": "1",
+  "global": {
+  },
   "encounter_type": "Household Services",
   "entity_id": "",
   "metadata": {
@@ -94,7 +96,14 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "not_applicable"
           }
-        ]
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "mvc_household_services_rules.yml"
+            }
+          }
+        }
       },
       {
         "key": "nutritional_status_assessment",
@@ -313,7 +322,7 @@
           },
           {
             "key": "other",
-            "text": "Others",
+            "text": "Other",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
           },
@@ -324,6 +333,21 @@
             "openmrs_entity_id": "no_referrals_sent"
           }
         ]
+      },
+      {
+        "key": "other_referrals",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_referrals",
+        "type": "edit_text",
+        "hint": "Please specify referrals completed",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "mvc_household_services_rules.yml"
+            }
+          }
+        }
       },
       {
         "key": "support_provided_to_caregiver_on_referrals",
@@ -403,7 +427,7 @@
           },
           {
             "key": "other",
-            "text": "Others",
+            "text": "Other",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
           },
@@ -421,7 +445,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_caregiver_referrals_completed",
         "type": "edit_text",
-        "hint": "Other caregiver referrals completed",
+        "hint": "Please specify other caregiver referrals completed",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
