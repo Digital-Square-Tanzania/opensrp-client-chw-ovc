@@ -72,7 +72,7 @@ public class OvcJsonFormUtils extends org.smartregister.util.JsonFormUtils {
         String entityId = getString(jsonForm, ENTITY_ID);
         String encounter_type = jsonForm.optString(Constants.JSON_FORM_EXTRA.ENCOUNTER_TYPE);
 
-        if (Constants.EVENT_TYPE.OVC_REGISTRATION.equals(encounter_type)) {
+        if (Constants.EVENT_TYPE.MVC_HEAD_OF_HOUSEHOLD_REGISTRATION.equals(encounter_type)) {
             encounter_type = Constants.TABLES.OVC_REGISTER;
         } else if (Constants.EVENT_TYPE.MVC_HOUSEHOLD_SERVICES_VISIT.equals(encounter_type) || Constants.EVENT_TYPE.MVC_SERVICES_VISIT.equals(encounter_type)) {
             encounter_type = Constants.TABLES.OVC_FOLLOW_UP;

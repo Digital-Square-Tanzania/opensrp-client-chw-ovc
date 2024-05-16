@@ -36,7 +36,9 @@ public interface Constants {
     }
 
     interface EVENT_TYPE {
-        String OVC_REGISTRATION = "OVC Registration";
+        String MVC_HEAD_OF_HOUSEHOLD_REGISTRATION = "MVC Head of Household Enrollment";
+
+        String MVC_CHILD_REGISTRATION = "MVC Child Registration";
 
         String MVC_HOUSEHOLD_SERVICES_VISIT = "MVC Household Services";
 
