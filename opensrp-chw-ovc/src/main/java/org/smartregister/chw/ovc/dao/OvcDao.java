@@ -82,7 +82,12 @@ public class OvcDao extends AbstractDao {
         List<String> res = readData(sql, dataMap);
         if (res == null || res.size() != 1) return null;
 
-        return res.get(0).toLowerCase();
+        try {
+            return res.get(0).toLowerCase();
+        } catch (Exception e){
+            Timber.e(e);
+            return null;
+        }
     }
 
     public static boolean hasChildrenUnder5(String baseEntityID) {
