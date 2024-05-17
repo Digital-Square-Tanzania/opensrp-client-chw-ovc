@@ -42,7 +42,7 @@ public interface Constants {
 
         String MVC_HOUSEHOLD_SERVICES_VISIT = "MVC Household Services";
 
-        String MVC_SERVICES_VISIT = "MVC Services";
+        String MVC_CHILD_SERVICES_VISIT = "MVC Child Services";
 
         String DELETE_EVENT = "Delete Event";
     }

@@ -114,7 +114,7 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
         mContext = view.getContext();
         this.callBack = callBack;
         if (view.getEditMode()) {
-            Visit lastVisit = ovcLibrary.visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.EVENT_TYPE.MVC_SERVICES_VISIT);
+            Visit lastVisit = ovcLibrary.visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.EVENT_TYPE.MVC_CHILD_SERVICES_VISIT);
             if (lastVisit != null) {
                 details = VisitUtils.getVisitGroups(ovcLibrary.visitDetailsRepository().getVisits(lastVisit.getVisitId()));
             }
@@ -434,7 +434,7 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
     }
 
     protected String getEncounterType() {
-        return Constants.EVENT_TYPE.MVC_SERVICES_VISIT;
+        return Constants.EVENT_TYPE.MVC_CHILD_SERVICES_VISIT;
     }
 
     protected String getTableName() {

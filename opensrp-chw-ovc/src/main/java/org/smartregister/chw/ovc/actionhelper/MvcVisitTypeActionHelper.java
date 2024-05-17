@@ -50,7 +50,7 @@ public abstract class MvcVisitTypeActionHelper extends OvcVisitActionHelper {
     @Override
     public String getPreProcessed() {
         try {
-            if (!VisitUtils.getVisits(memberObject.getBaseEntityId(), Constants.EVENT_TYPE.MVC_SERVICES_VISIT).isEmpty() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (!VisitUtils.getVisits(memberObject.getBaseEntityId(), Constants.EVENT_TYPE.MVC_CHILD_SERVICES_VISIT).isEmpty() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 JSONArray fields = jsonForm.getJSONObject(STEP_ONE).getJSONArray(FIELDS);
                 JSONObject visitType = fields.getJSONObject(0);
                 visitType.getJSONArray(OPTIONS).remove(0);
