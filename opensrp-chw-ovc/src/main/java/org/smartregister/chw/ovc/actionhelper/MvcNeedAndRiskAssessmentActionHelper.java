@@ -8,13 +8,13 @@ import org.smartregister.chw.ovc.util.JsonFormUtils;
 import timber.log.Timber;
 
 public class MvcNeedAndRiskAssessmentActionHelper extends OvcVisitActionHelper {
-    private String selectTheClientNeed;
+    private String hasNeedAssessmentBeenConducted;
     @Override
     public void onPayloadReceived(String jsonPayload) {
         JSONObject payload;
         try {
             payload = new JSONObject(jsonPayload);
-            selectTheClientNeed = JsonFormUtils.getCheckBoxValue(payload,"select_the_client_need");
+            hasNeedAssessmentBeenConducted = JsonFormUtils.getValue(payload,"has_need_assessment_been_conducted");
         } catch (JSONException e) {
             Timber.d(e);
         }
@@ -22,16 +22,12 @@ public class MvcNeedAndRiskAssessmentActionHelper extends OvcVisitActionHelper {
 
     @Override
     public String evaluateSubTitle() {
-        if(selectTheClientNeed != null){
-            return null;
-        } else {
-            return null;
-        }
+        return null;
     }
 
     @Override
     public BaseOvcVisitAction.Status evaluateStatusOnPayload() {
-        if(selectTheClientNeed != null){
+        if(hasNeedAssessmentBeenConducted != null){
             return BaseOvcVisitAction.Status.COMPLETED;
         } else {
             return BaseOvcVisitAction.Status.PENDING;

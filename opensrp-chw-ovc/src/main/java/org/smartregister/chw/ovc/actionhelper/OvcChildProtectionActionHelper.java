@@ -15,7 +15,7 @@ public class OvcChildProtectionActionHelper extends OvcVisitActionHelper {
         JSONObject payload;
         try {
             payload = new JSONObject(jsonPayload);
-            selectChildProtectionService = JsonFormUtils.getCheckBoxValue(payload,"select_child_protection_service");
+            selectChildProtectionService = JsonFormUtils.getCheckBoxValue(payload,"child_protection_service");
         } catch (JSONException e) {
             Timber.d(e);
         }

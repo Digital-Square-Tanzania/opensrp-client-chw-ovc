@@ -122,7 +122,7 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
 
         final Runnable runnable = () -> {
             try {
-                createOvcVisitTypeAction(memberObject, details);
+                createOvcVisitTypeAction(memberObject, details, view.getEditMode());
             } catch (BaseOvcVisitAction.ValidationException e) {
                 Timber.e(e);
             }
@@ -133,8 +133,8 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
         appExecutors.diskIO().execute(runnable);
     }
 
-    protected void createOvcVisitTypeAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new MvcVisitTypeActionHelper(memberObject) {
+    protected void createOvcVisitTypeAction(MemberObject memberObject, Map<String, List<VisitDetail>> details, boolean editMode) throws BaseOvcVisitAction.ValidationException {
+        OvcVisitActionHelper actionHelper = new MvcVisitTypeActionHelper(memberObject, editMode) {
             @Override
             public void processVisitType(String visitType) {
                 // This is used to show other actions only when the visit type is new_client or active_continuing_with_services
@@ -221,7 +221,7 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
                     String actionName = mContext.getString(R.string.mvc_hiv_risk_assessment_title);
                     actionList.remove(actionName);
                 }
-                appExecutors.mainThread().execute(() -> callBack.onMemberDetailsReloaded(memberObject));
+                appExecutors.mainThread().execute(() -> callBack.preloadActions(actionList));
             }
         };
 
@@ -295,7 +295,7 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
             }
         }
 
-        String type = StringUtils.isBlank(parentEventType) ? getEncounterType() : getEncounterType();
+        String type = getEncounterType();
 
         // persist to database
         Visit visit = saveVisit(editMode, memberID, type, combinedJsons, parentEventType);

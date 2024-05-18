@@ -18,7 +18,7 @@ import java.util.Map;
 import timber.log.Timber;
 
 public abstract class OvcHealthCareAndNutritionalStatusActionHelper extends OvcVisitActionHelper {
-    private String childReceivedVaccinations;
+    private String healthCareServiceProvided;
 
     private MemberObject memberObject;
     private String jsonString;
@@ -50,8 +50,7 @@ public abstract class OvcHealthCareAndNutritionalStatusActionHelper extends OvcV
         JSONObject payload;
         try {
             payload = new JSONObject(jsonPayload);
-            childReceivedVaccinations = JsonFormUtils.getValue(payload, "child_received_vaccinations");
-            String healthCareServiceProvided = JsonFormUtils.getValue(payload, "health_care_service_provided");
+            healthCareServiceProvided = JsonFormUtils.getValue(payload, "health_care_service_provided");
             processNutritionAction(healthCareServiceProvided);
         } catch (JSONException e) {
             Timber.e(e);
@@ -67,7 +66,7 @@ public abstract class OvcHealthCareAndNutritionalStatusActionHelper extends OvcV
 
     @Override
     public BaseOvcVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isNotBlank(childReceivedVaccinations)) {
+        if (StringUtils.isNotBlank(healthCareServiceProvided)) {
             return BaseOvcVisitAction.Status.COMPLETED;
         } else
             return BaseOvcVisitAction.Status.PENDING;

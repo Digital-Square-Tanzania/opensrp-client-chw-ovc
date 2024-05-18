@@ -60,19 +60,15 @@ public class MvcEducationAndPsychosocialSupportActionHelper extends OvcVisitActi
         JSONObject payload;
         try {
             payload = new JSONObject(jsonPayload);
-            selectEcdPsychosocialSupport = JsonFormUtils.getCheckBoxValue(payload, "ecd_psychosocial_support");
+            selectEcdPsychosocialSupport = JsonFormUtils.getValue(payload, "ecd_psychosocial_support");
         } catch (JSONException e) {
-            Timber.d(e);
+            Timber.e(e);
         }
     }
 
     @Override
     public String evaluateSubTitle() {
-        if (selectEcdPsychosocialSupport != null) {
-            return null;
-        } else {
-            return null;
-        }
+        return null;
     }
 
     @Override

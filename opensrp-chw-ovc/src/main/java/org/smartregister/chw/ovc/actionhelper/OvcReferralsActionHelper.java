@@ -15,7 +15,7 @@ public class OvcReferralsActionHelper extends OvcVisitActionHelper {
         JSONObject payload;
         try {
             payload = new JSONObject(jsonPayload);
-            selectReferralsProvided = JsonFormUtils.getCheckBoxValue(payload,"select_referrals_provided");
+            selectReferralsProvided = JsonFormUtils.getCheckBoxValue(payload,"referrals_provided");
         } catch (JSONException e) {
             Timber.d(e);
         }
