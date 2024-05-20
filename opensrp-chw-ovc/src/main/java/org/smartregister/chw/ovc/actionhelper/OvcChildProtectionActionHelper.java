@@ -16,7 +16,7 @@ public class OvcChildProtectionActionHelper extends OvcVisitActionHelper {
         JSONObject payload;
         try {
             payload = new JSONObject(jsonPayload);
-            selectChildProtectionService = JsonFormUtils.getCheckBoxValue(payload,"child_protection_service");
+            selectChildProtectionService = JsonFormUtils.getCheckBoxValue(payload, "child_protection_service");
         } catch (JSONException e) {
             Timber.d(e);
         }
@@ -24,11 +24,7 @@ public class OvcChildProtectionActionHelper extends OvcVisitActionHelper {
 
     @Override
     public String evaluateSubTitle() {
-        if(selectChildProtectionService != null){
-            return "Child protection service:"+selectChildProtectionService;
-        } else {
-            return null;
-        }
+        return null;
     }
 
     @Override

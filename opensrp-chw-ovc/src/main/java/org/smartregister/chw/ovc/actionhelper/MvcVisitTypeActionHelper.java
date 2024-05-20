@@ -92,9 +92,6 @@ public abstract class MvcVisitTypeActionHelper extends OvcVisitActionHelper {
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isNotBlank(visitType)) {
-            return null;
-        }
         return null;
     }
 
