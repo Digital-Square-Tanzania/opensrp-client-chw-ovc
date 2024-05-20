@@ -1,5 +1,6 @@
 package org.smartregister.chw.ovc.actionhelper;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.ovc.model.BaseOvcVisitAction;
@@ -27,7 +28,7 @@ public class MvcNeedAndRiskAssessmentActionHelper extends OvcVisitActionHelper {
 
     @Override
     public BaseOvcVisitAction.Status evaluateStatusOnPayload() {
-        if(hasNeedAssessmentBeenConducted != null){
+        if (StringUtils.isNotBlank(hasNeedAssessmentBeenConducted)) {
             return BaseOvcVisitAction.Status.COMPLETED;
         } else {
             return BaseOvcVisitAction.Status.PENDING;

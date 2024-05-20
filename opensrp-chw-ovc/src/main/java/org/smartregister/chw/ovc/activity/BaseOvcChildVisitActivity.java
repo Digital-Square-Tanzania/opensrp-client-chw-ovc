@@ -177,6 +177,11 @@ public class BaseOvcChildVisitActivity extends SecuredActivity implements BaseOv
     }
 
     @Override
+    public void setEditMode(boolean editMode) {
+        this.isEditMode = editMode;
+    }
+
+    @Override
     public void onMemberDetailsReloaded(MemberObject memberObject) {
         this.memberObject = memberObject;
         presenter.initialize();

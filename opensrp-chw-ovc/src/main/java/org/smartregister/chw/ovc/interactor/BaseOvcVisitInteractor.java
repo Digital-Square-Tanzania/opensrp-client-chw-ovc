@@ -17,6 +17,7 @@ import org.smartregister.chw.ovc.actionhelper.MvcNeedAndRiskAssessmentActionHelp
 import org.smartregister.chw.ovc.actionhelper.MvcVisitTypeActionHelper;
 import org.smartregister.chw.ovc.actionhelper.OvcChildProtectionActionHelper;
 import org.smartregister.chw.ovc.actionhelper.OvcHealthCareAndNutritionalStatusActionHelper;
+import org.smartregister.chw.ovc.actionhelper.OvcReferralsActionHelper;
 import org.smartregister.chw.ovc.actionhelper.OvcVisitActionHelper;
 import org.smartregister.chw.ovc.contract.BaseOvcVisitContract;
 import org.smartregister.chw.ovc.dao.OvcDao;
@@ -198,7 +199,7 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
     }
 
     protected void createReferralsAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new OvcChildProtectionActionHelper();
+        OvcVisitActionHelper actionHelper = new OvcReferralsActionHelper();
 
         String actionName = mContext.getString(R.string.mvc_referrals_title);
 
@@ -248,11 +249,12 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
     }
 
     @Override
-    public void submitVisit(final boolean editMode, final String memberID, final Map<String, BaseOvcVisitAction> map, final BaseOvcVisitContract.InteractorCallBack callBack, Constants.SaveType saveType) {
+    public void submitVisit(BaseOvcVisitContract.View view, final String memberID, final Map<String, BaseOvcVisitAction> map, final BaseOvcVisitContract.InteractorCallBack callBack, Constants.SaveType saveType) {
         final Runnable runnable = () -> {
             boolean result = true;
             try {
-                submitVisit(editMode, memberID, map, "");
+                submitVisit(view.getEditMode(), memberID, map, "");
+                view.setEditMode(true);
             } catch (Exception e) {
                 Timber.e(e);
                 result = false;
@@ -302,15 +304,6 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
         if (visit != null) {
             saveVisitDetails(visit, payloadType, payloadDetails);
             processExternalVisits(visit, externalVisits, memberID);
-        }
-
-        if (ovcLibrary.isSubmitOnSave()) {
-            List<Visit> visits = new ArrayList<>(1);
-            visits.add(visit);
-            VisitUtils.processVisits(visits, ovcLibrary.visitRepository(), ovcLibrary.visitDetailsRepository());
-
-            Context context = ovcLibrary.getInstance().context().applicationContext();
-
         }
     }
 

@@ -1,5 +1,6 @@
 package org.smartregister.chw.ovc.actionhelper;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.ovc.model.BaseOvcVisitAction;
@@ -15,7 +16,7 @@ public class OvcReferralsActionHelper extends OvcVisitActionHelper {
         JSONObject payload;
         try {
             payload = new JSONObject(jsonPayload);
-            selectReferralsProvided = JsonFormUtils.getCheckBoxValue(payload,"referrals_provided");
+            selectReferralsProvided = JsonFormUtils.getValue(payload,"referrals_provided");
         } catch (JSONException e) {
             Timber.d(e);
         }
@@ -28,7 +29,7 @@ public class OvcReferralsActionHelper extends OvcVisitActionHelper {
 
     @Override
     public BaseOvcVisitAction.Status evaluateStatusOnPayload() {
-        if(selectReferralsProvided != null){
+        if (StringUtils.isNotBlank(selectReferralsProvided)) {
             return BaseOvcVisitAction.Status.COMPLETED;
         } else {
             return BaseOvcVisitAction.Status.PENDING;

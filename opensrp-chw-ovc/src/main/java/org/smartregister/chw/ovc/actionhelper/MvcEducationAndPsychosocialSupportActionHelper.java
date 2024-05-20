@@ -4,6 +4,7 @@ import static org.smartregister.client.utils.constants.JsonFormConstants.JSON_FO
 
 import android.content.Context;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.ovc.domain.MemberObject;
@@ -73,7 +74,7 @@ public class MvcEducationAndPsychosocialSupportActionHelper extends OvcVisitActi
 
     @Override
     public BaseOvcVisitAction.Status evaluateStatusOnPayload() {
-        if (selectEcdPsychosocialSupport != null) {
+        if (StringUtils.isNotBlank(selectEcdPsychosocialSupport)) {
             return BaseOvcVisitAction.Status.COMPLETED;
         } else {
             return BaseOvcVisitAction.Status.PENDING;

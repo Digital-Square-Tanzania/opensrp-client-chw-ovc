@@ -1,5 +1,6 @@
 package org.smartregister.chw.ovc.actionhelper;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.ovc.model.BaseOvcVisitAction;
@@ -32,7 +33,7 @@ public class OvcChildProtectionActionHelper extends OvcVisitActionHelper {
 
     @Override
     public BaseOvcVisitAction.Status evaluateStatusOnPayload() {
-        if(selectChildProtectionService != null){
+        if (StringUtils.isNotBlank(selectChildProtectionService)) {
             return BaseOvcVisitAction.Status.COMPLETED;
         } else {
             return BaseOvcVisitAction.Status.PENDING;
