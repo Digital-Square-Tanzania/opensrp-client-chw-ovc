@@ -71,12 +71,10 @@ public class BaseOvcRegisterModel implements OvcRegisterContract.Model {
     }
 
     private void processDisabilityOptions(JSONObject field, String clientDisabilities) throws JSONException {
-        if (clientDisabilities.equalsIgnoreCase(YES)) {
+        if (clientDisabilities != null && clientDisabilities.equalsIgnoreCase(YES)) {
             field.getJSONArray(OPTIONS).getJSONObject(0).put(VALUE, true);
         } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                field.getJSONArray(OPTIONS).remove(0);
-            }
+            field.getJSONArray(OPTIONS).remove(0);
         }
     }
 
