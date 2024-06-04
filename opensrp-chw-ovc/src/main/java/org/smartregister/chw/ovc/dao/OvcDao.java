@@ -1,5 +1,6 @@
 package org.smartregister.chw.ovc.dao;
 
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.json.JSONException;
@@ -71,7 +72,11 @@ public class OvcDao extends AbstractDao {
         List<String> res = readData(sql, dataMap);
         if (res == null || res.size() != 1) return "no";
 
-        return res.get(0).toLowerCase();
+        if (StringUtils.isNotBlank(res.get(0))) {
+            return res.get(0).toLowerCase();
+        } else {
+            return "no";
+        }
     }
 
     public static String getClientBirthCertificate(String baseEntityID) {
@@ -84,7 +89,7 @@ public class OvcDao extends AbstractDao {
 
         try {
             return res.get(0).toLowerCase();
-        } catch (Exception e){
+        } catch (Exception e) {
             Timber.e(e);
             return null;
         }
