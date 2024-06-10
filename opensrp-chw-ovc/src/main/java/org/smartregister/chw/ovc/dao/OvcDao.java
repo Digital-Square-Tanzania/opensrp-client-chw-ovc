@@ -34,6 +34,22 @@ public class OvcDao extends AbstractDao {
         return res.get(0) > 0;
     }
 
+    public static boolean isReasonsOfVulnerabilityLivingWithHiv(String baseEntityID) {
+        String sql = "SELECT reasons_of_vulnerability FROM " + Constants.TABLES.OVC_REGISTER + " p " + "WHERE p.base_entity_id = '" + baseEntityID + "' AND p.is_closed = 0";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "reasons_of_vulnerability");
+
+        List<String> res = readData(sql, dataMap);
+        if (res == null || res.size() != 1) return false;
+
+        try {
+            return res.get(0).contains("living_with_hiv");
+        } catch (Exception e) {
+            Timber.e(e);
+            return false;
+        }
+    }
+
     public static int getClientAge(String baseEntityID) {
         String sql = "SELECT  dob  FROM ec_family_member WHERE base_entity_id = '" + baseEntityID + "'";
 

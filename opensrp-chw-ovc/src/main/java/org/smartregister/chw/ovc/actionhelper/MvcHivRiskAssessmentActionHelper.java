@@ -1,12 +1,17 @@
 package org.smartregister.chw.ovc.actionhelper;
 
 import static org.smartregister.client.utils.constants.JsonFormConstants.GLOBAL;
+import static org.smartregister.client.utils.constants.JsonFormConstants.READ_ONLY;
 
 import android.content.Context;
 
+import com.vijay.jsonwizard.constants.JsonFormConstants;
+
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.ovc.dao.OvcDao;
 import org.smartregister.chw.ovc.domain.MemberObject;
 import org.smartregister.chw.ovc.domain.VisitDetail;
 import org.smartregister.chw.ovc.model.BaseOvcVisitAction;
@@ -48,6 +53,23 @@ public class MvcHivRiskAssessmentActionHelper extends OvcVisitActionHelper {
         try {
             JSONObject global = jsonForm.getJSONObject(GLOBAL);
             global.put("age", memberObject.getAge());
+
+            boolean isLivingWithHiv = OvcDao.isReasonsOfVulnerabilityLivingWithHiv(memberObject.getBaseEntityId());
+            if (isLivingWithHiv) {
+                JSONArray fields = jsonForm.getJSONObject(JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                JSONObject childEverTestedForHiv = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "child_ever_tested_for_hiv");
+                if (childEverTestedForHiv != null) {
+                    childEverTestedForHiv.put(JsonFormUtils.VALUE, "yes");
+                    childEverTestedForHiv.put(READ_ONLY, true);
+                }
+
+                JSONObject hivResults = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv_results");
+                if (hivResults != null) {
+                    hivResults.put(JsonFormUtils.VALUE, "positive");
+                    childEverTestedForHiv.put(READ_ONLY, true);
+                }
+            }
+
             return jsonForm.toString();
         } catch (JSONException e) {
             Timber.e(e);
