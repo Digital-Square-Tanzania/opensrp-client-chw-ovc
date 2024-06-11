@@ -151,7 +151,15 @@ public class OvcDao extends AbstractDao {
             memberObject.setFamilyHead(getCursorValue(cursor, "family_head", ""));
             memberObject.setFamilyHeadPhoneNumber(getCursorValue(cursor, "pcg_phone_number", ""));
             memberObject.setFamilyHeadPhoneNumber(getCursorValue(cursor, "family_head_phone_number", ""));
-            memberObject.setHivStatus(getCursorValue(cursor, "hiv_results", ""));
+
+
+            memberObject.setHivStatus(getCursorValue(cursor, "hiv_status_after_testing", ""));
+
+            if (StringUtils.isBlank(memberObject.getHivStatus())) {
+                memberObject.setHivStatus(getCursorValue(cursor, "hiv_results", ""));
+            }
+
+
             memberObject.setCtcNumber(getCursorValue(cursor, "ctc_number", ""));
 
             String familyHeadName = getCursorValue(cursor, "family_head_first_name", "") + " " + getCursorValue(cursor, "family_head_middle_name", "");
