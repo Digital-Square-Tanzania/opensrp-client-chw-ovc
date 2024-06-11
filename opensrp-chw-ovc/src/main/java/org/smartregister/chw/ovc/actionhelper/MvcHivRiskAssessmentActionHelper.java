@@ -66,7 +66,7 @@ public class MvcHivRiskAssessmentActionHelper extends OvcVisitActionHelper {
                 JSONObject hivResults = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv_results");
                 if (hivResults != null) {
                     hivResults.put(JsonFormUtils.VALUE, "positive");
-                    childEverTestedForHiv.put(READ_ONLY, true);
+                    hivResults.put(READ_ONLY, true);
                 }
             }
 
