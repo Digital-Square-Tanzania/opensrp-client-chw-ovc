@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">test</string>
     <string name="error_unable_to_start_form">An error occurred when starting the form</string>
     <string name="error_unable_to_save_form">An error occurred when saving the form</string>
-    <string name="ovc_register">OVC</string>
+    <string name="ovc_register">MVC</string>
     <string name="add_member">Add Member</string>
     <string name="sort">Sort</string>
     <string name="home">Home</string>
@@ -13,8 +13,8 @@
     <string name="interpunct" translatable="false">\u00b7</string>
     <string name="malaria_followup_visit">FOLLOWUP\nVISIT</string>
     <string name="record_ovc">Record MVC Service</string>
-    <string name="record_ovc_home_visit">Record OVC Community Visit</string>
-    <string name="return_to_previous_ovc_clients_page">Return all OVC Clients</string>
+    <string name="record_ovc_home_visit">Record MVC Community Visit</string>
+    <string name="return_to_previous_ovc_clients_page">Return all MVC Clients</string>
     <string name="last_visit_40_days_ago">Last visit %1$s ago</string>
     <string name="view_ovc_followup_history">View followup history</string>
     <string name="ovc_followup_history">Followup History</string>
@@ -28,9 +28,9 @@
     <string name="vaccine_service_upcoming"><![CDATA[%1$s <font color=#7f7f7f>upcoming (%2$s)</font></b>]]></string>
     <string name="vaccine_service_overdue"><![CDATA[%1$s <font color=#f04646>overdue (%2$s)</font></b>]]></string>
     <string name="vaccine_service_due"><![CDATA[%1$s <font color=#000000>due (%2$s)</font></b>]]></string>
-    <string name="call_ovc_client">OVC Client</string>
+    <string name="call_ovc_client">MVC Client</string>
     <string name="head_of_family">Head of family</string>
-    <string name="ovc_client">OVC Client</string>
+    <string name="ovc_client">MVC Client</string>
     <string name="copy_to_clipboard">Copy to clipboard</string>
     <string name="copied_phone_number">PhoneNumber copied to clipboard</string>
     <string name="call">Call</string>
@@ -49,11 +49,11 @@
     <string name="edit">EDIT</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
-    <string name="ovc_enrollment">OVC Enrollment</string>
+    <string name="ovc_enrollment">MVC Enrollment</string>
 
     <string name="record_mvc_household_services">Record MVC Household Services</string>
 
-    <string name="ovc_visit">OVC Visit</string>
+    <string name="ovc_visit">MVC Visit</string>
     <string name="error_unable_save_home_visit">unable to save home visit</string>
     <string name="optional">optional</string>
     <string name="mvc_visit_type_action_title">Visit Type</string>
