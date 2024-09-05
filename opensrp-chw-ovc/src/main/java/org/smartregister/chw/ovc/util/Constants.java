@@ -24,6 +24,8 @@ public interface Constants {
 
     public static final String MVC_BIRTH_CERTIFICATE_NUMBER = "birth_certificate_number";
 
+    public static final String MVC_LEVEL_OF_EDUCATION = "level_of_education";
+
     public static final String YES = "yes";
 
     interface JSON_FORM_EXTRA {

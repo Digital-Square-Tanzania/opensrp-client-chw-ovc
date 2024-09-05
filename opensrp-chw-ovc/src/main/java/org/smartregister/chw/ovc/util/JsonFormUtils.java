@@ -248,9 +248,13 @@ public class JsonFormUtils extends org.smartregister.util.JsonFormUtils {
                 int optionSize = jaOptions.length();
                 int y = 0;
                 while (optionSize > y) {
-                    JSONObject options = jaOptions.getJSONObject(y);
-                    if (options.getBoolean(JsonFormConstants.VALUE)) {
-                        resBuilder.append(options.getString(JsonFormConstants.TEXT)).append(", ");
+                    try {
+                        JSONObject options = jaOptions.getJSONObject(y);
+                        if (options.getBoolean(JsonFormConstants.VALUE)) {
+                            resBuilder.append(options.getString(JsonFormConstants.TEXT)).append(", ");
+                        }
+                    } catch (Exception e) {
+                        Timber.e(e);
                     }
                     y++;
                 }

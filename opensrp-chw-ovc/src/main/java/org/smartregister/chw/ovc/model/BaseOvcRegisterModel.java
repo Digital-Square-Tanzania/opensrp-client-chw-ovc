@@ -10,6 +10,7 @@ import static org.smartregister.chw.ovc.util.Constants.MVC_BIRTH_CERTIFICATE_NUM
 import static org.smartregister.chw.ovc.util.Constants.MVC_CHILD_REGISTRATION;
 import static org.smartregister.chw.ovc.util.Constants.MVC_HAS_BIRTH_CERTIFICATE;
 import static org.smartregister.chw.ovc.util.Constants.MVC_HEAD_OF_HOUSEHOLD_ENROLLMENT;
+import static org.smartregister.chw.ovc.util.Constants.MVC_LEVEL_OF_EDUCATION;
 import static org.smartregister.chw.ovc.util.Constants.REASONS_OF_VULNERABILITY;
 import static org.smartregister.chw.ovc.util.Constants.STEP_ONE;
 import static org.smartregister.chw.ovc.util.Constants.TYPE_OF_VULNERABILITY;
@@ -26,6 +27,8 @@ import org.json.JSONObject;
 import org.smartregister.chw.ovc.contract.OvcRegisterContract;
 import org.smartregister.chw.ovc.dao.OvcDao;
 import org.smartregister.chw.ovc.util.OvcJsonFormUtils;
+
+import timber.log.Timber;
 
 public class BaseOvcRegisterModel implements OvcRegisterContract.Model {
 
@@ -44,6 +47,43 @@ public class BaseOvcRegisterModel implements OvcRegisterContract.Model {
         String encounterType = jsonObject.optString(ENCOUNTER_TYPE);
         if (encounterType.equalsIgnoreCase(MVC_HEAD_OF_HOUSEHOLD_ENROLLMENT) || encounterType.equalsIgnoreCase(MVC_CHILD_REGISTRATION)) {
             processRegistrationFormFields(jsonObject, entityId);
+        }
+
+        if (encounterType.equalsIgnoreCase(MVC_CHILD_REGISTRATION)) {
+            JSONArray fields = jsonObject.getJSONObject(STEP_ONE).getJSONArray(FIELDS);
+            int age = OvcDao.getClientAge(entityId);
+
+            for (int i = 0; i < fields.length(); i++) {
+                JSONObject field = fields.getJSONObject(i);
+                String key = field.getString(KEY);
+
+                try {
+                    if (key.equalsIgnoreCase(MVC_LEVEL_OF_EDUCATION)) {
+                        if (age < 5) {
+                            field.getJSONArray(OPTIONS).remove(5);
+                            field.getJSONArray(OPTIONS).remove(4);
+                            field.getJSONArray(OPTIONS).remove(3);
+                            field.getJSONArray(OPTIONS).remove(2);
+                        } else if (age < 10) {
+                            field.getJSONArray(OPTIONS).remove(5);
+                            field.getJSONArray(OPTIONS).remove(4);
+                            field.getJSONArray(OPTIONS).remove(3);
+                            field.getJSONArray(OPTIONS).remove(0);
+                        } else if (age < 14) {
+                            field.getJSONArray(OPTIONS).remove(5);
+                            field.getJSONArray(OPTIONS).remove(4);
+                            field.getJSONArray(OPTIONS).remove(1);
+                            field.getJSONArray(OPTIONS).remove(0);
+                        } else {
+                            field.getJSONArray(OPTIONS).remove(0);
+                            field.getJSONArray(OPTIONS).remove(1);
+                        }
+
+                    }
+                } catch (Exception e) {
+                    Timber.e(e);
+                }
+            }
         }
 
         OvcJsonFormUtils.getRegistrationForm(jsonObject, entityId, currentLocationId);

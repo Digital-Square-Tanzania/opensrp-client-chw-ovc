@@ -63,7 +63,7 @@ public abstract class MvcVisitTypeActionHelper extends OvcVisitActionHelper {
                 JSONArray fields = jsonForm.getJSONObject(STEP_ONE).getJSONArray(FIELDS);
                 JSONObject visitType = fields.getJSONObject(0);
                 visitType.getJSONArray(OPTIONS).remove(0);
-            } else if (!previousVisits.isEmpty()) {
+            } else if (!previousVisits.isEmpty() && previousVisits.get(0).getProcessed()) {
                 JSONArray fields = jsonForm.getJSONObject(STEP_ONE).getJSONArray(FIELDS);
                 JSONObject visitType = fields.getJSONObject(0);
                 visitType.getJSONArray(OPTIONS).remove(0);

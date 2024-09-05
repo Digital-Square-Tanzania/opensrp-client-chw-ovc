@@ -145,7 +145,7 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
                         createEducationAndPsychosocialSupportAction(memberObject, details);
                         createHealthCareAndNutritionalStatusAction(memberObject, details);
                         createChildProtectionAction(memberObject, details);
-                        createReferralsAction(memberObject, details);
+                        createReferralsAction(memberObject, details,visitType);
                     } catch (BaseOvcVisitAction.ValidationException e) {
                         Timber.e(e);
                     }
@@ -198,8 +198,8 @@ public class BaseOvcVisitInteractor implements BaseOvcVisitContract.Interactor {
         actionList.put(actionName, action);
     }
 
-    protected void createReferralsAction(MemberObject memberObject, Map<String, List<VisitDetail>> details) throws BaseOvcVisitAction.ValidationException {
-        OvcVisitActionHelper actionHelper = new OvcReferralsActionHelper();
+    protected void createReferralsAction(MemberObject memberObject, Map<String, List<VisitDetail>> details, String visitType) throws BaseOvcVisitAction.ValidationException {
+        OvcVisitActionHelper actionHelper = new OvcReferralsActionHelper(visitType);
 
         String actionName = mContext.getString(R.string.mvc_referrals_title);
 
