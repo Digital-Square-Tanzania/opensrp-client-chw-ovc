@@ -53,7 +53,6 @@
     <string name="record_mvc_household_services">Rekodi huduma zilizotolewa kwenye kaya</string>
     <string name="mvc_visit_type_action_title">Hatua aliyofikia katika mpango WWKMH</string>
 
-
     <string name="error_unable_save_home_visit">unable to save home visit</string>
     <string name="optional">optional</string>
     <string name="mvc_education_and_psychosocial_title">Elimu na Mafunzo ya Ufundi stadi</string>
@@ -63,4 +62,5 @@
     <string name="mvc_hiv_risk_assessment_title">Tathmini ya Hatari ya maambukizo VVU</string>
     <string name="mvc_child_protection_title">Ulinzi na Usalama wa Mtoto</string>
     <string name="mvc_referrals_title">Rufaa</string>
+    <string name="view_registration_details">Tazama taarifa za usajili</string>
 </resources>

@@ -63,6 +63,7 @@ public class BaseOvcProfileActivity extends BaseProfileActivity implements OvcPr
     protected BaseOvcFloatingMenu baseOvcFloatingMenu;
 
     protected TextView manualProcessVisit;
+    protected RelativeLayout rlRegistrationDetails;
 
     public static void startProfileActivity(Activity activity, String baseEntityId) {
         Intent intent = new Intent(activity, BaseOvcProfileActivity.class);
@@ -107,6 +108,7 @@ public class BaseOvcProfileActivity extends BaseProfileActivity implements OvcPr
         textViewUndo = findViewById(R.id.textview_undo);
         imageView = findViewById(R.id.imageview_profile);
         manualProcessVisit = findViewById(R.id.textview_manual_process);
+        rlRegistrationDetails = findViewById(R.id.rlRegistrationDetails);
 
         textViewVisitDoneEdit.setOnClickListener(this);
         textViewVisitDoneEdit.setVisibility(View.GONE);
@@ -115,6 +117,7 @@ public class BaseOvcProfileActivity extends BaseProfileActivity implements OvcPr
         rlLastVisit.setOnClickListener(this);
         textViewRecordOvc.setOnClickListener(this);
         textViewUndo.setOnClickListener(this);
+        rlRegistrationDetails.setOnClickListener(this);
 
         imageRenderHelper = new ImageRenderHelper(this);
         memberObject = getMemberObject(baseEntityId);

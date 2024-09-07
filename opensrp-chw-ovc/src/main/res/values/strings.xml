@@ -66,5 +66,6 @@
     <string name="mvc_hiv_risk_assessment_title">HIV Risk Assessment</string>
     <string name="mvc_child_protection_title">Child Protection</string>
     <string name="mvc_referrals_title">Referrals</string>
+    <string name="view_registration_details">View enrollment details</string>
 
 </resources>
