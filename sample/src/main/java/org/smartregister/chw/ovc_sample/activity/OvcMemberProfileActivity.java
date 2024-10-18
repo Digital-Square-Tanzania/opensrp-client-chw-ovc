@@ -17,7 +17,7 @@ public class OvcMemberProfileActivity extends BaseOvcProfileActivity {
     }
 
     @Override
-    public void recordGbv(MemberObject memberObject) {
+    public void recordOvc(MemberObject memberObject) {
         OvcHfVisitActivity.startMe(this, memberObject.getBaseEntityId(), false);
     }
 

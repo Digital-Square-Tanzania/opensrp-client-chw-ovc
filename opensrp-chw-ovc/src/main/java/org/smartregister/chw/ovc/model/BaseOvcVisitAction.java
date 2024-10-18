@@ -34,7 +34,7 @@ public class BaseOvcVisitAction {
     private String formName;
     private String jsonPayload;
     private String selectedOption;
-    private GbvVisitActionHelper gbvVisitActionHelper;
+    private OvcVisitActionHelper ovcVisitActionHelper;
     private final Map<String, List<VisitDetail>> details;
     private final Context context;
     private final Validator validator;
@@ -51,7 +51,7 @@ public class BaseOvcVisitAction {
         this.optional = builder.optional;
         this.destinationFragment = builder.destinationFragment;
         this.formName = builder.formName;
-        this.gbvVisitActionHelper = builder.gbvVisitActionHelper;
+        this.ovcVisitActionHelper = builder.ovcVisitActionHelper;
         this.details = builder.details;
         this.context = builder.context;
         this.processingMode = builder.processingMode;
@@ -80,9 +80,9 @@ public class BaseOvcVisitAction {
                 jsonPayload = jsonObject.toString();
             }
 
-            if (gbvVisitActionHelper != null) {
-                gbvVisitActionHelper.onJsonFormLoaded(jsonPayload, context, details);
-                String pre_processed = gbvVisitActionHelper.getPreProcessed();
+            if (ovcVisitActionHelper != null) {
+                ovcVisitActionHelper.onJsonFormLoaded(jsonPayload, context, details);
+                String pre_processed = ovcVisitActionHelper.getPreProcessed();
                 if (StringUtils.isNotBlank(pre_processed)) {
                     JSONObject jsonObject = new JSONObject(pre_processed);
                     JsonFormUtils.populateForm(jsonObject, details);
@@ -90,12 +90,12 @@ public class BaseOvcVisitAction {
                     this.jsonPayload = jsonObject.toString();
                 }
 
-                String sub_title = gbvVisitActionHelper.getPreProcessedSubTitle();
+                String sub_title = ovcVisitActionHelper.getPreProcessedSubTitle();
                 if (StringUtils.isNotBlank(sub_title)) {
                     this.subTitle = sub_title;
                 }
 
-                ScheduleStatus status = gbvVisitActionHelper.getPreProcessedStatus();
+                ScheduleStatus status = ovcVisitActionHelper.getPreProcessedStatus();
                 if (status != null) {
                     this.scheduleStatus = status;
                 }
@@ -236,22 +236,22 @@ public class BaseOvcVisitAction {
     }
 
     private void onPayloadReceivedNotifyHelper(String jsonPayload) {
-        if (gbvVisitActionHelper == null)
+        if (ovcVisitActionHelper == null)
             return;
 
-        gbvVisitActionHelper.onPayloadReceived(jsonPayload);
+        ovcVisitActionHelper.onPayloadReceived(jsonPayload);
 
-        String sub_title = gbvVisitActionHelper.evaluateSubTitle();
+        String sub_title = ovcVisitActionHelper.evaluateSubTitle();
         if (sub_title != null) {
             setSubTitle(sub_title);
         }
 
-        String post_process = gbvVisitActionHelper.postProcess(jsonPayload);
+        String post_process = ovcVisitActionHelper.postProcess(jsonPayload);
         if (post_process != null) {
-            this.jsonPayload = gbvVisitActionHelper.postProcess(jsonPayload);
+            this.jsonPayload = ovcVisitActionHelper.postProcess(jsonPayload);
         }
 
-        gbvVisitActionHelper.onPayloadReceived(this);
+        ovcVisitActionHelper.onPayloadReceived(this);
     }
 
     public void setProcessedJsonPayload(String jsonPayload) {
@@ -282,12 +282,12 @@ public class BaseOvcVisitAction {
         this.selectedOption = selectedOption;
     }
 
-    public GbvVisitActionHelper getGbvVisitActionHelper() {
-        return gbvVisitActionHelper;
+    public OvcVisitActionHelper getOvcVisitActionHelper() {
+        return ovcVisitActionHelper;
     }
 
-    public void setGbvVisitActionHelper(GbvVisitActionHelper gbvVisitActionHelper) {
-        this.gbvVisitActionHelper = gbvVisitActionHelper;
+    public void setOvcVisitActionHelper(OvcVisitActionHelper ovcVisitActionHelper) {
+        this.ovcVisitActionHelper = ovcVisitActionHelper;
     }
 
     /**
@@ -297,8 +297,8 @@ public class BaseOvcVisitAction {
     public void evaluateStatus() {
         setActionStatus(computedStatus());
 
-        if (getGbvVisitActionHelper() != null) {
-            setActionStatus(getGbvVisitActionHelper().evaluateStatusOnPayload());
+        if (getOvcVisitActionHelper() != null) {
+            setActionStatus(getOvcVisitActionHelper().evaluateStatusOnPayload());
         }
     }
 
@@ -321,7 +321,7 @@ public class BaseOvcVisitAction {
      */
     public enum ProcessingMode {COMBINED, SEPARATE}
 
-    public interface GbvVisitActionHelper {
+    public interface OvcVisitActionHelper {
 
         /**
          * Inject values to the json form before rendering
@@ -390,7 +390,7 @@ public class BaseOvcVisitAction {
         private boolean optional = true;
         private BaseHomeVisitFragment destinationFragment;
         private String formName;
-        private GbvVisitActionHelper gbvVisitActionHelper;
+        private OvcVisitActionHelper ovcVisitActionHelper;
         private Map<String, List<VisitDetail>> details = new HashMap<>();
         private Context context;
         private String jsonPayload;
@@ -446,8 +446,8 @@ public class BaseOvcVisitAction {
             return this;
         }
 
-        public Builder withHelper(GbvVisitActionHelper gbvVisitActionHelper) {
-            this.gbvVisitActionHelper = gbvVisitActionHelper;
+        public Builder withHelper(OvcVisitActionHelper ovcVisitActionHelper) {
+            this.ovcVisitActionHelper = ovcVisitActionHelper;
             return this;
         }
 

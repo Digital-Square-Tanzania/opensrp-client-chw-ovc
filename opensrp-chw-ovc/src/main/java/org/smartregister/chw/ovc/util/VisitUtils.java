@@ -45,7 +45,7 @@ public class VisitUtils {
 
         for (Visit v : visits) {
 
-            if (v.getVisitType().equalsIgnoreCase(Constants.EVENT_TYPE.GBV_FOLLOW_UP_VISIT)) {
+            if (v.getVisitType().equalsIgnoreCase(Constants.EVENT_TYPE.MVC_CHILD_SERVICES_VISIT)) {
                 try {
                     visitList.add(v);
                 } catch (Exception e) {
@@ -54,7 +54,7 @@ public class VisitUtils {
             }
         }
 
-        if (visitList.size() > 0) {
+        if (!visitList.isEmpty()) {
             processVisits(visitList, visitRepository, visitDetailsRepository);
             //TODO: Extract string resource and give a more descriptive text
             Toast.makeText(context, "VISIT SAVED AND PROCESSED", Toast.LENGTH_SHORT).show();
@@ -63,9 +63,7 @@ public class VisitUtils {
 
     public static List<Visit> getVisits(String memberID, String... eventTypes) {
 
-        List<Visit> visits = (eventTypes != null && eventTypes.length > 0) ? getVisitsOnly(memberID, eventTypes[0]) : getVisitsOnly(memberID, Constants.EVENT_TYPE.GBV_FOLLOW_UP_VISIT);
-
-        return visits;
+        return (eventTypes != null && eventTypes.length > 0) ? getVisitsOnly(memberID, eventTypes[0]) : getVisitsOnly(memberID, Constants.EVENT_TYPE.MVC_CHILD_SERVICES_VISIT);
     }
 
 

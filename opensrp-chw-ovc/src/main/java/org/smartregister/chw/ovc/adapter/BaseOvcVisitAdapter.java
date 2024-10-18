@@ -23,12 +23,12 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class BaseOvcVisitAdapter extends RecyclerView.Adapter<BaseOvcVisitAdapter.MyViewHolder> {
-    private Map<String, BaseOvcVisitAction> gbvVisitActionList;
+    private Map<String, BaseOvcVisitAction> ovcVisitActionList;
     private Context context;
     private BaseOvcVisitContract.View visitContractView;
 
     public BaseOvcVisitAdapter(Context context, BaseOvcVisitContract.View view, LinkedHashMap<String, BaseOvcVisitAction> myDataset) {
-        gbvVisitActionList = myDataset;
+        ovcVisitActionList = myDataset;
         this.context = context;
         this.visitContractView = view;
     }
@@ -38,7 +38,7 @@ public class BaseOvcVisitAdapter extends RecyclerView.Adapter<BaseOvcVisitAdapte
     public BaseOvcVisitAdapter.MyViewHolder onCreateViewHolder(@NotNull ViewGroup parent,
                                                                int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.gbv_visit_item, parent, false);
+                .inflate(R.layout.ovc_visit_item, parent, false);
         return new MyViewHolder(v);
     }
 
@@ -50,7 +50,7 @@ public class BaseOvcVisitAdapter extends RecyclerView.Adapter<BaseOvcVisitAdapte
      */
     private BaseOvcVisitAction getByPosition(int position) {
         int count = -1;
-        for (Map.Entry<String, BaseOvcVisitAction> entry : gbvVisitActionList.entrySet()) {
+        for (Map.Entry<String, BaseOvcVisitAction> entry : ovcVisitActionList.entrySet()) {
             if (entry.getValue().isValid())
                 count++;
 
@@ -65,12 +65,12 @@ public class BaseOvcVisitAdapter extends RecyclerView.Adapter<BaseOvcVisitAdapte
     @Override
     public void onBindViewHolder(@NotNull MyViewHolder holder, int position) {
 
-        BaseOvcVisitAction gbvVisitAction = getByPosition(position);
-        if (gbvVisitAction == null)
+        BaseOvcVisitAction ovcVisitAction = getByPosition(position);
+        if (ovcVisitAction == null)
 
             return;
 
-        if (!gbvVisitAction.isEnabled()) {
+        if (!ovcVisitAction.isEnabled()) {
             holder.titleText.setTextColor(context.getResources().getColor(R.color.grey));
             holder.descriptionText.setTextColor(context.getResources().getColor(R.color.grey));
         } else {
@@ -78,19 +78,19 @@ public class BaseOvcVisitAdapter extends RecyclerView.Adapter<BaseOvcVisitAdapte
         }
 
         String title = MessageFormat.format("{0}<i>{1}</i>",
-                gbvVisitAction.getTitle(),
-                gbvVisitAction.isOptional() ? " - " + context.getString(R.string.optional) : ""
+                ovcVisitAction.getTitle(),
+                ovcVisitAction.isOptional() ? " - " + context.getString(R.string.optional) : ""
         );
         holder.titleText.setText(Html.fromHtml(title));
-        if (StringUtils.isNotBlank(gbvVisitAction.getSubTitle())) {
+        if (StringUtils.isNotBlank(ovcVisitAction.getSubTitle())) {
 
-            if (gbvVisitAction.isEnabled()) {
+            if (ovcVisitAction.isEnabled()) {
                 holder.descriptionText.setVisibility(View.VISIBLE);
                 holder.invalidText.setVisibility(View.GONE);
-                holder.descriptionText.setText(gbvVisitAction.getSubTitle());
+                holder.descriptionText.setText(ovcVisitAction.getSubTitle());
 
-                boolean isOverdue = gbvVisitAction.getScheduleStatus() == BaseOvcVisitAction.ScheduleStatus.OVERDUE &&
-                        gbvVisitAction.isEnabled();
+                boolean isOverdue = ovcVisitAction.getScheduleStatus() == BaseOvcVisitAction.ScheduleStatus.OVERDUE &&
+                        ovcVisitAction.isEnabled();
 
                 holder.descriptionText.setTextColor(
                         isOverdue ? context.getResources().getColor(R.color.alert_urgent_red) :
@@ -100,13 +100,13 @@ public class BaseOvcVisitAdapter extends RecyclerView.Adapter<BaseOvcVisitAdapte
             } else {
                 holder.descriptionText.setVisibility(View.GONE);
                 holder.invalidText.setVisibility(View.VISIBLE);
-                holder.invalidText.setText(Html.fromHtml("<i>" + gbvVisitAction.getDisabledMessage() + "</i>"));
+                holder.invalidText.setText(Html.fromHtml("<i>" + ovcVisitAction.getDisabledMessage() + "</i>"));
             }
         } else {
             holder.descriptionText.setVisibility(View.GONE);
         }
 
-        int color_res = getCircleColor(gbvVisitAction);
+        int color_res = getCircleColor(ovcVisitAction);
 
         holder.circleImageView.setCircleBackgroundColor(context.getResources().getColor(color_res));
         holder.circleImageView.setImageResource(R.drawable.ic_checked);
@@ -118,17 +118,17 @@ public class BaseOvcVisitAdapter extends RecyclerView.Adapter<BaseOvcVisitAdapte
             holder.circleImageView.setBorderColor(context.getResources().getColor(color_res));
         }
 
-        bindClickListener(holder.getView(), gbvVisitAction);
+        bindClickListener(holder.getView(), ovcVisitAction);
     }
 
-    private int getCircleColor(BaseOvcVisitAction gbvVisitAction) {
+    private int getCircleColor(BaseOvcVisitAction ovcVisitAction) {
 
         int color_res;
-        boolean valid = gbvVisitAction.isValid() && gbvVisitAction.isEnabled();
+        boolean valid = ovcVisitAction.isValid() && ovcVisitAction.isEnabled();
         if (!valid)
             return R.color.transparent_gray;
 
-        switch (gbvVisitAction.getActionStatus()) {
+        switch (ovcVisitAction.getActionStatus()) {
             case PENDING:
                 color_res = R.color.transparent_gray;
                 break;
@@ -145,17 +145,17 @@ public class BaseOvcVisitAdapter extends RecyclerView.Adapter<BaseOvcVisitAdapte
         return color_res;
     }
 
-    private void bindClickListener(View view, final BaseOvcVisitAction gbvVisitAction) {
-        if (!gbvVisitAction.isEnabled() || !gbvVisitAction.isValid()) {
+    private void bindClickListener(View view, final BaseOvcVisitAction ovcVisitAction) {
+        if (!ovcVisitAction.isEnabled() || !ovcVisitAction.isValid()) {
             view.setOnClickListener(null);
             return;
         }
 
         view.setOnClickListener(v -> {
-            if (StringUtils.isNotBlank(gbvVisitAction.getFormName())) {
-                visitContractView.startForm(gbvVisitAction);
+            if (StringUtils.isNotBlank(ovcVisitAction.getFormName())) {
+                visitContractView.startForm(ovcVisitAction);
             } else {
-                visitContractView.startFragment(gbvVisitAction);
+                visitContractView.startFragment(ovcVisitAction);
             }
             visitContractView.redrawVisitUI();
         });
@@ -164,7 +164,7 @@ public class BaseOvcVisitAdapter extends RecyclerView.Adapter<BaseOvcVisitAdapte
     @Override
     public int getItemCount() {
         int count = 0;
-        for (Map.Entry<String, BaseOvcVisitAction> entry : gbvVisitActionList.entrySet()) {
+        for (Map.Entry<String, BaseOvcVisitAction> entry : ovcVisitActionList.entrySet()) {
             if (entry.getValue().isValid())
                 count++;
         }

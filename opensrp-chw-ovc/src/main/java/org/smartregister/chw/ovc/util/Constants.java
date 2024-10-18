@@ -12,6 +12,22 @@ public interface Constants {
 
     String STEP_TWO = "step2";
 
+    public static final String MVC_HEAD_OF_HOUSEHOLD_ENROLLMENT = "MVC Head of Household Enrollment";
+
+    public static final String MVC_CHILD_REGISTRATION = "MVC Child Registration";
+
+    public static final String TYPE_OF_VULNERABILITY = "select_type_of_vulnerability";
+
+    public static final String REASONS_OF_VULNERABILITY = "reasons_of_vulnerability";
+
+    public static final String MVC_HAS_BIRTH_CERTIFICATE = "mvc_has_birth_certificate";
+
+    public static final String MVC_BIRTH_CERTIFICATE_NUMBER = "birth_certificate_number";
+
+    public static final String MVC_LEVEL_OF_EDUCATION = "level_of_education";
+
+    public static final String YES = "yes";
+
     interface JSON_FORM_EXTRA {
         String JSON = "json";
         String ENCOUNTER_TYPE = "encounter_type";
@@ -22,55 +38,43 @@ public interface Constants {
     }
 
     interface EVENT_TYPE {
-        String GBV_REGISTRATION = "GBV Registration";
+        String MVC_HEAD_OF_HOUSEHOLD_REGISTRATION = "MVC Head of Household Enrollment";
 
-        String GBV_FOLLOW_UP_VISIT = "GBV Follow-up Visit";
+        String MVC_CHILD_REGISTRATION = "MVC Child Registration";
 
-        String GBV_HOME_VISIT = "GBV Home Visit";
+        String MVC_HOUSEHOLD_SERVICES_VISIT = "MVC Household Services";
 
-        String VOID_EVENT = "Void Event";
+        String MVC_CHILD_SERVICES_VISIT = "MVC Child Services";
 
         String DELETE_EVENT = "Delete Event";
     }
 
     interface FORMS {
-        String GBV_VISIT_TYPE = "gbv_visit_type";
+        String MVC_VISIT_TYPE_FORM = "mvc_visit_type";
 
-        String GBV_CONSENT_FORM = "gbv_consent";
+        String MVC_EDUCATION_AND_PSYCHOSOCICAL_SUPPORT_FORM = "mvc_education_and_psychosocial";
 
-        String GBV_CONSENT_FOLLOWUP_FORM = "gbv_consent_followup";
+        String MVC_NEED_AND_RISK_ASSESSMENT_FORM = "mvc_need_and_risk_assessment";
 
-        String GBV_HISTORY_COLLECTION_FORM = "gbv_history_collection";
+        String MVC_CHILD_PROTECTION_FORM = "mvc_child_protection";
 
-        String GBV_MEDICAL_EXAMINATION_FORM = "gbv_medical_examination";
+        String MVC_REFERRALS_FORM = "mvc_referrals";
 
-        String GBV_PHYSICAL_EXAMINATION_FORM = "gbv_physical_examination";
+        String MVC_HEALTHCARE_AND_NUTRITION_STATUS_FORM = "mvc_healthcare_and_nutrition";
 
-        String GBV_FORENSIC_EXAMINATION_FORM = "gbv_forensic_examination";
+        String OVC_HIV_RISK_ASSESSMENT_FORM = "mvc_hiv_risk_assessment";
 
-        String GBV_LAB_INVESTIGATION_FORM = "gbv_lab_investigation";
+        String MVC_HEAD_OF_HOUSEHOLD_ENROLLMENT = "mvc_head_of_household_enrollment";
 
-        String GBV_PROVIDE_TREATMENT_FORM = "gbv_provide_treatment";
+        String MVC_CHILD_ENROLLMENT = "mvc_child_enrollment";
 
-        String GBV_EDUCATION_AND_COUNSELLING_FORM = "gbv_education_and_counselling";
-
-        String GBV_SAFETY_PLAN = "gbv_safety_plan";
-
-        String GBV_REFERRAL_AND_LINKAGE = "gbv_referral_and_linkage";
-
-        String GBV_NEXT_APPOINTMENT_DATE = "gbv_next_appointment_date";
-
-        String GBV_HOME_VISIT = "gbv_home_visit";
-
-        String GBV_ENROLLMENT = "gbv_enrollment";
-
-        String GBV_SCREENING = "gbv_screening";
+        String MVC_HOUSEHOLD_SERVICES = "mvc_household_services";
     }
 
     interface TABLES {
-        String GBV_REGISTER = "ec_gbv_register";
+        String OVC_REGISTER = "ec_ovc_register";
 
-        String GBV_FOLLOW_UP = "ec_gbv_follow_up_visit";
+        String OVC_FOLLOW_UP = "ec_ovc_follow_up_visit";
 
     }
 
@@ -81,7 +85,7 @@ public interface Constants {
 
         String ACTION = "ACTION";
 
-        String GBV_FORM_NAME = "GBV_FORM_NAME";
+        String OVC_FORM_NAME = "OVC_FORM_NAME";
 
         String EDIT_MODE = "editMode";
 
@@ -95,7 +99,7 @@ public interface Constants {
     }
 
     interface CONFIGURATION {
-        String GBV_REGISTRATION_CONFIGURATION = "gbv_registration";
+        String OVC_REGISTRATION_CONFIGURATION = "ovc_registration";
     }
 
 }

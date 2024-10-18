@@ -28,10 +28,10 @@ public class OvcDaoTest extends OvcDao {
     }
 
     @Test
-    public void testIsRegisteredForGbv() {
+    public void testIsRegisteredForOvc() {
         Mockito.doReturn(database).when(repository).getReadableDatabase();
-        boolean registered = OvcDao.isRegisteredForGbv("12345");
-        Mockito.verify(database).rawQuery(Mockito.contains("SELECT count(p.base_entity_id) count FROM ec_gbv_register p WHERE p.base_entity_id = '12345' AND p.is_closed = 0"), Mockito.any());
+        boolean registered = OvcDao.isRegisteredForOvc("12345");
+        Mockito.verify(database).rawQuery(Mockito.contains("SELECT count(p.base_entity_id) count FROM ec_ovc_register p WHERE p.base_entity_id = '12345' AND p.is_closed = 0"), Mockito.any());
         Assert.assertFalse(registered);
     }
 

@@ -20,9 +20,9 @@ public class BaseOvcCallWidgetDialogListener implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.gbv_call_close) {
+        if (i == R.id.ovc_call_close) {
             callDialogFragment.dismiss();
-        } else if (i == R.id.gbv_call_head_phone) {
+        } else if (i == R.id.ovc_call_head_phone) {
             try {
                 String phoneNumber = (String) v.getTag();
                 OvcUtil.launchDialer(callDialogFragment.getActivity(), callDialogFragment, phoneNumber);
@@ -30,7 +30,7 @@ public class BaseOvcCallWidgetDialogListener implements View.OnClickListener {
             } catch (Exception e) {
                 Timber.e(e);
             }
-        } else if (i == R.id.call_gbv_client_phone) {
+        } else if (i == R.id.call_ovc_client_phone) {
             try {
                 String phoneNumber = (String) v.getTag();
                 OvcUtil.launchDialer(callDialogFragment.getActivity(), callDialogFragment, phoneNumber);

@@ -37,7 +37,7 @@ public class BaseOvcRegisterFragmentPresenterTest {
 
     @Test
     public void getMainCondition() {
-        Assert.assertEquals("ec_gbv_register.is_closed is 0", baseOvcRegisterFragmentPresenter.getMainCondition());
+        Assert.assertEquals("ec_ovc_register.is_closed is 0", baseOvcRegisterFragmentPresenter.getMainCondition());
     }
 
     @Test
@@ -47,20 +47,20 @@ public class BaseOvcRegisterFragmentPresenterTest {
 
     @Test
     public void getDefaultSortQuery() {
-        Assert.assertEquals(Constants.TABLES.GBV_REGISTER + "." + DBConstants.KEY.LAST_INTERACTED_WITH + " DESC ", baseOvcRegisterFragmentPresenter.getDefaultSortQuery());
+        Assert.assertEquals(Constants.TABLES.OVC_REGISTER + "." + DBConstants.KEY.LAST_INTERACTED_WITH + " DESC ", baseOvcRegisterFragmentPresenter.getDefaultSortQuery());
     }
 
     @Test
     public void getMainTable() {
-        Assert.assertEquals(Constants.TABLES.GBV_REGISTER, baseOvcRegisterFragmentPresenter.getMainTable());
+        Assert.assertEquals(Constants.TABLES.OVC_REGISTER, baseOvcRegisterFragmentPresenter.getMainTable());
     }
 
     @Test
     public void initializeQueries() {
         Set<View> visibleColumns = new TreeSet<>();
         baseOvcRegisterFragmentPresenter.initializeQueries(null);
-        Mockito.doNothing().when(view).initializeQueryParams("ec_gbv_register", null, null);
-        Mockito.verify(view).initializeQueryParams("ec_gbv_register", null, null);
+        Mockito.doNothing().when(view).initializeQueryParams("ec_ovc_register", null, null);
+        Mockito.verify(view).initializeQueryParams("ec_ovc_register", null, null);
         Mockito.verify(view).initializeAdapter(visibleColumns);
         Mockito.verify(view).countExecute();
         Mockito.verify(view).filterandSortInInitializeQueries();

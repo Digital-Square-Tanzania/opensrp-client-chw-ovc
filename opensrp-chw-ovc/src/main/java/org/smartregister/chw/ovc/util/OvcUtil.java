@@ -127,16 +127,16 @@ public class OvcUtil {
         return R.mipmap.ic_member;
     }
 
-    public static class CloseGbvMemberFromRegister extends AsyncTask<Void, Void, Void> {
+    public static class CloseOvcMemberFromRegister extends AsyncTask<Void, Void, Void> {
         private final String baseEntityId;
 
-        public CloseGbvMemberFromRegister(String baseEntityId) {
+        public CloseOvcMemberFromRegister(String baseEntityId) {
             this.baseEntityId = baseEntityId;
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
-            OvcDao.closeGbvMemberFromRegister(baseEntityId);
+            OvcDao.closeOvcMemberFromRegister(baseEntityId);
             return null;
         }
 

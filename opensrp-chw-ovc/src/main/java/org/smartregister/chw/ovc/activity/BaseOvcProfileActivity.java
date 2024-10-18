@@ -48,7 +48,7 @@ public class BaseOvcProfileActivity extends BaseProfileActivity implements OvcPr
     protected TextView textViewGender;
     protected TextView textViewLocation;
     protected TextView textViewUniqueID;
-    protected TextView textViewRecordGbv;
+    protected TextView textViewRecordOvc;
     protected View view_most_due_overdue_row;
     protected RelativeLayout rlLastVisit;
     protected RelativeLayout visitStatus;
@@ -63,6 +63,7 @@ public class BaseOvcProfileActivity extends BaseProfileActivity implements OvcPr
     protected BaseOvcFloatingMenu baseOvcFloatingMenu;
 
     protected TextView manualProcessVisit;
+    protected RelativeLayout rlRegistrationDetails;
 
     public static void startProfileActivity(Activity activity, String baseEntityId) {
         Intent intent = new Intent(activity, BaseOvcProfileActivity.class);
@@ -72,7 +73,7 @@ public class BaseOvcProfileActivity extends BaseProfileActivity implements OvcPr
 
     @Override
     protected void onCreation() {
-        setContentView(R.layout.activity_gbv_profile);
+        setContentView(R.layout.activity_ovc_profile);
         Toolbar toolbar = findViewById(R.id.collapsing_toolbar);
         setSupportActionBar(toolbar);
         String baseEntityId = getIntent().getStringExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID);
@@ -103,18 +104,20 @@ public class BaseOvcProfileActivity extends BaseProfileActivity implements OvcPr
         visitDone = findViewById(R.id.visit_done_bar);
         progressBar = findViewById(R.id.progress_bar);
         textViewVisitDoneEdit = findViewById(R.id.textview_edit);
-        textViewRecordGbv = findViewById(R.id.textview_record_gbv);
+        textViewRecordOvc = findViewById(R.id.textview_record_ovc);
         textViewUndo = findViewById(R.id.textview_undo);
         imageView = findViewById(R.id.imageview_profile);
         manualProcessVisit = findViewById(R.id.textview_manual_process);
+        rlRegistrationDetails = findViewById(R.id.rlRegistrationDetails);
 
         textViewVisitDoneEdit.setOnClickListener(this);
         textViewVisitDoneEdit.setVisibility(View.GONE);
 
         textViewVisitDoneEdit.setOnClickListener(this);
         rlLastVisit.setOnClickListener(this);
-        textViewRecordGbv.setOnClickListener(this);
+        textViewRecordOvc.setOnClickListener(this);
         textViewUndo.setOnClickListener(this);
+        rlRegistrationDetails.setOnClickListener(this);
 
         imageRenderHelper = new ImageRenderHelper(this);
         memberObject = getMemberObject(baseEntityId);
@@ -139,8 +142,8 @@ public class BaseOvcProfileActivity extends BaseProfileActivity implements OvcPr
             onBackPressed();
         } else if (id == R.id.rlLastVisit) {
             this.openMedicalHistory();
-        } else if (id == R.id.textview_record_gbv) {
-            this.recordGbv(memberObject);
+        } else if (id == R.id.textview_record_ovc) {
+            this.recordOvc(memberObject);
         }
     }
 
@@ -163,7 +166,7 @@ public class BaseOvcProfileActivity extends BaseProfileActivity implements OvcPr
 
     @Override
     public void hideView() {
-        textViewRecordGbv.setVisibility(View.GONE);
+        textViewRecordOvc.setVisibility(View.GONE);
     }
 
     @SuppressLint("DefaultLocale")
@@ -177,7 +180,7 @@ public class BaseOvcProfileActivity extends BaseProfileActivity implements OvcPr
 
     @Override
     public void setOverDueColor() {
-        textViewRecordGbv.setBackground(getResources().getDrawable(R.drawable.record_btn_selector_overdue));
+        textViewRecordOvc.setBackground(getResources().getDrawable(R.drawable.record_btn_selector_overdue));
     }
 
     @Override
@@ -213,7 +216,7 @@ public class BaseOvcProfileActivity extends BaseProfileActivity implements OvcPr
     }
 
     @Override
-    public void recordGbv(MemberObject memberObject) {
+    public void recordOvc(MemberObject memberObject) {
         //implement
     }
 

@@ -37,19 +37,19 @@ public class BaseOvcProfilePresenterTest {
 
     @Test
     public void malariaTestDatePeriodIsLessThanSeven() {
-        profilePresenter.recordGbvButton("");
+        profilePresenter.recordOvcButton("");
         verify(view).hideView();
     }
 
     @Test
     public void malariaTestDatePeriodGreaterThanTen() {
-        profilePresenter.recordGbvButton("OVERDUE");
+        profilePresenter.recordOvcButton("OVERDUE");
         verify(view).setOverDueColor();
     }
 
     @Test
     public void malariaTestDatePeriodIsMoreThanFourteen() {
-        profilePresenter.recordGbvButton("EXPIRED");
+        profilePresenter.recordOvcButton("EXPIRED");
         verify(view).hideView();
     }
 

@@ -32,7 +32,7 @@ public interface BaseOvcVisitContract {
 
         void displayProgressBar(boolean state);
 
-        Map<String, BaseOvcVisitAction> getBaseGbvVisitActions();
+        Map<String, BaseOvcVisitAction> getBaseOvcVisitActions();
 
         void close();
 
@@ -53,6 +53,8 @@ public interface BaseOvcVisitContract {
         void displayToast(String message);
 
         Boolean getEditMode();
+
+        void setEditMode(boolean editMode);
 
         void onMemberDetailsReloaded(MemberObject memberObject);
     }
@@ -106,7 +108,7 @@ public interface BaseOvcVisitContract {
 
         void calculateActions(View view, MemberObject memberObject, InteractorCallBack callBack);
 
-        void submitVisit(boolean editMode, String memberID, Map<String, BaseOvcVisitAction> map, InteractorCallBack callBack, Constants.SaveType saveType);
+        void submitVisit(View view, String memberID, Map<String, BaseOvcVisitAction> map, InteractorCallBack callBack, Constants.SaveType saveType);
     }
 
     interface InteractorCallBack {

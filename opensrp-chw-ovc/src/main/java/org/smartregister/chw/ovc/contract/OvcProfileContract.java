@@ -12,7 +12,7 @@ public interface OvcProfileContract {
 
         void openMedicalHistory();
 
-        void recordGbv(MemberObject memberObject);
+        void recordOvc(MemberObject memberObject);
 
         void showProgressBar(boolean status);
 
@@ -30,7 +30,7 @@ public interface OvcProfileContract {
 
         void refreshProfileBottom();
 
-        void recordGbvButton(String visitState);
+        void recordOvcButton(String visitState);
     }
 
     interface Interactor {

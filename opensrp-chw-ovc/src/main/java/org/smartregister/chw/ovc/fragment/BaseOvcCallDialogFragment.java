@@ -55,7 +55,7 @@ public class BaseOvcCallDialogFragment extends DialogFragment implements BaseOvc
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup dialogView = (ViewGroup) inflater.inflate(R.layout.gbv_member_call_widget_dialog_fragment, container, false);
+        ViewGroup dialogView = (ViewGroup) inflater.inflate(R.layout.ovc_member_call_widget_dialog_fragment, container, false);
         setUpPosition();
         if (listener == null) {
             listener = new BaseOvcCallWidgetDialogListener(this);
@@ -72,7 +72,7 @@ public class BaseOvcCallDialogFragment extends DialogFragment implements BaseOvc
         } else if (MEMBER_OBJECT.getBaseEntityId().equals(MEMBER_OBJECT.getPrimaryCareGiver())) {
             callTitle.setText(String.format("%s %s", message, getResources().getString(R.string.call_primary_caregiver)));
         } else {
-            callTitle.setText(String.format("%s %s", message, getResources().getString(R.string.call_gbv_client)));
+            callTitle.setText(String.format("%s %s", message, getResources().getString(R.string.call_ovc_client)));
         }
     }
 
@@ -80,33 +80,33 @@ public class BaseOvcCallDialogFragment extends DialogFragment implements BaseOvc
         if (StringUtils.isNotBlank(MEMBER_OBJECT.getPhoneNumber())) {
             setCallTitle(rootView, R.id.call_title, getResources().getString(R.string.call));
             if (StringUtils.isNotBlank(MEMBER_OBJECT.getFamilyHead())) {
-                TextView familyHeadName = rootView.findViewById(R.id.gbv_call_head_name);
+                TextView familyHeadName = rootView.findViewById(R.id.ovc_call_head_name);
                 familyHeadName.setText(MEMBER_OBJECT.getFamilyHeadName());
-                TextView clientCallHeadPhone = rootView.findViewById(R.id.gbv_call_head_phone);
+                TextView clientCallHeadPhone = rootView.findViewById(R.id.ovc_call_head_phone);
                 clientCallHeadPhone.setTag(MEMBER_OBJECT.getPhoneNumber());
                 clientCallHeadPhone.setText(getName(getCurrentContext().getString(R.string.call), MEMBER_OBJECT.getFamilyHeadPhoneNumber()));
                 clientCallHeadPhone.setOnClickListener(listener);
 
             } else {
-                rootView.findViewById(R.id.gbv_layout_family_head).setVisibility(GONE);
+                rootView.findViewById(R.id.ovc_layout_family_head).setVisibility(GONE);
             }
 
             if (!MEMBER_OBJECT.getBaseEntityId().equals(MEMBER_OBJECT.getFamilyHead())) {
                 //just a member
-                TextView malariaClientNameTextView = rootView.findViewById(R.id.call_gbv_client_name);
+                TextView malariaClientNameTextView = rootView.findViewById(R.id.call_ovc_client_name);
                 malariaClientNameTextView.setText(String.format("%s %s %s", MEMBER_OBJECT.getFirstName(), MEMBER_OBJECT.getMiddleName(), MEMBER_OBJECT.getLastName()));
 
-                setCallTitle(rootView, R.id.call_gbv_client_title, "");
-                TextView callMalariaClientPhone = rootView.findViewById(R.id.call_gbv_client_phone);
+                setCallTitle(rootView, R.id.call_ovc_client_title, "");
+                TextView callMalariaClientPhone = rootView.findViewById(R.id.call_ovc_client_phone);
                 callMalariaClientPhone.setTag(MEMBER_OBJECT.getPhoneNumber());
                 callMalariaClientPhone.setText(getName(getCurrentContext().getString(R.string.call), MEMBER_OBJECT.getPhoneNumber()));
                 callMalariaClientPhone.setOnClickListener(listener);
             } else {
-                rootView.findViewById(R.id.layout_gbv_client).setVisibility(GONE);
+                rootView.findViewById(R.id.layout_ovc_client).setVisibility(GONE);
             }
         }
 
-        rootView.findViewById(R.id.gbv_call_close).setOnClickListener(listener);
+        rootView.findViewById(R.id.ovc_call_close).setOnClickListener(listener);
     }
 
     private void setUpPosition() {
