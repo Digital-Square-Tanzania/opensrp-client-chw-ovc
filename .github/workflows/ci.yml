@@ -23,7 +23,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Run unit tests with Gradle
-        run: ./gradlew opensrp-chw-gbv:clean opensrp-chw-gbv:jacocoTestReport --stacktrace -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
+        run: ./gradlew opensrp-chw-ovc:clean opensrp-chw-ovc:jacocoTestReport --stacktrace -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
       - name: Generate Javadoc with Gradle
         run: ./gradlew javadoc
       - name: Upload coverage to Coveralls
